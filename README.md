@@ -1,1 +1,1 @@
-# techio-basic-template
+# An Message Passing Interface playground in C
