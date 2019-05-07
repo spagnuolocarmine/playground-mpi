@@ -1,4 +1,4 @@
-title : Introduction to MPI
+title : Introduction to MPI in C
 plan:
   - title: Introduction
     description: This chapter introduces distributed computing.
