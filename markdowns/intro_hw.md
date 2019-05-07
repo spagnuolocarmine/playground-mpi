@@ -8,14 +8,14 @@ First of all, MPI must always be initialised and finalised. Both operations must
 
 As a result and a matter of convention, these two commands are always called first and last in the program. The corresponding commands are `MPI_Init` and `MPI_Finalize`. `MPI_Init` always takes a reference to the command line arguments, while `MPI_Finalize` does not. Thus, in C++, their signatures are as follows :
 
-```cpp
+```c
 int MPI_Init(int *argc, char ***argv);
 int MPI_Finalize();
 ```
 
 If you remember, in the previous lesson we talked about *rank* and *size*. The way to obtain these, is to use the following calls :
 
-```cpp
+```c
 int size, rank;
 MPI_Comm_size(MPI_COMM_WORLD, &size);
 MPI_Comm_rank(MPI_COMM_WORLD, &rank);
