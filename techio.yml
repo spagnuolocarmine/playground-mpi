@@ -1,4 +1,14 @@
-title: Custom Template
+title : Introduction to MPI
 plan:
-- title: Welcome
-  statement: markdowns/welcome.md
+  - title: Introduction
+    description: This chapter introduces distributed computing.
+    plan:
+      - title: Introduction to distributed computing
+        statement: markdowns/intro.md
+      - title: Hello world
+        statement: markdowns/intro_hw.md
+projects:
+  main:
+    root: exercises/
+    runner:
+      name: spagnuolocarmine/docker-mpi:latest
