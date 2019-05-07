@@ -5,8 +5,21 @@ Recall that the world of parallel multiple instruction, multiple data, or MIMD, 
 ![mpimodel](/img/mpimodel.png) 
 
 
-Recall that in message-passing programs, a program running on one core-memory pair is usually called a process, and two processes can communicate by calling func- tions: one process calls a send function and the other calls a receive function. The implementation of message-passing that we’ll be using is called MPI, which is an abbreviation of Message-Passing Interface. MPI is not a new programming language. It defines a library of functions that can be called from C, C++, and Fortran programs. We’ll learn about some of MPI’s different send and receive functions. We’ll also learn about some “global” communication functions that can involve more than two processes. These functions are called collective communications. In the process of learning about all of these MPI functions, we’ll also learn about some of the fundamental issues involved in writing message-passing programs–issues such as data partitioning and I/O in distributed-memory systems. We’ll also revisit the issue of parallel program performance.
+Recall that in message-passing programs, a program running on one core-memory pair is usually called a process, and two processes can communicate by calling functions: one process calls a send function and the other calls a receive function. The implementation of message-passing that we’ll be using is called MPI, which is an abbreviation of Message-Passing Interface. MPI is not a new programming language. It defines a library of functions that can be called from C, C++, and Fortran programs. We’ll learn about some of MPI’s different send and receive functions. We’ll also learn about some “global” communication functions that can involve more than two processes. These functions are called collective communications. In the process of learning about all of these MPI functions, we’ll also learn about some of the fundamental issues involved in writing message-passing programs–issues such as data partitioning and I/O in distributed-memory systems. We’ll also revisit the issue of parallel program performance.
 
+# About this book
+
+In this book is used a Docker container that enables to execute in browser MPI program. 
+The Docker container is available on public repository on [GitHub](https://github.com/spagnuolocarmine/docker-mpi). The execution environment provides an Ubuntu 18.04 linux machine and several softwares. The execution environments provide the last version of [OpenMPI](https://www.open-mpi.org/), the MPI implementation used in this book. 
+
+You can build your local docker to experiment on your local machine varying the number of MPI processes, by pull from the official Docker registry the image:  docker pull ```spagnuolocarmine/docker-mpi:latest```. Or you can build the docker image by yourself:
+
+```
+git clone https://github.com/spagnuolocarmine/docker-mpi.git
+cd docker-mpi
+docker build --no-cache -t dockermpi .
+docker run -it -t dockermpi:latest
+```
 
 # References
 
