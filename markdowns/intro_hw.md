@@ -31,19 +31,19 @@ Now the first exercise will be to write a program which does the following steps
 * Prints `Hello world, from process #<RANK OF THE PROCESS`.
 * Finalizes MPI and exits.
 
-@[Hello World]({"stubs": ["intro_hello_world/hello_world.cpp"], "command": "bash intro_hello_world/hello_world.sh", "layout": "aside"})
+@[Hello World]({"stubs": ["intro_hello_world/hello_world.c"], "command": "bash intro_hello_world/hello_world.sh", "layout": "aside"})
 
 ## Notes on how to run this locally
 If you try to compile this code locally, you might run into problems. There is a simple way to compile all MPI codes. When you install any implementation, such as OpenMPI or MPICH, wrapper compilers are provided. For instance, if you were to compile this code after having installed an OpenMPI distribution, you would have to replace the simple compiler line :
 
 ```bash
-g++ -o hello_world hello_world.cpp
+gcc -o hello_world hello_world.c
 ```
 
 By :
 
 ```bash
-mpicxx -o hello_world hello_world.cpp
+mpic -o hello_world hello_world.c
 ```
 
 There are three such wrappers to compile in the three languages mainly supported by MPI implementations : C, C++ and Fortran. The respective wrappers are : `mpicc`, `mpicxx` and `mpifort`. Note that these commands are simply wrappers, they will call compilers using environment variables. You can see the line that is actually executed when you use one of these compiler by using the `--show` command line argument. On a fairly standard Linux installation for instance, `mpicxx --show` will return something like :
