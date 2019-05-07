@@ -7,11 +7,13 @@ plan:
         statement: markdowns/intro.md
       - title: Hello world
         statement: markdowns/intro_hw.md
+  
   - title: Point-to-Point communications
     description: This chapter introduces synchronous and asynchronous communications.
     plan:
       - title: TODO
         statement: markdowns/intro.md
+  
   - title: Collective communications
     description: This chapter introduces collective communications
     plan:
