@@ -30,7 +30,7 @@ plan:
     description: Conclusion chapter.
     plan:
        - title: TODO
-        statement: markdowns/intro.md
+         statement: markdowns/intro.md
 projects:
   main:
     root: exercises/
