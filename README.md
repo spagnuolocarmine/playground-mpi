@@ -1,1 +1,1 @@
-# An Message Passing Interface playground in C
+# A Message Passing Interface playground in C
