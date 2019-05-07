@@ -1,4 +1,4 @@
-title : Introduction to MPI in C
+title : MPI by Examples in C
 plan:
   - title: Introduction
     description: This chapter introduces distributed computing.
@@ -7,6 +7,28 @@ plan:
         statement: markdowns/intro.md
       - title: Hello world
         statement: markdowns/intro_hw.md
+  - title: Point-to-Point communications
+    description: This chapter introduces synchronous and asynchronous communications.
+    plan:
+      - title: TODO
+        statement: markdowns/intro.md
+  - title: Collective communications
+    description: This chapter introduces collective communications
+    plan:
+      - title: TODO
+        statement: markdowns/intro.md
+
+  - title: Additional features
+    description: This chapters will introduce additional features of the MPI standard.
+    plan:
+      - title: TODO
+        statement: markdowns/intro.md
+
+  - title: Conclusion
+    description: Conclusion chapter.
+    plan:
+       - title: TODO
+        statement: markdowns/intro.md
 projects:
   main:
     root: exercises/
