@@ -19,5 +19,6 @@ rc=0
 
 echo -e "Execution ... "
 mpirun -mca btl sm,tcp,self -np 4 -output-filename out/out ./hw
+cat out/out
 rm -rf out
 
