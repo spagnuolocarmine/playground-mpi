@@ -31,7 +31,7 @@ Now the first exercise will be to write a program which does the following steps
 * Prints `Hello world, from process #<RANK OF THE PROCESS`.
 * Finalizes MPI and exits.
 
-@[Hello World]({"stubs": ["intro_hello_world/hello_world.c"], "command": "bash /project/target/intro_hello_world/hello_world.sh", "layout": "aside"})
+@[Hello World]({"stubs": ["intro_hello_world/hello_world.c"], "command": "/bin/bash /project/target/intro_hello_world/hello_world.sh", "layout": "aside"})
 
 ## Notes on how to run this locally
 
