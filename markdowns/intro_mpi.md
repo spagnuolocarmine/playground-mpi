@@ -1,4 +1,4 @@
-# GETTING STARTED
+# MPI programs
 
 Perhaps the first program that many of us saw was some variant of the “hello, world”
 program in Kernighan and Ritchie’s classic text.
