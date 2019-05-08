@@ -46,5 +46,5 @@ In simple environments with little or no distributed computational support, ORTE
 Since portability is a primary requirement, the MPI layer supports a wide variety of network types and underlying protocols. Some networks are similar in their underlying characteristics and abstractions; some are not.
 
 
-![OpenMPILayer](img/open-mpi-layers.png)
+![OpenMPILayer](/img/open-mpi-layers.png)
 
