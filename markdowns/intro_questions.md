@@ -26,4 +26,20 @@
 -[ ] the abstractions of OpenMPI on individual processes (versus parallel jobs).
 -[x] the abstractions of OpenMPI to launch, monitor, and kill parallel jobs.
 
+?[The MPI_Init function tells the MPI system to]
+-[x] do all of the necessary setup.
+-[ ] copy your program in the cluster.
+
+?[The MPI_Finalize function tells the MPI system]
+-[x] that we’re done using MPI.
+-[ ] to delete your program in the cluster.
+
+?[The rank of a MPI process in the MPI_COMM_WORLD communicator is a]
+-[ ] floating point number starting from 1.0.
+-[ ] integer number starting from 1.
+-[x] integer number starting from 0.
+-[ ] integer number starting from 0.0.
+
+@[Provide the C code using OpenMPI that write on the STDOUT the number of the processors involved in the computation.]({"stubs": ["intro_hello_world/hello_world_ex1.c"], "command": "/bin/bash /project/target/intro_hello_world/hello_world_one.sh"})
+
 @[Provide the C code using OpenMPI that write on the STDOUT the rank of the process. Consider that the execution on the mpi process use the flag -np=1. The output of your program must be in the form: Hello world from processor 4ec330b6dbf8, rank 0 out of 1 processors.]({"stubs": ["intro_hello_world/hello_world_ex1.c"], "command": "/bin/bash /project/target/intro_hello_world/hello_world_one.sh"})
