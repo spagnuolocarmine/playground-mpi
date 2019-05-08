@@ -40,6 +40,6 @@
 -[x] integer number starting from 0.
 -[ ] integer number starting from 0.0.
 
-@[Provide the C code using OpenMPI that write on the STDOUT the number of the processors involved in the computation.]({"stubs": ["intro_hello_world/hello_world_ex1.c"], "command": "/bin/bash /project/target/intro_hello_world/hello_world_one.sh"})
+@[Provide the C code using OpenMPI that write on the STDOUT the number of the processors involved in the computation.]({"stubs": ["intro_hello_world/hello_world_ex2.c"], "command": "/bin/bash /project/target/intro_hello_world/hello_world.sh"})
 
 @[Provide the C code using OpenMPI that write on the STDOUT the rank of the process. Consider that the execution on the mpi process use the flag -np=1. The output of your program must be in the form: Hello world from processor 4ec330b6dbf8, rank 0 out of 1 processors.]({"stubs": ["intro_hello_world/hello_world_ex1.c"], "command": "/bin/bash /project/target/intro_hello_world/hello_world_one.sh"})
