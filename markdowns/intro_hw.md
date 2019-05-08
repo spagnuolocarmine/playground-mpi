@@ -76,7 +76,7 @@ $ mpirun −n 1 ./mpi hello
 and to run the program with four processes, we’d type
 
 ```bash
-$ mpiexec −n 4 ./mpi hello
+$ mpirun −n 4 ./mpi hello
 ```
 
 @[Hello World]({"stubs": ["intro_hello_world/hello_world.c"], "command": "/bin/bash /project/target/intro_hello_world/hello_world.sh"})

@@ -7,6 +7,8 @@ plan:
         statement: markdowns/intro.md
       - title: Hello world
         statement: markdowns/intro_hw.md
+      - title: The OpenMPI Architecture
+        statement: markdowns/openmpi.md
       - title: MPI Program
         statement: markdowns/intro_mpi.md
   

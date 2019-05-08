@@ -70,7 +70,10 @@ docker run -it -t dockermpi:latest
 1. Peter Pacheco. 2011. An Introduction to Parallel Programming (1st ed.). Morgan Kaufmann Publishers Inc., San Francisco, CA, USA.
 2. Kai Hwang, Jack Dongarra, and Geoffrey C. Fox. 2011. Distributed and Cloud Computing: From Parallel Processing to the Internet of Things (1st ed.). Morgan Kaufmann Publishers Inc., San Francisco, CA, USA.
 3. Czech, Z. (2017). Introduction to Parallel Computing. Cambridge: Cambridge University Press.
-4. Blaise Barney, Lawrence Livermore National Laboratory, Message Passing Interface (MPI). https://computing.llnl.gov/tutorials/mpi/#What
+4. Blaise Barney, Lawrence Livermore National Laboratory, Message Passing Interface (MPI) -- https://computing.llnl.gov/tutorials/mpi/#What
+5. MPI: A Message-Passing Interface Standard -- https://www.mpi-forum.org/docs/mpi-2.2/mpi22-report.pdf
+6. Wilson Greg, Kristian Hermansen. 2011. The Architecture of Open Source Applications, Volume II.
+
 # About the Author
 
 Carmine Spagnuolo got his Master Degree cum laude in Computer Science at the Università degli Studi di Salerno in 2013. In January 2014, he started the Ph.D. program in Computer Science under the supervision of Professor Vittorio Scarano and has completed it in 2017. He is interested in Parallel Algorithms, Distributed Systems, Graph Theory, Social Networks and Agent-Based Simulations. Since 2010, he is involved in D-Mason research project, which is a distributed version of the MASON toolkit for Agent-Based simulations. He has worked on the architecture, visualization and communication strategies. In 2012 he got a grant from the Office of Naval Research (ONR) for visiting the George Mason University (GMU). In May 2017 and from October to December 2017, he visited the University of Chicago and Argonne National Laboratory, under the supervision of dott. Jonathan Ozik and exploiting a grant from ANL. Currently, he is a postdoc Researcher at the ISISLab laboratory of the University of Salerno. He is co-author of some papers in international refereed journals and conferences.
