@@ -50,3 +50,8 @@ For both functions, the first argument is a communicator and has the special typ
 ### The MPI\_COMM\_WORLD
 
 ![MPICOMMWORLD](/img/mpi-comm-world.png)
+
+Execute the program and notice the number of processors and the given rank to each one. 
+ 
+@[Hello World]({"stubs": ["intro_hello_world/hello_world.c"], "command": "/bin/bash /project/target/intro_hello_world/hello_world.sh"})
+
