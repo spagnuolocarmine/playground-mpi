@@ -11,6 +11,8 @@ plan:
         statement: markdowns/openmpi.md
       - title: MPI Program
         statement: markdowns/intro_mpi.md
+      - title: Chapter Questions
+        statement: markdowns/intro_questions.md
   
   - title: Point-to-Point communications
     description: This chapter introduces synchronous and asynchronous communications.
