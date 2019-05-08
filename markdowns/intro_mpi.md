@@ -1,86 +1,52 @@
 # MPI programs
 
-Perhaps the first program that many of us saw was some variant of the “hello, world”
-program in Kernighan and Ritchie’s classic text.
+Let’s take a closer look at the program. The first thing to observe is that this is a C program. For example, it includes the standard C header files stdio.h and string.h. It also has a main function just like any other C program. 
 
 ```c
-#include <stdio.h> 
-int main(void) {
-	printf("hello, world\n"); 
+#include <stdio.h>
+#include <string.h> 
+#include <mpi.h>
+int main(int argc, char* argv[]){
+	/*No MPI call before this*/
+	MPI_Init(&argc,&argv);
+	...
+	MPI_Finalize();
+	/*No MPI call after this*/
+	...
 	return 0;
 }
 ```
 
-Let’s write a program similar to “hello, world” that makes some use of MPI. Instead of having each process simply print a message, we’ll designate one process to do the output, and the other processes will send it messages, which it will print.
+However, there are many parts of the program which are new. Line 3 includes the mpi.h header file. This contains prototypes of MPI functions, macro definitions, type definitions, and so on; it contains all the definitions and declarations needed for compiling an MPI program.The second thing to observe is that all of the identifiers defined by MPI start with the string **MPI\_**.
 
-In parallel programming, it’s common (one might say standard) for the processes to be identified by nonnegative integer ranks. So if there are p processes, the processes will have ranks 0,1,2,..., p−1. For our parallel “hello, world,” let’s make process 0 the designated process, and the other processes will send it messages.
+The first letter following the underscore is capitalized for function names and MPI-defined types. All of the letters in MPI-defined macros and con- stants are capitalized, so there’s no question about what is defined by MPI and what’s defined by the user program.
 
+#### MPI\_Init and MPI\_Finalize
+
+The call to MPI Init tells the MPI system to do all of the necessary setup. For example, it might allocate storage for message buffers, and it might decide which process gets which rank. As a rule of thumb, no other MPI functions should be called before the program calls MPI Init. Its syntax is
 
 ```c
-#include <mpi.h>
-#include <stdio.h>
-
-int main(int argc, char** argv) {
-    // Initialize the MPI environment
-    MPI_Init(NULL, NULL);
-
-    // Get the number of processes
-    int world_size;
-    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
-
-    // Get the rank of the process
-    int world_rank;
-    MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
-
-    // Get the name of the processor
-    char processor_name[MPI_MAX_PROCESSOR_NAME];
-    int name_len;
-    MPI_Get_processor_name(processor_name, &name_len);
-
-    // Print off a hello world message
-    printf("Hello world from processor %s, rank %d out of %d processors\n",
-           processor_name, world_rank, world_size);
-
-    // Finalize the MPI environment.
-    MPI_Finalize();
-}
+int MPI Init(	int∗ argc p /∗ in/out ∗/, 
+	char∗∗∗ argv p /∗ in/out ∗/);
 ```
 
-## Compilation and execution
+The arguments, argc p and argv p, are pointers to the arguments to main, argc, and argv. However, when our program doesn’t use these arguments, we can just pass NULL for both. Like most MPI functions, MPI Init returns an int error code, and in most cases we’ll ignore these error codes.
 
-The details of compiling and running the program depend on your system, so you may need to check with a local expert. However, recall that when we need to be explicit, we’ll assume that we’re using a text editor to write the program source, and the command line to compile and run. Many systems use a command called _mpicc_ for compilation:
+This means that MPI is responsable for spawn the arguments of the main function to each MPI processes.
+
+The call to MPI Finalize tells the MPI system that we’re done using MPI, and that any resources allocated for MPI can be freed. The syntax is quite simple.## Communication Abstraction
 
 
+In MPI a communicator is a collection of processes that can send messages to each other. One of the purposes of MPI Init is to define a communicator that consists of all of the processes started by the user when she started the program. This communicator is called MPI\_COMM\_WORLD.  Their syntax is
 
-```bash
-$ mpicc −g −Wall −o mpi hello mpi hello.c
+```c
+int MPI_Comm_size( 
+	MPI_Comm comm /*in*/,	int∗ comm_sz_p /*out*/);int MPI_Comm_rank( 
+	MPI_Comm comm /*in*/,	int∗ my_rank /*out*/);
 ```
 
-Typically, mpicc is a script that’s a wrapper for the C compiler. A wrapper script is a script whose main purpose is to run some program. In this case, the program is the C compiler. However, the wrapper simplifies the running of the compiler by telling it where to find the necessary header files and which libraries to link with the object file.
+For both functions, the first argument is a communicator and has the special type defined by MPI for communicators, MPI\_Comm. MPI\_Comm\_size returns in its second argument the number of processes in the communicator, and MPI\_Comm\_rank returns in its second argument the calling process’ rank in the communicator. We’ll often use the variable comm sz for the number of processes in MPI\_COMM\_WORLD, and the variable my rank for the process rank.
 
-Many systems also support program startup with mpiexec or mpirun:
+### The MPI\_COMM\_WORLD
 
-```bash
-$ mpirun −n <number of processes> ./mpi hello
-```
-
-So to run the program with one process, we’d type
-
-
-```bash
-$ mpirun −n 1 ./mpi hello
-```
-
-@[Hello World]({"stubs": ["intro_hello_world/hello_world.c"], "command": "/bin/bash /project/target/intro_hello_world/hello_world_one.sh"})
-
-and to run the program with four processes, we’d type
-
-```bash
-$ mpiexec −n 4 ./mpi hello
-```
-
-@[Hello World]({"stubs": ["intro_hello_world/hello_world.c"], "command": "/bin/bash /project/target/intro_hello_world/hello_world.sh"})
-
-How do we get from invoking mpirun to one or more lines of greetings? The mpirun command tells the system to start <number of processes> instances of our <mpi hello> program. It may also tell the system which core should run each instance of the program. After the processes are running, the MPI implementation takes care of making sure that the processes can communicate with each other.
-
-
+![MPICOMMWORLD](/img/mpi-comm-world.png)
