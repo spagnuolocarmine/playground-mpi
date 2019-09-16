@@ -17,8 +17,14 @@ plan:
   - title: Point-to-Point communications
     description: This chapter introduces synchronous and asynchronous communications.
     plan:
-      - title: TODO
-        statement: markdowns/intro.md
+      - title: MPI Memory model
+        statement: markdowns/2_intro.md
+      - title: Blocking Communication
+        statement: markdowns/2_intro.md
+      - title: Non-Blocking Communication
+        statement: markdowns/2_intro.md
+      - title: Chapter Questions
+        statement: markdowns/intro_questions.md
   
   - title: Collective communications
     description: This chapter introduces collective communications
