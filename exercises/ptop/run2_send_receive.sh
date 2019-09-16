@@ -1,9 +1,9 @@
 #!/bin/bash
 
 echo -e "Compiling"
-cd /project/target/intro_hello_world
+cd /project/target/ptop
 rm -rf out hw
-mpicc -o hw hello_world.c 2> err_log
+mpicc -o hw send_receive.c 2> err_log
 rc=$?
 if [[ $rc != 0 ]]; then
     echo -e "Error : mpicc returned"
