@@ -25,7 +25,7 @@ Data communication in MPI is like email exchange. One process sends a copy of th
 # MPI Types and Constants
 
 ## MPI Naming Convention
-
+ 
 ## MPI Data Types
 
 ## MPI Constants
