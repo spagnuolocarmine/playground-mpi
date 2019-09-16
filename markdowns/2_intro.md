@@ -20,7 +20,7 @@ Data communication in MPI is like email exchange. One process sends a copy of th
 	- What the user-defined **tag** of the message is (OK if the receiver does
 	not know; in this case tag will be **MPI_ANY_TAG**).
 
-@[Hello World]({"stubs": ["ptop/sendreceive.c"], "command": "/bin/bash /project/target/ptop/run2.sh"})
+@[Send Receive]({"stubs": ["ptop/send_receive.c"], "command": "/bin/bash /project/target/ptop/run2.sh"})
 
 # MPI Types and Constants
   
