@@ -23,6 +23,8 @@ plan:
         statement: markdowns/2_intro.md
       - title: Non-Blocking Communication
         statement: markdowns/2_intro.md
+      - title: Communication Modes
+        statement: markdowns/2_intro.md
       - title: Chapter Questions
         statement: markdowns/intro_questions.md
   
