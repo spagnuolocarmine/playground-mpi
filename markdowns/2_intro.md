@@ -23,7 +23,7 @@ Data communication in MPI is like email exchange. One process sends a copy of th
 @[Hello World]({"stubs": ["ptop/sendreceive.c"], "command": "/bin/bash /project/target/ptop/run2.sh"})
 
 # MPI Types and Constants
-
+  
 ## MPI Naming Convention
  
 ## MPI Data Types
