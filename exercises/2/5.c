@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
     int buffer; 
 
     tag = 1234;
-    destination = 2; 
+    destination = 1; 
     count = 1; 
     MPI_Status status;
     MPI_Request request = MPI_REQUEST_NULL;
