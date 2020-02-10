@@ -30,18 +30,21 @@ int MPI_Bsend(const void* buf, int count, MPI_Datatype datatype, int dest,int ta
 
 ## Synchronous Mode
 
-A send that uses thesynchronousmode can be started whether or not a matchingreceive was posted. However, the send will complete successfully only if a matching receive isposted, and the receive operation has started to receive the message sent by the synchronoussend.  Thus, the completion of a synchronous send not only indicates that the send buffercan  be  reused,  but  it  also  indicates  that  the  receiver  has  reached  a  certain  point  in  its execution,  namely that it has started executing the matching receive.  If both sends andreceives are blocking operations then the use of the synchronous mode provides synchronouscommunication semantics:  a communication does not complete at either end before bothprocesses rendezvous at the communication.  A send executed in this mode isnon-local.
+A send that uses the synchronous mode can be started whether or not a matching receive was posted. However, the send will complete successfully only if a matching receive is posted, and the receive operation has started to receive the message sent by the synchronous send.  Thus, the completion of a synchronous send not only indicates that the send buffer can  be  reused,  but  it  also  indicates  that  the  receiver  has  reached  a  certain  point  in  its execution,  namely that it has started executing the matching receive.  If both sends and receives are blocking operations then the use of the synchronous mode provides synchronous communication semantics:  a communication does not complete at either end before both processes rendezvous at the communication.  A send executed in this mode is non-local.
 
 ```c
-MPI_GET_COUNT(status, datatype, count)
+MPI_SSEND (buf, count, datatype, dest, tag, comm)
 ```
-- IN status, return status of receive operation (Status)
-- IN datatype, datatype of each receive buffer entry (handle)
-- OUT count, number of received entries (integer)
-
+- IN buf, initial address of send buffer (choice)
+- IN count, number of elements in send buffer (non-negative integer)
+- IN datatype, datatype of each send buffer element (handle)
+- IN dest, rank of destination (integer)
+- IN tag, message tag (integer)
+- IN comm, communicator (handle)
+å
 #### C version
 ```c
-int MPI_Get_count(const MPI_Status *status, MPI_Datatype datatype,int *count)
+int MPI_Ssend(const void* buf, int count, MPI_Datatype datatype, int dest,int tag, MPI_Comm comm)
 ```
 
 @[MPI_Ssend]({"stubs": ["2/3.c"], "command": "/bin/bash /project/target/2/3.sh"})
@@ -49,16 +52,20 @@ int MPI_Get_count(const MPI_Status *status, MPI_Datatype datatype,int *count)
 
 ## Ready Mode
 
-A send that uses thereadycommunication mode may be startedonlyif the matchingreceive is already posted.  Otherwise, the operation is erroneous and its outcome is unde-fined.  On some systems, this allows the removal of a hand-shake operation that is otherwiserequired and results in improved performance.  The completion of the send operation doesnot depend on the status of a matching receive, and merely indicates that the send buffercan be reused.  A send operation that uses the ready mode has the same semantics as astandard  send  operation,  or  a  synchronous  send  operation;  it  is  merely  that  the  senderprovides additional information to the system (namely that a matching receive is alreadyposted), that can save some overhead.  In a correct program, therefore, a ready send couldbe replaced by a standard send with no effect on the behavior of the program other thanperformance.
+A send that uses the ready communication mode may be started only if the matching receive is already posted.  Otherwise, the operation is erroneous and its outcome is undefined.  On some systems, this allows the removal of a hand-shake operation that is otherwise required and results in improved performance.  The completion of the send operation does not depend on the status of a matching receive, and merely indicates that the send buffercan be reused.  A send operation that uses the ready mode has the same semantics as astandard  send  operation,  or  a  synchronous  send  operation;  it  is  merely  that  the  sender provides additional information to the system (namely that a matching receive is already posted), that can save some overhead.  In a correct program, therefore, a ready send could be replaced by a standard send with no effect on the behavior of the program other than performance.
 
 ```c
-MPI_GET_COUNT(status, datatype, count)
+MPI_RSEND (buf, count, datatype, dest, tag, comm)
 ```
-- IN status, return status of receive operation (Status)
-- IN datatype, datatype of each receive buffer entry (handle)
-- OUT count, number of received entries (integer)
+- IN buf, initial address of send buffer (choice)
+- IN count, number of elements in send buffer (non-negative integer)
+- IN datatype, datatype of each send buffer element (handle)
+- IN dest, rank of destination (integer)
+- IN tag, message tag (integer)
+- IN comm, communicator (handle)
 
 #### C version
 ```c
-int MPI_Get_count(const MPI_Status *status, MPI_Datatype datatype,int *count)
+int MPI_Rsend(const void* buf, int count, MPI_Datatype datatype, int dest,int tag, MPI_Comm comm)
 ```
+@[MPI_Rsend]({"stubs": ["2/4.c"], "command": "/bin/bash /project/target/2/4.sh"})
