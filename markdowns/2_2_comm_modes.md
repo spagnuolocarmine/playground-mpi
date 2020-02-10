@@ -23,11 +23,6 @@ MPI_SEND(buf, count, datatype, dest, tag, comm)
 - IN tag, message tag (integer)
 - IN comm, communicator (handle)
 
-# C version
-```c
-int MPI_Send(const void* buf, int count, MPI_Datatype datatype, int dest,int tag, MPI_Comm comm)
-```
-
 THE _MPI\_Send_ is blocking:  it does not return until the message data and envelope have been safely stored away so that the sender is free to modify thesend buffer.  The message might be copied directly into the matching receive buffer, or it might be copied into a temporary system buffer. Message buffering decouples the send and receive operations.  A blocking send can complete as soon as the message was buffered, even if no matching receive has been executed bythe receiver.  On the other hand, message buffering can be expensive, as it entails additional memory-to-memory copying, and it requires the allocation of memory for buffering. 
 
 ### How do distinguish messages?
@@ -61,11 +56,6 @@ MPI_RECV (buf, count, datatype, source, tag, comm, status)
 - IN comm, communicator (handle)
 - OUT status, status object (Status)
 
-# C version
-```c
-int MPI_Recv(void* buf, int count, MPI_Datatype datatype, int source,int tag, MPI_Comm comm, MPI_Status *status)
-```
-
 The receive buffer consists of the storage containing _count_ **consecutive** elements of the type specified by datatype, starting at addressbuf.  The length of the received message must be  less  than  or  equal  to  the  length  of  the  receive  buffer.   An  **overflow**  error  occurs  if  all incoming data does not fit, without truncation, into the receive buffer. If a message that is shorter than the receive buffer arrives, then only those locations corresponding to the (shorter) message are modified.
 
 The  selection  of  a  message  by  a  receive  operation  is  governed  by  the  value  of  the message envelope.  A message can be received by a receive operation if its envelope matches the source, tag and comm values  specified  by  the  receive  operation. The  receiver  may specify  a  wildcard _MPI\_ANY\_SOURCE_ value  for source,  and/or  a  wildcard _MPI\_ANY\_TAG_ value  for tag,  indicating  that  any  source  and/or  tag  are  acceptable.   It  cannot  specify  awildcard  value  for _comm_. 
@@ -73,26 +63,6 @@ The  selection  of  a  message  by  a  receive  operation  is  governed  by  the
 ### Notice
 
 Note the asymmetry between send and receive operations:  A receive operation may accept messages from an arbitrary sender, on the other hand, a send operation must specify a unique receiver.  This matches a “push” communication mechanism, where data transfer is effected by the sender (rather than a “pull” mechanism, where data transfer is effectedby the receiver). Source = destination is allowed, that is, a process can send a message to itself, however, it is unsafe to do so with the blocking send and receive operations, since this may lead to **deadlock**. 
-
-## Return Status
-
-The source or tag of a received message may not be known if wildcard values were used in the receive operation.  Also, if multiple requests are completed by a single MPI function,  a distinct error code may need to be returned for each request.  The information is returned by the **status argument** of MPI_RECV. The type of status is MPI-defined.  Status variables need to be explicitly allocated by the user, that is, they are notsystem objects.
-
-In  C, status is  a  structure  that  contains  three  fields  named _MPI\_SOURCE_, _MPI\_TAG_, and _MPI\_ERROR_;  the  structure  may  contain  additional  fields.   Thus, status.MPI_SOURCE, status.MPI_TAG, and status.MPI_ERROR contain the source, tag, and error code, respectively, of the received message.
-
-The status argument also returns information on the length of the message received. However, this information is not directly available as a field of the status variable and a call to _MPI\_GET\_COUNT_ is required to “decode” this information.
-
-```c
-MPI_GET_COUNT(status, datatype, count)
-```
-- IN status, return status of receive operation (Status)
-- IN datatype, datatype of each receive buffer entry (handle)
-- OUT count, number of received entries (integer)
-
-# C version
-```c
-int MPI_Get_count(const MPI_Status *status, MPI_Datatype datatype,int *count)
-```
 
 
 ## Blocking send and receive with 4 processes using MPI_ANY_SOURCE and MPI_ANY_TAG  
