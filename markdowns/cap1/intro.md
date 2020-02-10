@@ -72,9 +72,10 @@ docker run -it -t dockermpi:latest
 3. Czech, Z. (2017). Introduction to Parallel Computing. Cambridge: Cambridge University Press.
 4. Blaise Barney, Lawrence Livermore National Laboratory, Message Passing Interface (MPI) -- https://computing.llnl.gov/tutorials/mpi/#What
 5. MPI: A Message-Passing Interface Standard -- https://www.mpi-forum.org/docs/mpi-2.2/mpi22-report.pdf
-6. Wilson Greg, Kristian Hermansen. 2011. The Architecture of Open Source Applications, Volume II.
-7. https://www.rookiehpc.com/mpi/docs/index.php
-8. Beginning MPI (An Introduction in C)
+7. MPI: A Message-Passing Interface Standard --https://www.mpi-forum.org/docs/mpi-3.1/mpi31-report.pdf
+8. Wilson Greg, Kristian Hermansen. 2011. The Architecture of Open Source Applications, Volume II.
+9. https://www.rookiehpc.com/mpi/docs/index.php
+10. Beginning MPI (An Introduction in C)
 
 # About the Author
 
