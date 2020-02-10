@@ -1,43 +1,30 @@
 #include "mpi.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 int main(argc,argv) int argc; char *argv[];
 {
-    int numtasks, rank, dest, source, rc, count;  
-    char *inmsg;
-    char *outmsg = "Testing";
+    int numtasks, rank, dest, source, rc, count, tag=1;  
+    char inmsg, outmsg='x';
     MPI_Status Stat;
-    int bufsize = strlen(outmsg) * sizeof(char);
-    char *buf = malloc(bufsize); 
-    inmsg = (char *) malloc(10 * sizeof(char));
 
     MPI_Init(&argc,&argv);
     MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
     if (rank == 0) {
-        int time = MPI_Wtime();
-        MPI_Bsend(&outmsg, strlen(outmsg), MPI_CHAR, 1, 1, MPI_COMM_WORLD);
-        float etime =  MPI_Wtime() - time;
-        printf("Task %d: buffered send (1) buffered , process will block on detach. Time: %1.2f\n",rank,etime);
-        free(outmsg);
-        outmsg = "Testing2";
-        time = MPI_Wtime();
-        MPI_Send(&outmsg, strlen(outmsg), MPI_CHAR, 1, 1, MPI_COMM_WORLD);
-        etime =  MPI_Wtime() - time;
-        printf("Task %d: buffered send (2), process may will block here. Time: %1.2f\n",rank, etime);
-        
-    } else {
-        MPI_Recv(&inmsg, strlen(outmsg), MPI_CHAR, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &Stat);
-        rc = MPI_Get_count(&Stat, MPI_CHAR, &count);
-        printf("Task %d: Received %d char(s) from task %d with tag %d \n",
-           rank, count, Stat.MPI_SOURCE, Stat.MPI_TAG);
-        MPI_Recv(&inmsg, strlen(outmsg), MPI_CHAR, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &Stat);
-        rc = MPI_Get_count(&Stat, MPI_CHAR, &count);
-        printf("Task %d: Received %d char(s) from task %d with tag %d \n",
-           rank, count, Stat.MPI_SOURCE, Stat.MPI_TAG);
+        dest = 1;
+        source = 1;
+        rc = MPI_Recv(&inmsg, 1, MPI_CHAR, source, tag, MPI_COMM_WORLD, &Stat);
+        rc = MPI_Send(&outmsg, 1, MPI_CHAR, dest, tag, MPI_COMM_WORLD);
+    } else if (rank == 1) {
+        dest = 0;
+        source = 0;
+        rc = MPI_Recv(&inmsg, 1, MPI_CHAR, source, tag, MPI_COMM_WORLD, &Stat);
+        rc = MPI_Send(&outmsg, 1, MPI_CHAR, dest, tag, MPI_COMM_WORLD);
     }
+
+    rc = MPI_Get_count(&Stat, MPI_CHAR, &count);
+    printf("Task %d: Received %d char(s) from task %d with tag %d \n",
+           rank, count, Stat.MPI_SOURCE, Stat.MPI_TAG);
     MPI_Finalize();
 }

@@ -33,5 +33,5 @@
 -[x] An MPI program consists of autonomous processes, executing their own code.
 
 
-@[Change the code in order to have a correct execution.]({"stubs": ["2/2.q.c"], "command": "/bin/bash /project/target/2/2.q.sh"})
+@[Change the code in order to avoid the deadlock.]({"stubs": ["2/2.q.c"], "command": "/bin/bash /project/target/2/2.q.sh"})
 
