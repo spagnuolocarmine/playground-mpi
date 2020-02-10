@@ -1,4 +1,4 @@
-title : MPI by Examples in C Language
+title : Have fun with MPI in C
 plan:
   - title: Introduction
     description: A brief introduction to distributed computing using distributed memory paradigm.
@@ -24,7 +24,7 @@ plan:
       - title: Communication Modes
         statement: markdowns/2_2_comm_modes.md
       - title: Non-Blocking Communication
-        statement: markdowns/2_1_noblocking_comm.md.md
+        statement: markdowns/2_1_noblocking_comm.md
       - title: Chapter Questions
         statement: markdowns/2_questions.md
   
