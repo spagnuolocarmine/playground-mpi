@@ -4,29 +4,29 @@ plan:
     description: A brief introduction to distributed computing using distributed memory paradigm.
     plan:
       - title: What is distributed computing?
-        statement: markdowns/intro.md
+        statement: markdowns/cap1/intro.md
       - title: Take the first steps, Hello world
-        statement: markdowns/intro_hw.md
+        statement: markdowns/cap1/intro_hw.md
       - title: The OpenMPI Architecture
-        statement: markdowns/openmpi.md
+        statement: markdowns/cap1/openmpi.md
       - title: MPI Programming
-        statement: markdowns/intro_mpi.md
+        statement: markdowns/cap1/intro_mpi.md
       - title: Chapter Questions
-        statement: markdowns/intro_questions.md
+        statement: markdowns/cap1/intro_questions.md
   
   - title: Point-to-Point communication
     description: This chapter introduces synchronous and asynchronous communications.
     plan:
       - title: MPI Memory model
-        statement: markdowns/2_intro.md
+        statement: markdowns/cap2/2_intro.md
       - title: Blocking Communication
-        statement: markdowns/2_1_blocking_comm.md
+        statement: markdowns/cap2/2_1_blocking_comm.md
       - title: Communication Modes
-        statement: markdowns/2_2_comm_modes.md
+        statement: markdowns/cap2/2_2_comm_modes.md
       - title: Non-Blocking Communication
-        statement: markdowns/2_1_noblocking_comm.md
+        statement: markdowns/cap2/2_1_noblocking_comm.md
       - title: Chapter Questions
-        statement: markdowns/2_questions.md
+        statement: markdowns/cap2/2_questions.md
   
   - title: Collective communications
     description: This chapter introduces collective communications
