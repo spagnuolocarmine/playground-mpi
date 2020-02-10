@@ -35,5 +35,5 @@
 
 @[Change the code in order to avoid the deadlock.]({"stubs": ["2/2.q1.c"], "command": "/bin/bash /project/target/2/2.q1.sh"})
 
-@[Write on the standard output of the process with rank=1 the total number of received characters.]({"stubs": ["2/2.q1.c"], "command": "/bin/bash /project/target/2/2.q1.sh"})
+@[Write on the standard output of the process with rank=1 the total number of received characters.]({"stubs": ["2/2.q2.c"], "command": "/bin/bash /project/target/2/2.q2.sh"})
 
