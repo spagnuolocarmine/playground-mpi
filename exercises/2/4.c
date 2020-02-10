@@ -2,20 +2,15 @@
 #include <stdlib.h>
 #include <mpi.h>
  
-/**
- * @brief Sends a message as soon as possible in a blocking synchronous fashion.
- * @details This program is meant to be run with 2 processes: a sender and a
- * receiver.
- **/
 int main(int argc, char* argv[])
 {
     MPI_Init(&argc, &argv);
  
-    // Get the number of processes and check only 2 processes are used
+   
     int size;
     MPI_Comm_size(MPI_COMM_WORLD, &size);
  
-    // Get my rank and do the corresponding job
+   
     enum role_ranks { SENDER, RECEIVER };
     int my_rank;
     MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
@@ -41,7 +36,6 @@ int main(int argc, char* argv[])
             printf("MPI process %d issued the MPI_Irecv, moved on and hit the barrier.\n", my_rank);
             MPI_Barrier(MPI_COMM_WORLD);
  
-            // Wait for the underlying MPI_Recv to complete.
             MPI_Wait(&request, MPI_STATUS_IGNORE);
             printf("MPI process %d receives value %d.\n", my_rank, received);
             break;

@@ -74,6 +74,6 @@ MPI_RSEND (buf, count, datatype, dest, tag, comm)
 int MPI_Rsend(const void* buf, int count, MPI_Datatype datatype, int dest,int tag, MPI_Comm comm)
 ```
 
-Notice that the following example uses the _MPI\_Irecv_, which is a nonblocking receive, that will be described in the next chapter. Here you can consider that this kind of receive immediately returns.
+Notice that the following example uses the _MPI\_Irecv_ and _MPI\_Wait_, which is a nonblocking receive and checking function, that will be described in the next chapter. Here you can consider that this kind of receive immediately returns.
 
 @[MPI_Rsend]({"stubs": ["2/4.c"], "command": "/bin/bash /project/target/2/4.sh"})

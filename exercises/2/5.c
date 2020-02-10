@@ -1,9 +1,7 @@
 #include "mpi.h"
 #include <stdio.h>
 
-int main(argc, argv)
-int argc;
-char **argv;
+int main(int argc, char* argv[])
 {
 	int rank, size;
     int tag, destination, count;
