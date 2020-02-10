@@ -2,7 +2,7 @@
 
 One can improve performance on many systems by overlapping communication and computation.   This  is  especially  true  on  systems  where  communication  can  be  executed  autonomously by an intelligent communication controller.  Light-weight threads are one mechanism  for  achieving  such  overlap.   An  alternative  mechanism  that  often  leads  to  better performance is to use nonblocking communication.  
 
-A **nonblockingsend** startcall initiates the send operation, but does not complete it.  The send start call can return before the message was copied out of the send buffer.  A separate send complete call is needed to complete the communication, i.e., to verify that the data has been copied out of the send buffer.  With suitable hardware, the transfer of data out of the sender memory may proceed concurrently with computations done at the sender after the send was initiated and before it completed. 
+A **nonblocking** send start call initiates the send operation, but does not complete it.  The send start call can return before the message was copied out of the send buffer.  A separate send complete call is needed to complete the communication, i.e., to verify that the data has been copied out of the send buffer.  With suitable hardware, the transfer of data out of the sender memory may proceed concurrently with computations done at the sender after the send was initiated and before it completed. 
 
 Similarly, a nonblocking receive start call initiates the receive operation, butdoes not complete it.  The call can return before a message is stored into the receive buffer. A separate receive complete call is needed to complete the receive operation and verify that the data has been received into the receive buffer.  With suitable hardware, the transfer of data into the receiver memory may proceed concurrently with computations done after the receive was initiated and before it completed.  The use of nonblocking receives may also avoid system buffering and memory-to-memory copying,  as information is provided early on the location of the receive buffer.
 
@@ -44,10 +44,47 @@ MPI_IRECV (buf, count, datatype, source, tag, comm, request)
 
 #### C version
 ```c
+int MPI_Isend(const void* buf, int count, MPI_Datatype datatype, int dest,int tag, MPI_Comm comm, MPI_Request *request)
+
 int MPI_Irecv(void* buf, int count, MPI_Datatype datatype, int source,int tag, MPI_Comm comm, MPI_Request *request)
 ```
+
+## What we need before user nonblocking communication (_MPI\_WAIT_ and _MPI\_TEST_)?
+
+We have to know when a communication ends. MPI provide the functions _MPI\_WAIT_ and _MPI\_TEST_ are used to complete a nonblocking communication.  The completion of a send operation indicates that the sender is now free to update the  locations  in  the  send  buffer  (the  send  operation  itself  leaves  the  content  of  the  send buffer unchanged).  It does not indicate that the message has been received, rather, it may have been buffered by the communication subsystem.  However, if asynchronous mode send was used, the completion of the send operation indicates that a matching receive was initiated, and that the message will eventually be received by this matching receive.
+
+The  completion  of  a  receive  operation  indicates  that  the  receive  buffer  contains  the received message, the receiver is now free to access it, and that the status object is set.  It does not indicate that the matching send operation has completed (but indicates, of course,that the send was initiated).
+
+
+```c
+MPI_WAIT(request, status)
+```
+- INOUT request, request (handle)
+- OUT status, status object (Status)
+
+#### C version
+```c
+int MPI_Wait(MPI_Request *request, MPI_Status *status)
+```
+A call to _MPI\_WAIT_ returns when the operation identified byrequestis complete.  I fthe request is an active persistent request, it is marked inactive.
+
+
+```c
+MPI_TEST(request, flag, status)
+```
+- INOUT request, communication request (handle)
+- OUT flag, true if operation completed (logical)
+- OUT status, status object (Status)
+
+#### C version
+```c
+int MPI_Test(MPI_Request *request, int *flag, MPI_Status *status)
+```
+
+A call to _MPI\_TEST_ returns flag = true if the operation identified byrequestis complete. In such a case, the status object is set to contain information on the completed operation. If the request is an active persistent request, it is marked as inactive.
+
+## Nonblockiing Send/Receive Example
 
 @[MPI_ISEND and MPI_Irecv]({"stubs": ["2/5.c"], "command": "/bin/bash /project/target/2/5.sh"})
 
 
-## Nonblockiing Receive
