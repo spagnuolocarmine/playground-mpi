@@ -27,6 +27,11 @@ plan:
         statement: markdowns/cap2/2_1_noblocking_comm.md
       - title: Chapter Questions
         statement: markdowns/cap2/2_questions.md
+  - title: Datatypes
+    description: This chapter introduces MPI datatypes
+    plan:
+      - title: Datatypes
+        statement: markdowns/cap3/intro.md
   
   - title: Collective communications
     description: This chapter introduces collective communications
