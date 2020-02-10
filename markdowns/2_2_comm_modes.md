@@ -6,6 +6,11 @@ MPI offers the choice of several communication modes that allow one to control t
 
 _Thus, a send in standard mode can be started whether or not a matching receive hasbeen posted.  It may complete before a matching receive is posted.  The standard mode send is non-local:  successful completion of the send operation may depend on the occurrence of a matching receive._
 
+The communication mode is indicated by a one letter prefix:
+1. B for buffered;
+2. S for synchronous;
+3. R for ready.
+
 ## Buffered Mode
 
 A buffered mode send operation can be started whether or not a matching receivehas been posted.  It may complete before a matching receive is posted.  However, unlike the standard send, this operation islocal, and its completion does not depend on the occurrence of a matching receive.  Thus, if a send is executed and no matching receive is posted, then MPI must buffer the outgoing message, so as to allow the send call to complete. An error willoccur if there is insufficient buffer space.  The amount of available buffer space is controlled by the user.  Buffer allocation by the user may be required for the bufferedmode to be effective.
@@ -68,4 +73,7 @@ MPI_RSEND (buf, count, datatype, dest, tag, comm)
 ```c
 int MPI_Rsend(const void* buf, int count, MPI_Datatype datatype, int dest,int tag, MPI_Comm comm)
 ```
+
+Notice that the following example uses the _MPI\_Irecv_, which is a nonblocking receive, that will be described in the next chapter. Here you can consider that this kind of receive immediately returns.
+
 @[MPI_Rsend]({"stubs": ["2/4.c"], "command": "/bin/bash /project/target/2/4.sh"})

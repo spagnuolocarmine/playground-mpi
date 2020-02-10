@@ -14,11 +14,6 @@ int main(int argc, char* argv[])
     // Get the number of processes and check only 2 processes are used
     int size;
     MPI_Comm_size(MPI_COMM_WORLD, &size);
-    if(size != 2)
-    {
-        printf("This application is meant to be run with 2 processes.\n");
-        MPI_Abort(MPI_COMM_WORLD, EXIT_FAILURE);
-    }
  
     // Get my rank and do the corresponding job
     enum role_ranks { SENDER, RECEIVER };
