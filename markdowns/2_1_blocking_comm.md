@@ -65,6 +65,6 @@ The  selection  of  a  message  by  a  receive  operation  is  governed  by  the
 Note the asymmetry between send and receive operations:  A receive operation may accept messages from an arbitrary sender, on the other hand, a send operation must specify a unique receiver.  This matches a “push” communication mechanism, where data transfer is effected by the sender (rather than a “pull” mechanism, where data transfer is effectedby the receiver). Source = destination is allowed, that is, a process can send a message to itself, however, it is unsafe to do so with the blocking send and receive operations, since this may lead to **deadlock**. 
 
 
-## Sending and 
+## Blocking send and receive with 4 processes using MPI_ANY_SOURCE and MPI_ANY_TAG  
 
-@[one]({"stubs": ["2/1.c"], "command": "/bin/bash /project/target/2/1.sh"})
+@[Blocking send and receive]({"stubs": ["2/1.c"], "command": "/bin/bash /project/target/2/1.sh"})
