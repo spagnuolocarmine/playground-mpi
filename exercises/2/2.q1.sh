@@ -1,9 +1,9 @@
 #!/bin/bash
-
+NAME = "2.q1"
 echo -e "Compiling"
 cd /project/target/2
-rm -rf out 2.q
-mpicc -o 2.q 2.q.c 2> err_log
+rm -rf out $NAME
+mpicc -o $NAME $NAME.c 2> err_log
 rc=$?
 if [[ $rc != 0 ]]; then
     echo -e "Error : mpicc returned"
@@ -18,7 +18,7 @@ mkdir out
 rc=0
 
 echo -e "Execution ... "
-mpirun --allow-run-as-root  -mca btl sm,tcp,self -np 2 -output-filename out/out ./2.q
+mpirun --allow-run-as-root  -mca btl sm,tcp,self -np 2 -output-filename out/out ./$NAME
 cat out/*
 rm -rf out
 
