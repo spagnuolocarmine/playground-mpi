@@ -20,10 +20,10 @@ plan:
       - title: MPI Memory model
         statement: markdowns/2_intro.md
       - title: Blocking Communication
+        statement: markdowns/2_1_blocking_comm.md
+      - title: Communication Modes
         statement: markdowns/2_intro.md
       - title: Non-Blocking Communication
-        statement: markdowns/2_intro.md
-      - title: Communication Modes
         statement: markdowns/2_intro.md
       - title: Chapter Questions
         statement: markdowns/intro_questions.md
