@@ -83,8 +83,32 @@ int MPI_Test(MPI_Request *request, int *flag, MPI_Status *status)
 
 A call to _MPI\_TEST_ returns flag = true if the operation identified byrequestis complete. In such a case, the status object is set to contain information on the completed operation. If the request is an active persistent request, it is marked as inactive.
 
+A request object can be deallocated without waiting for the associated communicationto complete, by using the following operation
+
+```c
+MPI_REQUEST_FREE(request)
+```
+- INOUT request, communication request (handle)
+
+#### C version
+```c
+int MPI_Request_free(MPI_Request *request)
+```
+
 ## Nonblockiing Send/Receive Example
 
 @[MPI_ISEND and MPI_Irecv]({"stubs": ["2/5.c"], "command": "/bin/bash /project/target/2/5.sh"})
 
+
+## Other useful functions
+
+The nonblocking send and receive are provided also in the other modes: buffered, synchronous or ready mode. Please referer to the official documentation for these functions: [https://www.mpi-forum.org/docs/mpi-3.1/mpi31-report.pdf](https://www.mpi-forum.org/docs/mpi-3.1/mpi31-report.pdf).
+
+In the MPI 3.0 are available also other useful functions to check Multiple Completions: 
+- _MPI\_WAITANY_
+- _MPI\_TESTANY_
+- _MPI\_WAITSOME_
+- _MPI\_TESTSOME_
+- _MPI\_WAITALL_
+- _MPI\_TESTALL_
 
