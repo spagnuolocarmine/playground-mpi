@@ -32,19 +32,19 @@ plan:
     description: This chapter introduces collective communications
     plan:
       - title: TODO
-        statement: markdowns/intro.md
+        statement: markdowns/cap1/intro.md
 
   - title: Additional features
     description: This chapters will introduce additional features of the MPI standard.
     plan:
       - title: TODO
-        statement: markdowns/intro.md
+        statement: markdowns/cap1/intro.md
 
   - title: Conclusion
     description: Conclusion chapter.
     plan:
        - title: TODO
-         statement: markdowns/intro.md
+         statement: markdowns/cap1/intro.md
 projects:
   main:
     root: exercises/
