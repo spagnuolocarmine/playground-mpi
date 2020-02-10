@@ -22,6 +22,8 @@ int main(argc,argv) int argc; char *argv[];
         MPI_Bsend(&outmsg, strlen(outmsg), MPI_CHAR, 1, 1, MPI_COMM_WORLD);
         float etime =  MPI_Wtime() - time;
         printf("Task %d: buffered send (1) buffered , process will block on detach. Time: %1.2f\n",rank,etime);
+        free(outmsg);
+        outmsg = "Testing2";
         time = MPI_Wtime();
         MPI_Send(&outmsg, strlen(outmsg), MPI_CHAR, 1, 1, MPI_COMM_WORLD);
         etime =  MPI_Wtime() - time;
