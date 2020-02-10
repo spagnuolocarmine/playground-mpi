@@ -7,8 +7,8 @@ int main(argc,argv) int argc; char *argv[];
     int numtasks, rank, dest, source, rc, count;  
     char inmsg, outmsg='X';
     MPI_Status Stat;
-
-    char *buf = malloc(sizeof(char)); 
+    int bufsize = sizeof(char);
+    char *buf = malloc(bufsize); 
 
     MPI_Init(&argc,&argv);
     MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
