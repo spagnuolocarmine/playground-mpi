@@ -39,7 +39,7 @@ The message source is implicitly determined by the identity of the message sende
 
 The _comm_ argument specifies the communicator that is used for the send operation.
 
-### Remarks about Communicators
+### Remarks about communicators
 
 A communicator specifies the communication context for a communication operation. Each communication context provides a separate “communication universe”:  messages are always received within the context they were sent, and messages sent in different contexts do not interfere. The  communicator  also  specifies  the  set  of  processes  that  share  this  communication context.  This process group is ordered and processes are identified by their rank within this group.  A  predefined  communicator **MPI_COMM_WORLD** is  provided  by MPI.  It  allows  communication with all processes that are accessible after MPI initialization and processes are identified by their rank in the group of _MPI\_COMM\_WORLD_.
 

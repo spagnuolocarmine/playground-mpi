@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo -e "Compiling"
-cd /project/target/1
+cd /project/target/2
 rm -rf out 1
 mpicc -o 1 1.c 2> err_log
 rc=$?
