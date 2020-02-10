@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
 
     if (rank == destination) {
         MPI_Irecv(&buffer, count, MPI_INT, 0, tag, MPI_COMM_WORLD, &request); 
-
+    }
     MPI_Wait(&request, &status); 
 
     if (rank == 0) {
