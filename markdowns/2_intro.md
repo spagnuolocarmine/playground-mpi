@@ -93,5 +93,17 @@ When discussing MPI procedures the following semantic terms are used.
  
 ## MPI Data Types
 
+#### Opaque Objects
+
+The MPI layer manages the system memory that is user for buffering messages and for storing internal representations of various MPI objects (groups,communicators, datatypes, etc.). This memory is not directly accessible to the user, and objects stored there are **opaque**:  _their size and shape is not visible to the user_.  Opaque objects are accessed via handles, which exist  in  user  space. MPI procedures  that  operate  on  opaque  objects  are  passed  handle arguments to access these objects.  In addition to their use by MPI calls for object access, handles can participate in assignments and comparisons.
+
+Opaque objects are allocated and deallocated by calls that are specific to each objecttype.  These are listed in the sections where the objects are described.  The calls accept ahandle argument of matching type.
+
+The MPI layer provides several datatypes that will be used by the MPI calls:
+
+![MPIBUFFER](/img/datatype.png)
+
+The  datatypes MPI_BYTE and MPI_PACKED do  not  correspond  to  a  C datatype.   A  value  of  type MPI_BYTE consists  of  a  byte  (8  binary  digits).   A  byte  is uninterpreted  and  is  different  from  a  character.   Different  machines  may  have  different representations for characters, or may use more than one byte to represent characters.  Onthe  other  hand,  a  byte  has  the  same  binary  value  on  all  machines. 
+
 ## MPI Constants
 
