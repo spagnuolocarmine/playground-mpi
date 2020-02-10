@@ -58,7 +58,7 @@ MPI_RECV (buf, count, datatype, source, tag, comm, status)
 
 The receive buffer consists of the storage containing _count_ **consecutive** elements of the type specified by datatype, starting at addressbuf.  The length of the received message must be  less  than  or  equal  to  the  length  of  the  receive  buffer.   An  **overflow**  error  occurs  if  all incoming data does not fit, without truncation, into the receive buffer. If a message that is shorter than the receive buffer arrives, then only those locations corresponding to the (shorter) message are modified.
 
-The  selection  of  a  message  by  a  receive  operation  is  governed  by  the  value  of  the message envelope.  A message can be received by a receive operation if its envelope matches the source,tag and comm values  specified  by  the  receive  operation. The  receiver  may specify  a  wildcard _MPI\_ANY\_SOURCE_ value  for source,  and/or  a  wildcard _MPI\_ANY\_TAG_ value  for tag,  indicating  that  any  source  and/or  tag  are  acceptable.   It  cannot  specify  awildcard  value  for _comm_. 
+The  selection  of  a  message  by  a  receive  operation  is  governed  by  the  value  of  the message envelope.  A message can be received by a receive operation if its envelope matches the source, tag and comm values  specified  by  the  receive  operation. The  receiver  may specify  a  wildcard _MPI\_ANY\_SOURCE_ value  for source,  and/or  a  wildcard _MPI\_ANY\_TAG_ value  for tag,  indicating  that  any  source  and/or  tag  are  acceptable.   It  cannot  specify  awildcard  value  for _comm_. 
 
 ### Notice
 

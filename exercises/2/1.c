@@ -12,19 +12,14 @@ int main(argc,argv) int argc; char *argv[];
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
     if (rank == 0) {
-        dest = 1;
-        source = 1;
-        rc = MPI_Send(&outmsg, 1, MPI_CHAR, dest, tag, MPI_COMM_WORLD);
-        rc = MPI_Recv(&inmsg, 1, MPI_CHAR, source, tag, MPI_COMM_WORLD, &Stat);
-    } else if (rank == 1) {
-        dest = 0;
-        source = 0;
-        rc = MPI_Recv(&inmsg, 1, MPI_CHAR, source, tag, MPI_COMM_WORLD, &Stat);
-        rc = MPI_Send(&outmsg, 1, MPI_CHAR, dest, tag, MPI_COMM_WORLD);
-    }
-
-    rc = MPI_Get_count(&Stat, MPI_CHAR, &count);
-    printf("Task %d: Received %d char(s) from task %d with tag %d \n",
+        MPI_Send(&outmsg, 1, MPI_CHAR, 1, tag, MPI_COMM_WORLD);
+        MPI_Send(&outmsg, 1, MPI_CHAR, 2, tag, MPI_COMM_WORLD);
+        MPI_Send(&outmsg, 1, MPI_CHAR, 3, tag, MPI_COMM_WORLD);
+    } else {
+        MPI_Recv(&inmsg, 1, MPI_CHAR, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &Stat);
+        rc = MPI_Get_count(&Stat, MPI_CHAR, &count);
+        printf("Task %d: Received %d char(s) from task %d with tag %d \n",
            rank, count, Stat.MPI_SOURCE, Stat.MPI_TAG);
+    }
     MPI_Finalize();
 }
