@@ -44,6 +44,9 @@ MPI_GET_COUNT(status, datatype, count)
 int MPI_Get_count(const MPI_Status *status, MPI_Datatype datatype,int *count)
 ```
 
+@[MPI_Ssend]({"stubs": ["2/2.c"], "command": "/bin/bash /project/target/2/3.sh"})
+
+
 ## Ready Mode
 
 A send that uses thereadycommunication mode may be startedonlyif the matchingreceive is already posted.  Otherwise, the operation is erroneous and its outcome is unde-fined.  On some systems, this allows the removal of a hand-shake operation that is otherwiserequired and results in improved performance.  The completion of the send operation doesnot depend on the status of a matching receive, and merely indicates that the send buffercan be reused.  A send operation that uses the ready mode has the same semantics as astandard  send  operation,  or  a  synchronous  send  operation;  it  is  merely  that  the  senderprovides additional information to the system (namely that a matching receive is alreadyposted), that can save some overhead.  In a correct program, therefore, a ready send couldbe replaced by a standard send with no effect on the behavior of the program other thanperformance.
