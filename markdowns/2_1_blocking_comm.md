@@ -67,4 +67,4 @@ Note the asymmetry between send and receive operations:  A receive operation may
 
 ## Sending and 
 
-@[one]({"stubs": ["2/1.c"], "command": "/bin/bash /project/target/1/1.sh"})
+@[one]({"stubs": ["2/1.c"], "command": "/bin/bash /project/target/2/1.sh"})
