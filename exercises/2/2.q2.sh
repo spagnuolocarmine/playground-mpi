@@ -1,5 +1,5 @@
 #!/bin/bash
-NAME = "2.q2"
+NAME="2.q2"
 echo -e "Compiling"
 cd /project/target/2
 rm -rf out $NAME
