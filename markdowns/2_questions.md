@@ -37,3 +37,5 @@
 
 @[Write on the standard output of the process with rank=1 the total number of received characters.]({"stubs": ["2/2.q2.c"], "command": "/bin/bash /project/target/2/2.q2.sh"})
 
+@[Remove the deadlock using MPI_Isend and MPI_Irecv.]({"stubs": ["2/5.q.c"], "command": "/bin/bash /project/target/2/5.q.sh"})
+
