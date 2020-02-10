@@ -4,12 +4,10 @@
 int main(argc,argv) int argc; char *argv[];
 {
     int numtasks, rank, dest, source, rc, count;  
-    char inmsg, outmsg='x';
+    char inmsg, outmsg='X';
     MPI_Status Stat;
 
-    int  bufsize; 
-    char *buf = malloc(bufsize); 
-   
+    char *buf = malloc(sizeof(char)); 
 
     MPI_Init(&argc,&argv);
     MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
