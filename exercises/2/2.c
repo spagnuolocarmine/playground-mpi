@@ -17,9 +17,9 @@ int main(argc,argv) int argc; char *argv[];
     if (rank == 0) {
         MPI_Buffer_attach( buf, bufsize ); 
         MPI_Bsend(&outmsg, 1, MPI_CHAR, 1, 1, MPI_COMM_WORLD);
-        printf("Task %d: buffered send buffered, process will block on detach.\n");
+        printf("Task %d: buffered send buffered, process will block on detach.\n",rank);
         MPI_Buffer_detach( &buf, &bufsize ); 
-         printf("Task %d: end buffered send.\n");
+        printf("Task %d: end buffered send.\n");
         
     } else {
         MPI_Recv(&inmsg, 1, MPI_CHAR, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &Stat);
