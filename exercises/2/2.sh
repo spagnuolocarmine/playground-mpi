@@ -3,7 +3,7 @@
 echo -e "Compiling"
 cd /project/target/2
 rm -rf out 2
-mpicc -o 1 2.c 2> err_log
+mpicc -o 2 2.c 2> err_log
 rc=$?
 if [[ $rc != 0 ]]; then
     echo -e "Error : mpicc returned"
