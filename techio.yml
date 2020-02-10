@@ -26,7 +26,7 @@ plan:
       - title: Non-Blocking Communication
         statement: markdowns/2_intro.md
       - title: Chapter Questions
-        statement: markdowns/intro_questions.md
+        statement: markdowns/2_questions.md
   
   - title: Collective communications
     description: This chapter introduces collective communications
