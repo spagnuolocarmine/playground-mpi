@@ -1,15 +1,15 @@
-title : Advanced MPI by Examples in C Language
+title : MPI by Examples in C Language
 plan:
   - title: Introduction
-    description: This chapter introduces distributed computing.
+    description: A brief introduction to distributed computing using distributed memory paradigm.
     plan:
-      - title: Introduction to distributed computing
+      - title: What is distributed computing?
         statement: markdowns/intro.md
-      - title: Hello world
+      - title: Take the first steps, Hello world
         statement: markdowns/intro_hw.md
       - title: The OpenMPI Architecture
         statement: markdowns/openmpi.md
-      - title: MPI Program
+      - title: MPI Programming
         statement: markdowns/intro_mpi.md
       - title: Chapter Questions
         statement: markdowns/intro_questions.md
