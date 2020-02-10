@@ -24,7 +24,7 @@ plan:
       - title: Communication Modes
         statement: markdowns/2_2_comm_modes.md
       - title: Non-Blocking Communication
-        statement: markdowns/2_intro.md
+        statement: markdowns/2_1_noblocking_comm.md.md
       - title: Chapter Questions
         statement: markdowns/2_questions.md
   
