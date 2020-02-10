@@ -44,7 +44,7 @@ MPI_GET_COUNT(status, datatype, count)
 int MPI_Get_count(const MPI_Status *status, MPI_Datatype datatype,int *count)
 ```
 
-@[MPI_Ssend]({"stubs": ["3/3.c"], "command": "/bin/bash /project/target/2/3.sh"})
+@[MPI_Ssend]({"stubs": ["2/3.c"], "command": "/bin/bash /project/target/2/3.sh"})
 
 
 ## Ready Mode
