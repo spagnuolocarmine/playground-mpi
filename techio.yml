@@ -14,7 +14,7 @@ plan:
       - title: Chapter Questions
         statement: markdowns/intro_questions.md
   
-  - title: Point-to-Point communications
+  - title: Point-to-Point communication
     description: This chapter introduces synchronous and asynchronous communications.
     plan:
       - title: MPI Memory model
