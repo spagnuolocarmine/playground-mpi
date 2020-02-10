@@ -20,7 +20,7 @@ MPI_BSEND (buf, count, datatype, dest, tag, comm)
 - IN tag, message tag (integer)
 - IN comm, communicator (handle)
 
-# C version
+#### C version
 ```c
 int MPI_Bsend(const void* buf, int count, MPI_Datatype datatype, int dest,int tag, MPI_Comm comm)
 ```
@@ -39,7 +39,7 @@ MPI_GET_COUNT(status, datatype, count)
 - IN datatype, datatype of each receive buffer entry (handle)
 - OUT count, number of received entries (integer)
 
-# C version
+#### C version
 ```c
 int MPI_Get_count(const MPI_Status *status, MPI_Datatype datatype,int *count)
 ```
@@ -55,7 +55,7 @@ MPI_GET_COUNT(status, datatype, count)
 - IN datatype, datatype of each receive buffer entry (handle)
 - OUT count, number of received entries (integer)
 
-# C version
+#### C version
 ```c
 int MPI_Get_count(const MPI_Status *status, MPI_Datatype datatype,int *count)
 ```
