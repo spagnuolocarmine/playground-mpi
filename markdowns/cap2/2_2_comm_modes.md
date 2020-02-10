@@ -15,6 +15,8 @@ The communication mode is indicated by a one letter prefix:
 
 A buffered mode send operation can be started whether or not a matching receivehas been posted.  It may complete before a matching receive is posted.  However, unlike the standard send, this operation islocal, and its completion does not depend on the occurrence of a matching receive.  Thus, if a send is executed and no matching receive is posted, then MPI must buffer the outgoing message, so as to allow the send call to complete. An error willoccur if there is insufficient buffer space.  The amount of available buffer space is controlled by the user.  Buffer allocation by the user may be required for the bufferedmode to be effective.
 
+![buffered_send](/img/buffered.jpg) 
+
 ```c
 MPI_BSEND (buf, count, datatype, dest, tag, comm)
 ```
@@ -37,6 +39,8 @@ int MPI_Bsend(const void* buf, int count, MPI_Datatype datatype, int dest,int ta
 
 A send that uses the synchronous mode can be started whether or not a matching receive was posted. However, the send will complete successfully only if a matching receive is posted, and the receive operation has started to receive the message sent by the synchronous send.  Thus, the completion of a synchronous send not only indicates that the send buffer can  be  reused,  but  it  also  indicates  that  the  receiver  has  reached  a  certain  point  in  its execution,  namely that it has started executing the matching receive.  If both sends and receives are blocking operations then the use of the synchronous mode provides synchronous communication semantics:  a communication does not complete at either end before both processes rendezvous at the communication.  A send executed in this mode is non-local.
 
+![synch_send](/img/synch.jpg)
+
 ```c
 MPI_SSEND (buf, count, datatype, dest, tag, comm)
 ```
@@ -58,6 +62,9 @@ int MPI_Ssend(const void* buf, int count, MPI_Datatype datatype, int dest,int ta
 ## Ready Mode
 
 A send that uses the ready communication mode may be started only if the matching receive is already posted.  Otherwise, the operation is erroneous and its outcome is undefined.  On some systems, this allows the removal of a hand-shake operation that is otherwise required and results in improved performance.  The completion of the send operation does not depend on the status of a matching receive, and merely indicates that the send buffercan be reused.  A send operation that uses the ready mode has the same semantics as astandard  send  operation,  or  a  synchronous  send  operation;  it  is  merely  that  the  sender provides additional information to the system (namely that a matching receive is already posted), that can save some overhead.  In a correct program, therefore, a ready send could be replaced by a standard send with no effect on the behavior of the program other than performance.
+
+
+![ready_send](/img/ready.jpg)
 
 ```c
 MPI_RSEND (buf, count, datatype, dest, tag, comm)

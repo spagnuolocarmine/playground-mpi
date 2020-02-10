@@ -30,6 +30,8 @@ int MPI_Send(const void* buf, int count, MPI_Datatype datatype, int dest,int tag
 
 THE _MPI\_Send_ is blocking:  it does not return until the message data and envelope have been safely stored away so that the sender is free to modify thesend buffer.  The message might be copied directly into the matching receive buffer, or it might be copied into a temporary system buffer. Message buffering decouples the send and receive operations.  A blocking send can complete as soon as the message was buffered, even if no matching receive has been executed bythe receiver.  On the other hand, message buffering can be expensive, as it entails additional memory-to-memory copying, and it requires the allocation of memory for buffering. 
 
+![standard_send](/img/standard.gif) 
+
 ### How do distinguish messages?
 
 In addition to the data part, messages carry information that can be used to distinguish messages and selectively receive them.  This information consists of a fixed number of fields, which we collectively call the message envelope.  These fields are:
