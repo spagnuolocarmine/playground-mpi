@@ -1,7 +1,7 @@
 title : Have fun with MPI in C
 plan:
   - title: Introduction
-    description: A brief introduction to distributed computing using distributed memory paradigm.
+    description: A brief introduction to distributed computing using distributed memory paradigm and MPI.
     plan:
       - title: What is distributed computing?
         statement: markdowns/cap1/intro.md
@@ -15,7 +15,7 @@ plan:
         statement: markdowns/cap1/intro_questions.md
   
   - title: Point-to-Point communication
-    description: This chapter introduces synchronous and asynchronous communications.
+    description: This chapter introduces synchronous and asynchronous communications of the MPI standard.
     plan:
       - title: MPI Memory model
         statement: markdowns/cap2/2_intro.md
@@ -28,27 +28,26 @@ plan:
       - title: Chapter Questions
         statement: markdowns/cap2/2_questions.md
   - title: Datatypes
-    description: This chapter introduces MPI datatypes
+    description: This chapter introduces Datatypes of the MPI standard.
     plan:
       - title: Datatypes
         statement: markdowns/cap3/intro.md
       - title: Derived Datatypes
         statement: markdowns/cap3/derived_datatype.md
-  
+      - title: Chapter Questions
+        statement: markdowns/cap3/3_questions.md
   - title: Collective communications
-    description: This chapter introduces collective communications
+    description: This chapter introduces collective communications of the MPI standard.
     plan:
       - title: TODO
         statement: markdowns/cap1/intro.md
-
-  - title: Additional features
-    description: This chapters will introduce additional features of the MPI standard.
+  - title: Communication Topologies
+    description: This chapters will introduce communication topologies of the MPI standard.
     plan:
       - title: TODO
         statement: markdowns/cap1/intro.md
-
-  - title: Conclusion
-    description: Conclusion chapter.
+  - title: Creating a cluster on Amazon AWS
+    description: TODO
     plan:
        - title: TODO
          statement: markdowns/cap1/intro.md
