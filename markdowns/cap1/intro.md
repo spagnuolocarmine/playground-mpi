@@ -51,7 +51,7 @@ MPI Evolution
 	- MPI-3.1 (Jun 2015)
 - Current: The MPI-4.0 standard is under development.
 
-# About the execution environment
+# Book Execution Environment
 
 In this book is used a Docker container that enables to execute in browser MPI program. 
 The Docker container is available on public repository on [GitHub](https://github.com/spagnuolocarmine/docker-mpi). The execution environment provides an Ubuntu 18.04 linux machine and several softwares. The execution environments provide the last version of [OpenMPI](https://www.open-mpi.org/), the MPI implementation used in this book. 
