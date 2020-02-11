@@ -30,7 +30,7 @@ plan:
   - title: Datatypes
     description: This chapter introduces Datatypes of the MPI standard.
     plan:
-      - title: Datatypes
+      - title: Communicate noncontiguous data
         statement: markdowns/cap3/intro.md
       - title: Derived Datatypes
         statement: markdowns/cap3/derived_datatype.md
@@ -39,8 +39,12 @@ plan:
   - title: Collective communications
     description: This chapter introduces collective communications of the MPI standard.
     plan:
-      - title: TODO
-        statement: markdowns/cap1/intro.md
+      - title: MPI Groups and Synchronization
+        statement: markdowns/cap4/intro.md
+      - title: Collective Communications Functions
+        statement: markdowns/cap4/collective.md
+      - title: Chapter Questions
+        statement: markdowns/cap4/4_questions.md
   - title: Communication Topologies
     description: This chapters will introduce communication topologies of the MPI standard.
     plan:

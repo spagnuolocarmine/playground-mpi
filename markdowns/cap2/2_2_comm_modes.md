@@ -27,7 +27,7 @@ MPI_BSEND (buf, count, datatype, dest, tag, comm)
 - IN tag, message tag (integer)
 - IN comm, communicator (handle)
 
-#### C version
+**C version**
 ```c
 int MPI_Bsend(const void* buf, int count, MPI_Datatype datatype, int dest,int tag, MPI_Comm comm)
 ```
@@ -51,7 +51,7 @@ MPI_SSEND (buf, count, datatype, dest, tag, comm)
 - IN tag, message tag (integer)
 - IN comm, communicator (handle)
 å
-#### C version
+**C version**
 ```c
 int MPI_Ssend(const void* buf, int count, MPI_Datatype datatype, int dest,int tag, MPI_Comm comm)
 ```
@@ -76,7 +76,7 @@ MPI_RSEND (buf, count, datatype, dest, tag, comm)
 - IN tag, message tag (integer)
 - IN comm, communicator (handle)
 
-#### C version
+**C version**
 ```c
 int MPI_Rsend(const void* buf, int count, MPI_Datatype datatype, int dest,int tag, MPI_Comm comm)
 ```

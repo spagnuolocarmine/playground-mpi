@@ -26,7 +26,7 @@ MPI_TYPE_COMMIT(datatype)
 ```
 - INOUT datatype, datatype that is committed (handle)
 
-#### C version
+**C version**
 ```c
 int MPI_Type_commit(MPI_Datatype *datatype)
 ```
@@ -38,7 +38,7 @@ MPI_TYPE_FREE(datatype)
 ```
 - INOUT datatype, datatype that is freed (handle)
 
-#### C version
+**C version**
 ```c
 int MPI_Type_free(MPI_Datatype *datatype
 ```
@@ -55,7 +55,7 @@ MPI_GET_ADDRESS(location, address)
 - IN location, location in caller memory (choice)
 - OUT address, address of location (integer)
 
-#### C version
+**C version**
 ```c
 int MPI_Get_address(const void *location, MPI_Aint *address)
 ```
@@ -69,7 +69,7 @@ MPI_TYPE_SIZE(datatype, size)
 - IN datatype, datatype (handle)
 - OUT size, datatype size (integer)
 
-#### C version
+**C version**
 ```c
 int MPI_Type_size(MPI_Datatype datatype, int *size)
 ```
@@ -82,7 +82,7 @@ MPI_TYPE_GET_EXTENT(datatype, lb, extent)
 - OUT lblower bound of datatype (integer)
 - OUT extent, extent of datatype (integer)
 
-#### C version
+**C version**
 ```c
 int MPI_Type_get_extent(MPI_Datatype datatype, MPI_Aint *lb,MPI_Aint *extent)
 ```
@@ -100,7 +100,7 @@ MPI_TYPE_CONTIGUOUS(count, oldtype, newtype)
 - IN oldtype, old datatype (handle)
 - OUT newtype, new datatype (handle)
 
-#### C version
+**C version**
 ```c
 int MPI_Type_contiguous(int count, MPI_Datatype oldtype,MPI_Datatype *newtype)
 ```
@@ -122,7 +122,7 @@ MPI_TYPE_VECTOR(count, blocklength, stride, oldtype, newtype)
 - IN oldtype, old datatype (handle)
 - OUT newtype, new datatype (handle)
 
-#### C version
+**C version**
 ```c
 int MPI_Type_vector(int count, int blocklength, int stride,MPI_Datatype oldtype, MPI_Datatype *newtype)
 ```
@@ -146,7 +146,7 @@ MPI_TYPE_INDEXED(count, array_of_blocklengths, array_of_displacements, oldtype,n
 - IN oldtype, old datatype (handle)
 - OUT newtype, new datatype (handle)
 
-#### C version
+**C version**
 ```c
 int MPI_Type_indexed(int count, const int array_of_blocklengths[],const int array_of_displacements[], MPI_Datatype oldtype,MPI_Datatype *newtype)
 ```
@@ -169,7 +169,7 @@ MPI_TYPE_CREATE_STRUCT(count, array_of_blocklengths, array_of_displacements, arr
 - IN array_of_types, type  of  elements  in  each  block  (array  of  handles  to datatype objects)
 - OUT newtype, new datatype (handle)
 
-#### C version
+**C version**
 ```c
 int MPI_Type_create_struct(int count, const int array_of_blocklengths[],const MPI_Aint array_of_displacements[],const MPI_Datatype array_of_types[], MPI_Datatype *newtype
 ```

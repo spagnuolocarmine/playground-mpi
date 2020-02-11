@@ -23,7 +23,7 @@ MPI_SEND(buf, count, datatype, dest, tag, comm)
 - IN tag, message tag (integer)
 - IN comm, communicator (handle)
 
-#### C version
+**C version**
 ```c
 int MPI_Send(const void* buf, int count, MPI_Datatype datatype, int dest,int tag, MPI_Comm comm)
 ```
@@ -63,7 +63,7 @@ MPI_RECV (buf, count, datatype, source, tag, comm, status)
 - IN comm, communicator (handle)
 - OUT status, status object (Status)
 
-#### C version
+**C version**
 ```c
 int MPI_Recv(void* buf, int count, MPI_Datatype datatype, int source,int tag, MPI_Comm comm, MPI_Status *status)
 ```
@@ -91,7 +91,7 @@ MPI_GET_COUNT(status, datatype, count)
 - IN datatype, datatype of each receive buffer entry (handle)
 - OUT count, number of received entries (integer)
 
-#### C version
+**C version**
 ```c
 int MPI_Get_count(const MPI_Status *status, MPI_Datatype datatype,int *count)
 ```

@@ -81,6 +81,12 @@ docker run -it -t dockermpi:latest
 
 # About the Author
 
-Carmine Spagnuolo got his Master Degree cum laude in Computer Science at the Università degli Studi di Salerno in 2013. In January 2014, he started the Ph.D. program in Computer Science under the supervision of Professor Vittorio Scarano and has completed it in 2017. He is interested in Parallel Algorithms, Distributed Systems, Graph Theory, Social Networks and Agent-Based Simulations. Since 2010, he is involved in D-Mason research project, which is a distributed version of the MASON toolkit for Agent-Based simulations. He has worked on the architecture, visualization and communication strategies. In 2012 he got a grant from the Office of Naval Research (ONR) for visiting the George Mason University (GMU). In May 2017 and from October to December 2017, he visited the University of Chicago and Argonne National Laboratory, under the supervision of dott. Jonathan Ozik and exploiting a grant from ANL. Currently, he is a postdoc Researcher at the ISISLab laboratory of the University of Salerno. He is co-author of some papers in international refereed journals and conferences.
+Carmine Spagnuolo got his Master Degree cum laude in Computer Science at the Università degli Studi di Salerno in 2013. In January 2014, he started the Ph.D. program in Computer Science under the supervision of Professor Vittorio Scarano and has completed it in 2017.
+
+He is interested in Parallel Algorithms, Distributed Systems, Graph Theory, Social Networks and Agent-Based Simulations. Since 2010, he is involved in D-MASON research project, which is a distributed version of the MASON toolkit for Agent-Based simulations. He has worked on the architecture, visualization and communication strategies. 
+
+In 2012 he got a grant from the Office of Naval Research (ONR) for visiting George Mason University (GMU). In May 2017 and from October to December 2017, he visited the University of Chicago and Argonne National Laboratory, under the supervision of Dott. Jonathan Ozik and exploiting a grant from ANL. In November 2019 he was a visiting researcher at  George Mason University (GMU) under supervising Prof. Sean Luke. Since 2018 he is involved in the Hypergraph research group formed by researches of Università degli Studi di Salerno, Università degli Studi della Campania "Luigi Vanvitelli", Warsaw School of Economics, and Ryerson University.
+
+Currently, he is a Postdoc Researcher at the ISISLab laboratory of the Università degli Studi di Salerno. He is co-author of more than 20 papers in international refereed journals and conferences.
 
 [spagnuolocarmine At gmail.com](mailto:spagnuolocarmine@gmail.com)

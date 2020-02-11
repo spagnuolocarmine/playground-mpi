@@ -42,7 +42,7 @@ MPI_IRECV (buf, count, datatype, source, tag, comm, request)
 - IN comm, communicator (handle)
 - OUT status, status object (Status)
 
-#### C version
+**C version**
 ```c
 int MPI_Isend(const void* buf, int count, MPI_Datatype datatype, int dest,int tag, MPI_Comm comm, MPI_Request *request)
 
@@ -62,7 +62,7 @@ MPI_WAIT(request, status)
 - INOUT request, request (handle)
 - OUT status, status object (Status)
 
-#### C version
+**C version**
 ```c
 int MPI_Wait(MPI_Request *request, MPI_Status *status)
 ```
@@ -76,7 +76,7 @@ MPI_TEST(request, flag, status)
 - OUT flag, true if operation completed (logical)
 - OUT status, status object (Status)
 
-#### C version
+**C version**
 ```c
 int MPI_Test(MPI_Request *request, int *flag, MPI_Status *status)
 ```
@@ -90,7 +90,7 @@ MPI_REQUEST_FREE(request)
 ```
 - INOUT request, communication request (handle)
 
-#### C version
+**C version**
 ```c
 int MPI_Request_free(MPI_Request *request)
 ```
