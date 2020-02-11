@@ -12,11 +12,6 @@ int main(int argc, char *argv[])  {
    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
    MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
 
-   if (numtasks != NPROCS) {
-     printf("Must specify MP_PROCS= %d. Terminating.\n",NPROCS);
-     MPI_Finalize();
-     exit(0);
-     }
 
    sendbuf = rank;
 

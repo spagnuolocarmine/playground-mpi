@@ -2,7 +2,7 @@
 
 A group is an ordered set of processes. Each process in a group is associated with a unique integer rank. Rank values start at zero and go to N-1, where N is the number of processes in the group. In MPI, a group is represented within system memory as an object. It is accessible to the programmer only by a "handle". A group is always associated with a communicator object.
 
-A communicator encompasses a group of processes that may communicate with each other. All MPI messages must specify a communicator. In the simplest sense, the communicator is an extra "tag" that must be included with MPI calls. Like groups, communicators are represented within system memory as objects and are accessible to the programmer only by "handles". For example, the handle for the communicator that comprises all tasks is MPI\_COMM\_WORLD.
+A communicator encompasses a group of processes that may communicate with each other. All MPI messages must specify a communicator. In the simplest sense, the communicator is an extra "tag" that must be included with MPI calls. Like groups, communicators are represented within system memory as objects and are accessible to the programmer only by "handles". For example, the handle for the communicator that comprises all tasks is MPI\_COMM\_WORLD, and the MPI\_COMM\_NULL is the NULL communicator (some functions can return NULL).
 
 Primary purposes of group and communicator objects:
 - Allow you to organize tasks, based upon function, into task groups.
@@ -118,6 +118,9 @@ MPI_GROUP_FREE( group)
 int MPI_Group_free(MPI_Group *group)
 ```
 
+### Example: MPI groups
+
+The following example uses the MPI\_Comm\_create\_group, which is a function that returns a new communicator for a group of processes. This function is described in the next section.
 
 @[MPI GROUP]({"stubs": ["4/groups.c"], "command": "/bin/bash /project/target/4/groups.sh"})
 
@@ -126,7 +129,7 @@ int MPI_Group_free(MPI_Group *group)
 
 
 
-## Example of group and communicator management
+## Example: Groups and communicators management
 
 The following example uses collective operations named MPI\_Allreduce, which will be described in the next Chapter. For what concerns this example you can consider that this function is able to sum all values inside an array held by each MPI process.
 
