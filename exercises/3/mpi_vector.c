@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #define SIZE 4
 
+/*Sendind each colum to a processor*/
 int main (int argc, char *argv[])
 {
     int numtasks, rank, source=0, dest, tag=1, i;
@@ -20,7 +21,8 @@ int main (int argc, char *argv[])
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
 
-    MPI_Type_vector(SIZE, 1, SIZE, MPI_FLOAT, &columntype);
+    MPI_Type_vector(SIZE/*num of element in a column/, 1 /*one element for row*/, 
+                    SIZE /*take an element each 4*/, MPI_FLOAT, &columntype);
     MPI_Type_commit(&columntype);
 
     if (numtasks == SIZE) {

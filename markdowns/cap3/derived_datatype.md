@@ -64,7 +64,7 @@ int MPI_Type_contiguous(int count, MPI_Datatype oldtype,MPI_Datatype *newtype)
 @[MPI_Type_contiguous]({"stubs": ["3/mpi_contiguous.c"], "command": "/bin/bash /project/target/3/mpi_contiguous.sh"})
 
 ### Vector
-*The function MPI\_TYPE\_VECTOR is a more general constructor that allows replication  of  a  datatype  into  locations  that  consist  of  equally  spaced  blocks.   Each  block  is obtained  by  concatenating  the  same  number  of  copies  of  the  old  datatype.   The  spacing between blocks is a multiple of the extent of the old datatype.
+The function MPI\_TYPE\_VECTOR is a more general constructor that allows replication  of  a  datatype  into  locations  that  consist  of  equally  spaced  blocks.   Each  block  is obtained  by  concatenating  the  same  number  of  copies  of  the  old  datatype.   The  spacing between blocks is a multiple of the extent of the old datatype.
 
 
 ![MPI_TYPE_VECTOR](/img/data-vector.jpeg)
@@ -87,6 +87,27 @@ A call to MPI\_TYPE\_CONTIGUOUS(count, oldtype, newtype) is equivalent to a call
 
 @[MPI_Type_vector]({"stubs": ["3/mpi_vector.c"], "command": "/bin/bash /project/target/3/mpi_vector.sh"})
 
+### Indexed
+The function MPI\_TYPE\_INDEXED allows replication of an old datatype into a sequence of blocks (each block is a concatenation of the old datatype), where each blockcan  contain  a  different  number  of  copies  and  have  a  different  displacement.   All  block displacements are multiples of the old type extent.
+
+
+![MPI_TYPE_INDEXED](/img/data-indexed.jpeg)
+
+```c
+MPI_TYPE_INDEXED(count, array_of_blocklengths, array_of_displacements, oldtype,newtype)
+```
+- IN count, number of blocks — also number of entries inarray_of_displacements and array_of_blocklengths(non-negative integer)
+- IN array_of_blocklengths, number of elements per block (array of non-negative integers)
+- IN array_of_displacements, displacement  for  each  block,  in  multiples  of oldtype extent (array of integer)
+- IN oldtype, old datatype (handle)
+- OUT newtype, new datatype (handle)
+
+#### C version
+```c
+int MPI_Type_indexed(int count, const int array_of_blocklengths[],const int array_of_displacements[], MPI_Datatype oldtype,MPI_Datatype *newtype)
+```
+
+@[MPI_Type_indexed]({"stubs": ["3/mpi_indexed.c"], "command": "/bin/bash /project/target/3/mpi_indexed.sh"})
 
 
 
