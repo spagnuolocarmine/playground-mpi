@@ -32,6 +32,8 @@ plan:
     plan:
       - title: Datatypes
         statement: markdowns/cap3/intro.md
+      - title: Derived Datatypes
+        statement: markdowns/cap3/derived_datatype.md
   
   - title: Collective communications
     description: This chapter introduces collective communications
