@@ -1,39 +1,41 @@
 #include "mpi.h"
 #include <stdio.h>
+#include <stdlib.h>
+#define SIZE 4
 
-int main(int argc, char *argv[])
+int main (int argc, char *argv[])
 {
-    int rank, size, i;
-    MPI_Datatype type, type2;
-    int buffer[24];
-    MPI_Status status;
+int numtasks, rank, source=0, dest, tag=1, i;
+float a[SIZE][SIZE] =
+  {1.0, 2.0, 3.0, 4.0,
+   5.0, 6.0, 7.0, 8.0,
+   9.0, 10.0, 11.0, 12.0,
+  13.0, 14.0, 15.0, 16.0};
+float b[SIZE];
 
-    MPI_Init(&argc, &argv);
-    MPI_Comm_size(MPI_COMM_WORLD, &size);
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+MPI_Status stat;
+MPI_Datatype columntype;
 
-    MPI_Type_contiguous(3, MPI_INT, &type2);
-    MPI_Type_commit(&type2);
-    MPI_Type_vector(3, 2, 3, type2, &type);
-    MPI_Type_commit(&type);
+MPI_Init(&argc,&argv);
+MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
 
-    if (rank == 0)
-    {
-        for (i=0; i<24; i++)
-            buffer[i] = i;
-        MPI_Send(buffer, 1, type, 1, 123, MPI_COMM_WORLD);
-    }
+MPI_Type_vector(SIZE, 1, SIZE, MPI_FLOAT, &columntype);
+MPI_Type_commit(&columntype);
 
-    if (rank == 1)
-    {
-        for (i=0; i<24; i++)
-            buffer[i] = -1;
-        MPI_Recv(buffer, 1, type, 0, 123, MPI_COMM_WORLD, &status);
-        for (i=0; i<24; i++)
-            printf("buffer[%d] = %d\n", i, buffer[i]);
-        fflush(stdout);
-    }
+if (numtasks == SIZE) {
+  if (rank == 0) {
+     for (i=0; i<numtasks; i++)
+       MPI_Send(&a[0][i], 1, columntype, i, tag, MPI_COMM_WORLD);
+        }
 
-    MPI_Finalize();
-    return 0;
+  MPI_Recv(b, SIZE, MPI_FLOAT, source, tag, MPI_COMM_WORLD, &stat);
+  printf("rank= %d  b= %3.1f %3.1f %3.1f %3.1f\n",
+        rank,b[0],b[1],b[2],b[3]);
+  }
+else
+  printf("Must specify %d processors. Terminating.\n",SIZE);
+
+MPI_Type_free(&columntype);
+MPI_Finalize();
 }
