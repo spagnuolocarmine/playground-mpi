@@ -81,24 +81,24 @@ int MPI_Comm_group(MPI_Comm comm, MPI_Group *group)
 ```
 
 Some useful functions are the set-like operations (definition -> c syntax): 
-- **MPI\_GROUP\_UNION** -> 
+- **MPI\_GROUP\_UNION** 
     ```c 
     int MPI_Group_union(MPI_Group group1, MPI_Group group2,MPI_Group *newgroup)
     ```
-- **MPI\_GROUP\_INTERSECTION** ->
+- **MPI\_GROUP\_INTERSECTION** 
     ```c 
     int MPI_Group_intersection(MPI_Group group1, MPI_Group group2,MPI_Group *newgroup)
     ```
-- **MPI\_GROUP\_DIFFERENCE** -> 
+- **MPI\_GROUP\_DIFFERENCE**  
     ```c 
     int MPI_Group_difference(MPI_Group group1, MPI_Group group2,MPI_Group *newgroup)
     ```
-- **MPI\_GROUP\_INCL** -> 
+- **MPI\_GROUP\_INCL**  
     ```c 
     int MPI_Group_incl(MPI_Group group, int n, const int ranks[],MPI_Group *newgroup)
     ```
     The function MPI\_GROUP\_INCL creates a group newgroup that consists of then processes in group with ranks ranks[0],..., ranks[n-1]; the process with _i_ in newgroup is the process with rank ranks[i] in group.
-- **MPI\_GROUP\_EXCL** -> 
+- **MPI\_GROUP\_EXCL** 
     ```c 
     int MPI_Group_excl(MPI_Group group, int n, const int ranks[],MPI_Group *newgroup
     ```
@@ -118,6 +118,9 @@ MPI_GROUP_FREE( group)
 int MPI_Group_free(MPI_Group *group)
 ```
 
+
+@[MPI GROUP]({"stubs": ["4/groups.c"], "command": "/bin/bash /project/target/4/groups.sh"})
+
 ## Communicator Management
 
 
@@ -127,5 +130,5 @@ int MPI_Group_free(MPI_Group *group)
 
 The following example uses collective operations named MPI\_Allreduce, which will be described in the next Chapter. For what concerns this example you can consider that this function is able to sum all values inside an array held by each MPI process.
 
-@[MPI_GROUP]({"stubs": ["4/groups.c"], "command": "/bin/bash /project/target/4/groups.sh"})
+@[MPI_GROUP]({"stubs": ["4/groupsandcomm.c"], "command": "/bin/bash /project/target/4/groupsandcomm.sh"})
 
