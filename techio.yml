@@ -50,7 +50,7 @@ plan:
     plan:
       - title: TODO
         statement: markdowns/cap1/intro.md
-  - title: HPC for all -- MPI cluster on Amazon AWS
+  - title: HPC for all, an MPI cluster on Amazon AWS
     description: TODO
     plan:
        - title: TODO
