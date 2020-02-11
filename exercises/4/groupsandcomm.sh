@@ -1,7 +1,7 @@
 #!/bin/bash
 NAME="groupsandcomm"
 echo -e "Compiling"
-cd /project/target/3
+cd /project/target/4
 rm -rf out $NAME
 mpicc -o $NAME $NAME.c 2> err_log
 rc=$?
