@@ -43,6 +43,38 @@ MPI_TYPE_FREE(datatype)
 int MPI_Type_free(MPI_Datatype *datatype
 ```
 
+## Address and Size Functions useful for Datatype construction
+
+The displacements in a general datatype are relative to some initial buffer address. Absolute addresses can be substituted for these displacements: we treat them as displacements relative to "address zero"  the start of the address space. This initial address zero is in-dicated by the constant MPI\_BOTTOM. 
+
+The address of a location in memory can be found by invoking the function MPI\_GET\_ADDRESS, which uses the MPI\_Aint value, that is a signed  integer, or more in details a C type that holds any valid address.  Moreover, the relative  displacement between  two  absolute  addresses  can be  calculated  with  the  function MPI\_AINT\_DIFF.  A  new  absolute  address  as  sum  of  an absolute base address and a relative displacement can be calculated with the function MPI\_AINT\_ADD.  
+
+```c
+MPI_GET_ADDRESS(location, address)
+```
+- IN location, location in caller memory (choice)
+- OUT address, address of location (integer)
+
+#### C version
+```c
+int MPI_Get_address(const void *location, MPI_Aint *address)
+```
+The following auxiliary functions provide useful information on derived datatypes.
+
+- Size of a datatype: return the number of bytes occupied by entries in the datatype.
+
+```c
+MPI_TYPE_SIZE(datatype, size)
+```
+- IN datatype, datatype (handle)
+- OUT size, datatype size (integer)
+
+#### C version
+```c
+int MPI_Type_size(MPI_Datatype datatype, int *size)
+```
+
+
 ## Datatype Constructors
 
 ### Contiguous

@@ -31,13 +31,13 @@
 
    // setup description of the 2 MPI_INT fields n, type
    // need to first figure offset by getting size of MPI_FLOAT
-   MPI_Type_extent(MPI_FLOAT, &extent);
+   MPI_Type_get_extent(MPI_FLOAT, &extent);
    offsets[1] = 4 * extent;
    oldtypes[1] = MPI_INT;
    blockcounts[1] = 2;
 
    // define structured type and commit it
-   MPI_Type_struct(2, blockcounts, offsets, oldtypes, &particletype);
+   MPI_Type_create_struct(2, blockcounts, offsets, oldtypes, &particletype);
    MPI_Type_commit(&particletype);
 
    // task 0 initializes the particle array and then sends it to each task
