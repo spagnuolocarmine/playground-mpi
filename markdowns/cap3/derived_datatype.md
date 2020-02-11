@@ -114,7 +114,7 @@ int MPI_Type_indexed(int count, const int array_of_blocklengths[],const int arra
 MPI\_TYPE\_CREATE\_STRUCT is  the  most  general  type  constructor. Allows the programmer to define a newdata type formed by completely defined map of the component data types.
 
 
-![MPI_TYPE_STRCUT](/img/data-strcut.jpeg)
+![MPI_TYPE_STRCUT](/img/data-struct.jpeg)
 
 ```c
 MPI_TYPE_CREATE_STRUCT(count, array_of_blocklengths, array_of_displacements, array_of_types, newtype)
