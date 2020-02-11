@@ -45,7 +45,8 @@ int MPI_Type_free(MPI_Datatype *datatype
 
 ## Datatype Constructors
 
-**Contiguous** The simplest datatype constructor is MPI\_TYPE\_CONTIGUOUS which allows replication of a datatype into contiguous locations.
+### Contiguous
+The simplest datatype constructor is MPI\_TYPE\_CONTIGUOUS which allows replication of a datatype into contiguous locations.
 
 ![MPI_TYPE_CONTIGUOUS](/img/data-contiguous.jpeg)
 ```c
@@ -62,8 +63,9 @@ int MPI_Type_contiguous(int count, MPI_Datatype oldtype,MPI_Datatype *newtype)
 
 @[MPI_Type_contiguous]({"stubs": ["3/mpi_contiguous.c"], "command": "/bin/bash /project/target/3/mpi_contiguous.sh"})
 
-
-**Vector** The function MPI\_TYPE\_VECTOR is a more general constructor that allows replication  of  a  datatype  into  locations  that  consist  of  equally  spaced  blocks.   Each  block  is obtained  by  concatenating  the  same  number  of  copies  of  the  old  datatype.   The  spacing between blocks is a multiple of the extent of the old datatype.
+### Vector
+*The function MPI\_TYPE\_VECTOR is a more general constructor that allows replication  of  a  datatype  into  locations  that  consist  of  equally  spaced  blocks.   Each  block  is obtained  by  concatenating  the  same  number  of  copies  of  the  old  datatype.   The  spacing between blocks is a multiple of the extent of the old datatype.
+![MPI_TYPE_VECTOR](/img/data-vector.jpeg)
 ```c
 MPI_TYPE_VECTOR(count, blocklength, stride, oldtype, newtype)
 ```
@@ -77,6 +79,7 @@ MPI_TYPE_VECTOR(count, blocklength, stride, oldtype, newtype)
 ```c
 int MPI_Type_vector(int count, int blocklength, int stride,MPI_Datatype oldtype, MPI_Datatype *newtype)
 ```
+@[MPI_Type_vector]({"stubs": ["3/mpi_vector.c"], "command": "/bin/bash /project/target/3/mpi_vector.sh"})
 
 
 
