@@ -5,9 +5,7 @@
    main(int argc, char *argv[])  {
    int numtasks, rank, source=0, dest, tag=1, i;
    int blocklengths[2], displacements[2];
-   float a[16] = 
-     {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 
-      9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0};
+   float a[16] = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0};
    float b[NELEMENTS]; 
 
    MPI_Status stat;
@@ -17,10 +15,10 @@
    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
    MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
 
-   blocklengths[0] = 4;
-   blocklengths[1] = 2;
-   displacements[0] = 5;
-   displacements[1] = 12;
+   blocklengths[0] = 4; /*take 4 elements from the array*/
+   blocklengths[1] = 2; /*take 2 elemnets from the array*/
+   displacements[0] = 5;/*start from the element index 5 the first block that is 6.0 */
+   displacements[1] = 12;/*start from the element index 12  the first block that is 13.0 */
    
    // create indexed derived data type
    MPI_Type_indexed(2, blocklengths, displacements, MPI_FLOAT, &indextype);

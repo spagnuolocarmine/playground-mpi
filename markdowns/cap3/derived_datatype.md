@@ -110,4 +110,28 @@ int MPI_Type_indexed(int count, const int array_of_blocklengths[],const int arra
 @[MPI_Type_indexed]({"stubs": ["3/mpi_indexed.c"], "command": "/bin/bash /project/target/3/mpi_indexed.sh"})
 
 
+### Struct
+MPI\_TYPE\_CREATE\_STRUCT is  the  most  general  type  constructor. Allows the programmer to define a newdata type formed by completely defined map of the component data types.
+
+
+![MPI_TYPE_STRCUT](/img/data-strcut.jpeg)
+
+```c
+MPI_TYPE_CREATE_STRUCT(count, array_of_blocklengths, array_of_displacements, array_of_types, newtype)
+```
+- IN count, number of blocks (non-negative integer) — also number  of  entries  in  arrays array_of_types,array_of_displacement sandarray_of_blocklengths 
+- IN array_of_blocklength, number of elements in each block (array of non-negative integer)
+- IN array_of_displacements, byte displacement of each block (array of integer)
+- IN array_of_types, type  of  elements  in  each  block  (array  of  handles  to datatype objects)
+- OUT newtype, new datatype (handle)
+
+#### C version
+```c
+int MPI_Type_create_struct(int count, const int array_of_blocklengths[],const MPI_Aint array_of_displacements[],const MPI_Datatype array_of_types[], MPI_Datatype *newtype
+```
+
+@[MPI_Type_struct]({"stubs": ["3/mpi_struct.c"], "command": "/bin/bash /project/target/3/mpi_struct.sh"})
+
+
+
 
