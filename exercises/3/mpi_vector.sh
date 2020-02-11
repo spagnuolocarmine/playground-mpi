@@ -18,7 +18,7 @@ mkdir out
 rc=0
 
 echo -e "Execution ... "
-mpirun --allow-run-as-root  -mca btl sm,tcp,self -np 2 -output-filename out/out ./$NAME
+mpirun --allow-run-as-root  -mca btl sm,tcp,self -np 4 -output-filename out/out ./$NAME
 cat out/*
 rm -rf out
 echo -e "Done."
