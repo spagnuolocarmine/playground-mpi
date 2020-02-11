@@ -1,7 +1,7 @@
 #!/bin/bash
 NAME="packunpack"
 echo -e "Compiling"
-cd /project/target/2
+cd /project/target/3
 rm -rf out $NAME
 mpicc -o $NAME $NAME.c 2> err_log
 rc=$?
