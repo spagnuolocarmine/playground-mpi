@@ -16,7 +16,7 @@
 
    // MPI_Aint type used to be consistent with syntax of
    // MPI_Type_extent routine
-   MPI_Aint    offsets[2], extent;
+   MPI_Aint    offsets[2], lb, extent;
 
    MPI_Status stat;
 
@@ -31,7 +31,7 @@
 
    // setup description of the 2 MPI_INT fields n, type
    // need to first figure offset by getting size of MPI_FLOAT
-   MPI_Type_get_extent(MPI_FLOAT, &extent);
+   MPI_Type_get_extent(MPI_FLOAT, &lb, &extent);
    offsets[1] = 4 * extent;
    oldtypes[1] = MPI_INT;
    blockcounts[1] = 2;

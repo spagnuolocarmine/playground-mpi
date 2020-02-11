@@ -73,7 +73,19 @@ MPI_TYPE_SIZE(datatype, size)
 ```c
 int MPI_Type_size(MPI_Datatype datatype, int *size)
 ```
+- Datatype extend, get the lower bound and extent for a Datatype.
 
+```c
+MPI_TYPE_GET_EXTENT(datatype, lb, extent)
+```
+- IN datatype, datatype to get information on (handle)
+- OUT lblower bound of datatype (integer)
+- OUT extent, extent of datatype (integer)
+
+#### C version
+```c
+int MPI_Type_get_extent(MPI_Datatype datatype, MPI_Aint *lb,MPI_Aint *extent)
+```
 
 ## Datatype Constructors
 
