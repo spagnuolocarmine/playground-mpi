@@ -4,7 +4,7 @@ A group is an ordered set of processes. Each process in a group is associated wi
 
 A communicator encompasses a group of processes that may communicate with each other. All MPI messages must specify a communicator. In the simplest sense, the communicator is an extra "tag" that must be included with MPI calls. Like groups, communicators are represented within system memory as objects and are accessible to the programmer only by "handles". For example, the handle for the communicator that comprises all tasks is MPI\_COMM\_WORLD.
 
-Primary Purposes of Group and Communicator Objects:
+Primary purposes of group and communicator objects:
 - Allow you to organize tasks, based upon function, into task groups.
 - Enable Collective Communications operations across a subset of related tasks.
 - Provide basis for implementing user defined virtual topologies.
