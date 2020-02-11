@@ -8,14 +8,14 @@ A general datatype is an opaque object that specifies two things:
 
 The  displacements  are  not  required  to  be  positive,  distinct,  or  in  increasing  order.
 
-## Process to create and use a new Datatype
+### Process to create and use a new Datatype
 
 1. Create your own datatype using Datatype Constructors
 2. Commit your datatype 
 3. Use it in your communications routines
 4. Free your datatype
 
-### Commit and Free your Datatype
+## Commit and Free your Datatype
 
 Before to describe the construction of data type, we present how to commit and free a new data type, because these functions will be used in the examples.
 
@@ -43,9 +43,7 @@ MPI_TYPE_FREE(datatype)
 int MPI_Type_free(MPI_Datatype *datatype
 ```
 
-
-
-### Datatype Constructors
+## Datatype Constructors
 
 **Contiguous** The simplest datatype constructor is MPI\_TYPE\_CONTIGUOUS which allows replication of a datatype into contiguous locations.
 
