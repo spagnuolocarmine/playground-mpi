@@ -15,9 +15,41 @@ The  displacements  are  not  required  to  be  positive,  distinct,  or  in  in
 3. Use it in your communications routines
 4. Free your datatype
 
-### 1) Datatype Constructors
+### Commit and Free your Datatype
+
+Before to describe the construction of data type, we present how to commit and free a new data type, because these functions will be used in the examples.
+
+A datatype object has to be _committed_ before it can be used in a communication.  As an argument in datatype constructors, _uncommitted_ and also committed datatypes can be used.  There is no need to commit basic datatypes (they are "pre-committed").
+
+```c
+MPI_TYPE_COMMIT(datatype)
+```
+- INOUT datatype, datatype that is committed (handle)
+
+#### C version
+```c
+int MPI_Type_commit(MPI_Datatype *datatype)
+```
+
+A datatype that will be not be used again must be freed.
+
+```c
+MPI_TYPE_FREE(datatype)
+```
+- INOUT datatype, datatype that is freed (handle)
+
+#### C version
+```c
+int MPI_Type_free(MPI_Datatype *datatype
+```
+
+
+
+### Datatype Constructors
 
 **Contiguous** The simplest datatype constructor is MPI\_TYPE\_CONTIGUOUS which allows replication of a datatype into contiguous locations.
+
+![MPI_TYPE_CONTIGUOUS](/img/data-contiguous.jpeg)
 ```c
 MPI_TYPE_CONTIGUOUS(count, oldtype, newtype)
 ```
