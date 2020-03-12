@@ -39,7 +39,7 @@ plan:
   - title: Collective communications
     description: This chapter introduces collective communications of the MPI standard.
     plan:
-      - title: MPI Groups and Communicator Management
+      - title: Collective communications concepts
         statement: markdowns/cap4/intro.md
       - title: MPI Groups
         statement: markdowns/cap4/groups.md
