@@ -16,8 +16,7 @@ int main( int argc, char **argv )
 
     MPI_Scatter(&isend, 1, MPI_INT, &irecv, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
-    printf("rank = %d: irecv = %d
-", rank,irecv);
+    printf("rank = %d: irecv = %d", rank,irecv);
 
     MPI_Finalize();
     return 0;

@@ -1,5 +1,5 @@
 #!/bin/bash
-NAME="bcast"
+NAME="barrier"
 echo -e "Compiling"
 cd /project/target/4
 rm -rf out $NAME
