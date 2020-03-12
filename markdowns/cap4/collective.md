@@ -120,3 +120,22 @@ int MPI_Scatter(const void* sendbuf, int sendcount, MPI_Datatype sendtype, void*
 - IN comm,	communicator (handle)
 
 @[MPI SCATTER]({"stubs": ["4/scatter.c"], "command": "/bin/bash /project/target/4/scatter.sh"})
+
+**MPI_SCATTERV(sendbuf, sendcounts, displs, sendtype, recvbuf, recvcount, recvtype, root, comm)** is the inverse operation to MPI_GATHERV. MPI_SCATTERV extends the functionality of MPI_SCATTER by allowing a varying count of data to be sent to each process, since sendcounts is now an array. It also allows more flexibility as to where the data is taken from on the root, by providing an additional argument, displs.
+
+![MPI_GATHER_V](/img/gatherv.gif)
+
+```c
+int MPI_Scatterv(const void* sendbuf, const int sendcounts[], const int displs[], MPI_Datatype sendtype, void* recvbuf, int recvcount, MPI_Datatype recvtype, int root, MPI_Comm comm)
+```
+- IN sendbuf,	address of send buffer (choice, significant only at root)
+- IN sendcounts,	non-negative integer array (of length group size) specifying the number of elements to send to each rank
+- IN displs	integer array (of length group size). Entry i specifies the displacement (relative to sendbuf) from which to take the outgoing data to process i
+- IN sendtype	data type of send buffer elements (handle)
+- OUT recvbuf	address of receive buffer (choice)
+- IN recvcount	number of elements in receive buffer (non-negative integer)
+- IN recvtype	data type of receive buffer elements (handle)
+- IN root	rank of sending process (integer)
+- IN comm	communicator (handle)
+
+@[MPI SCATTERV]({"stubs": ["4/scatter_v.c"], "command": "/bin/bash /project/target/4/scatter_v.sh"})
