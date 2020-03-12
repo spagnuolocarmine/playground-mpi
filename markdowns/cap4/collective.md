@@ -46,8 +46,13 @@ int MPI_Bcast(void* buffer, int count, MPI_Datatype datatype, int root,MPI_Comm 
 
 ### Why we should use collective operation for group communications?
 
-
-@[MPI BCAST COMPARE]({"stubs": ["4/compare_bcast.c"], "command": "/bin/bash /project/target/4/compare_bcast.sh"})
+MPI collective operations exploit optimized solutions to realize communication between processors in a group. For instance, the broadcasting operation exploits a tree structure  (as depicted in the Figure), which allows parallelizing the communications. 
 
 
 ![MPI_BCAST TREE](/img/broadcast_tree.png)
+
+
+Obviously the effect of this optimization scales according to the number of processors involved in the communications. The following example presents a comparison between the MPI_BCAST operation and its version developed using MPI_Send and MPI_Receive. If you can not see the advantage to use the broadcast operation please run this experiment on more processors.
+
+@[MPI BCAST COMPARE]({"stubs": ["4/compare_bcast.c"], "command": "/bin/bash /project/target/4/compare_bcast.sh"})
+
