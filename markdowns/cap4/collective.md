@@ -14,10 +14,14 @@ To understand how collective operations apply to intercommunicators, is possible
 
 In the following, all the MPI collective communications will be described by example.
 
-A fundamental collective communication is an explicit synchronization between processors in the group.
+A fundamental collective operation is the explicit synchronization between processors in a group.
 
 **MPI_BARRIER(comm)** If comm is an intracommunicator, MPI_BARRIER blocks the caller until all group members have called it. The call returns at any process only after all group members have entered the call.
 ```c
 int MPI_Barrier(MPI_Comm comm)
 ```
 - IN comm, communicator (handle)
+
+
+@[MPI BARRIER]({"stubs": ["4/barrier.c"], "command": "/bin/bash /project/target/4/barrier.sh"})
+
