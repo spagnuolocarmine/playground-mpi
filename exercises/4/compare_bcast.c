@@ -25,8 +25,7 @@ void my_bcast(void* data, int count, MPI_Datatype datatype, int root,
 }
 
 int main(int argc, char** argv) {
-
-
+x
   int num_elements = 100;
   int num_trials = 10;
 
