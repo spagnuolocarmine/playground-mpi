@@ -41,6 +41,10 @@ plan:
     plan:
       - title: MPI Groups and Communicator Management
         statement: markdowns/cap4/intro.md
+      - title: MPI Groups
+        statement: markdowns/cap4/groups.md
+      - title: MPI Communicators
+        statement: markdowns/cap4/communicators.md
       - title: Collective Communications Functions
         statement: markdowns/cap4/collective.md
       - title: Chapter Questions
