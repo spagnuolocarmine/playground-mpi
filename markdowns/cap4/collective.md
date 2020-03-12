@@ -1,47 +1,23 @@
-# Derived Datatypes
+# Collective Communications Routines
 
-All  point  to  point  communications  use  only  buffers  containing  a sequence  of  identical  basic  datatypes.   This  is  too  constraining  on  two  accounts.   One  often wants to pass messages that contain values with different datatypes (e.g., an integer count, followed by a sequence of real numbers); and one often wants to send noncontiguous data  (e.g.,  a  sub-block  of  a  matrix).  
+Collective communication is defined as communication that involves a group or groups of processes. One of the key arguments in a call to a collective routine is a communicator that defines the group or groups of participating processes and provides a context for the operation. All processes in the group identified by the intracommunicator must call the collective routine.
 
-One  solution  is  to  **pack  noncontiguous**  data  into a  contiguous  buffer  at  the  sender  site  and  unpack  it  at  the  receiver  site.  This  has  the disadvantage of requiring additional memory-to-memory copy operations at both sites.  However, MPI provides mechanisms to specify more general, mixed, and **noncontiguous communication buffers**.  It is up to the implementation to decide whether data should be first packed in a contiguous buffer before being transmitted, or whether it can be collected directly from where it resides.
+The syntax and semantics of the collective operations are defined to be consistent with the syntax and semantics of the point-to-point operations. Thus, general datatypes are allowed and must match between sending and receiving processes. Several collective routines such as broadcast and gather have a single originating or receiving process. Such a process is called the root. Some arguments in the collective functions are specified as **significant only at root**, and are ignored for all participants except the root. 
 
-## Sending noncontiguous data using Pack and Unpack
+To understand how collective operations apply to intercommunicators, is possible to view the MPI intracommunicator collective operations as fitting one of the following categories :
+- All-To-One, such as gathering (see Figure) or reducing (see Figure)  in one process data.
+- One-To-All, such as broadcasting (see Figure)  data on all processors in a group.
+- All-To-All, such as executing one collective operation using all processors in a group as root.
+- Other
 
-OpenMPI provides pack/unpack functions for sending noncontiguous data.  The user explicitly packs data into a contiguous buffer before sending it, and unpacks it from a contiguous buffer after receiving it. However, is convient using derivated type. We will introduce pack/unpack routines for compatibility with previous libraries or code.  
+![MPI_COLLECTIVE](/img/coll-fig1-22.gif
 
+In the following, all the MPI collective communications will be described by example.
+
+A fundamental collective communication is an explicit synchronization between processors in the group.
+
+**MPI_BARRIER(comm)** If comm is an intracommunicator, MPI_BARRIER blocks the caller until all group members have called it. The call returns at any process only after all group members have entered the call.
 ```c
-MPI_PACK(inbuf, incount, datatype, outbuf, outsize, position, comm)
+int MPI_Barrier(MPI_Comm comm)
 ```
-- IN inbuf, input buffer start (choice)
-- IN incount, number of input data items (non-negative integer)
-- IN datatype, datatype of each input data item (handle)
-- OUT outbuf, output buffer start (choice)
-- IN outsize, output buffer size, in bytes (non-negative integer)
-- INOUT position, current position in buffer, in bytes (integer)
-- IN comm, communicator for packed message (handle)
-
-**C version**
-```c
-int MPI_Pack(const void* inbuf, int incount, MPI_Datatype datatype,void *outbuf, int outsize, int *position, MPI_Comm comm)
-```
-
-The  input  value  o fposition is  the  first  location  in  the  output  buffer  to  be  used  for packing. _position_ is incremented by the size of the packed message, and the output value of position is the first location in the output buffer following the locations occupied by the packed message.  The comm argument is the communicator that will be subsequently used for sending the packed message.
-
-```c
-MPI_UNPACK(inbuf, insize, position, outbuf, outcount, datatype, comm)
-```
-- IN inbuf, input buffer start (choice)
-- IN insize, size of input buffer, in bytes (non-negative integer)
-- INOUT position, current position in bytes (integer)
-- OUT outbuf, output buffer start (choice)
-- IN outcount, number of items to be unpacked (integer)
-- IN datatype, datatype of each output data item (handle)
-- IN comm, communicator for packed message (handle)
-
-**C version**
-```c
-int MPI_Unpack(const void* inbuf, int insize, int *position, void *outbuf,int outcount, MPI_Datatype datatype, MPI_Comm comm)
-```
-
-Unpacks a message into the receive buffer specified by outbuf, outcount, datatype from the buffer space specified by inbuf and insize.  The output buffer can be any communication buffer allowed in MPI\_RECV. The input buffer is a contiguous storage area containing insize bytes, starting at address inbuf.  The input value of position is the first location in the input buffer occupied by the packed message. Position is incremented by the size of the packed message, so that the output value of position is the first location in the input buffer after the locations occupied by the message that was unpacked. Comm is the communicator usedto receive the packed message.
-
-@[MPI_Pack and MPI_unpack]({"stubs": ["3/packunpack.c"], "command": "/bin/bash /project/target/3/packunpack.sh"})
+- IN comm, communicator (handle)
