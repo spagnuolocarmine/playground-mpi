@@ -25,13 +25,10 @@ void my_bcast(void* data, int count, MPI_Datatype datatype, int root,
 }
 
 int main(int argc, char** argv) {
-  if (argc != 3) {
-    fprintf(stderr, "Usage: compare_bcast num_elements num_trials\n");
-    exit(1);
-  }
 
-  int num_elements = atoi(argv[1]);
-  int num_trials = atoi(argv[2]);
+
+  int num_elements = 100;
+  int num_trials = 10;
 
   MPI_Init(NULL, NULL);
 
