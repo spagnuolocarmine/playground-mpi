@@ -45,7 +45,7 @@ int MPI_Bcast(void* buffer, int count, MPI_Datatype datatype, int root,MPI_Comm 
 
 @[MPI BCAST]({"stubs": ["4/bcast.c"], "command": "/bin/bash /project/target/4/bcast.sh"})
 
-### Why we should use collective operation for group communications?
+## Why we should use collective operation for group communications?
 
 MPI collective operations exploit optimized solutions to realize communication between processors in a group. For instance, the broadcasting operation exploits a tree structure  (as depicted in the Figure), which allows parallelizing the communications. 
 
@@ -123,7 +123,6 @@ int MPI_Scatter(const void* sendbuf, int sendcount, MPI_Datatype sendtype, void*
 
 **MPI_SCATTERV(sendbuf, sendcounts, displs, sendtype, recvbuf, recvcount, recvtype, root, comm)** is the inverse operation to MPI_GATHERV. MPI_SCATTERV extends the functionality of MPI_SCATTER by allowing a varying count of data to be sent to each process, since sendcounts is now an array. It also allows more flexibility as to where the data is taken from on the root, by providing an additional argument, displs.
 
-![MPI_GATHER_V](/img/gatherv.gif)
 
 ```c
 int MPI_Scatterv(const void* sendbuf, const int sendcounts[], const int displs[], MPI_Datatype sendtype, void* recvbuf, int recvcount, MPI_Datatype recvtype, int root, MPI_Comm comm)
@@ -139,3 +138,21 @@ int MPI_Scatterv(const void* sendbuf, const int sendcounts[], const int displs[]
 - IN comm	communicator (handle)
 
 @[MPI SCATTERV]({"stubs": ["4/scatter_v.c"], "command": "/bin/bash /project/target/4/scatter_v.sh"})
+
+# Other collective operations
+
+- MPI_ALLGATHER, MPI_ALLGATHERV: A variation on Gather where all members of a group receive the result.
+- MPI_ALLTOALL, MPI_ALLTOALLV: Scatter/Gather data from all members to all members of a group (also called complete exchange).
+- MPI_ALLREDUCE, MPI_REDUCE: Global reduction operations such as sum, max, min, or user-defined functions, where the result is returned to all members of a group and a variation where the result is returned to only one member.
+
+# Nonblocking Collective Communication
+
+As described in Nonblocking Communication, performance of many applications can be improved by overlapping communication and computation, and many systems enable this. Nonblocking collective operations combine the potential benefits of nonblocking point-to-point operations, to exploit overlap and to avoid synchronization, with the optimized implementation and message scheduling provided by collective operations. One way of doing this would be to perform a blocking collective operation in a separate thread. An alternative mechanism that often leads to better performance (e.g., avoids context switching, scheduler overheads, and thread management) is to use nonblocking collective communication.
+
+The nonblocking collective communication model is similar to the model used for nonblocking point-to-point communication. A nonblocking call initiates a collective operation, which must be completed in a separate completion call. Once initiated, the operation may progress independently of any computation or other communication at participating processes. In this manner, nonblocking collective operations can mitigate possible synchronizing effects of collective operations by running them in the "background". In addition to enabling communication-computation overlap, nonblocking collective operations can perform collective operations on overlapping communicators, which would lead to deadlocks with blocking operations. Their semantic advantages can also be useful in combination with point-to-point communication.
+
+As in the nonblocking point-to-point case, all calls are local and return immediately, irrespective of the status of other processes. The call initiates the operation, which indicates that the system may start to copy data out of the send buffer and into the receive buffer. Once initiated, all associated send buffers and buffers associated with input arguments (such as arrays of counts, displacements, or datatypes in the vector versions of the collectives) should not be modified, and all associated receive buffers should not be accessed, until the collective operation completes. The call returns a request handle, which must be passed to a completion call.
+
+All completion calls (e.g., MPI_WAIT) are supported for nonblocking collective operations. Similarly to the blocking case, nonblocking collective operations are considered to be complete when the local part of the operation is finished, i.e., for the caller, the semantics of the operation are guaranteed and all buffers can be safely accessed and modified. Completion does not indicate that other processes have completed or even started the operation (unless otherwise implied by the description of the operation). Completion of a particular nonblocking collective operation also does not indicate completion of any other posted nonblocking collective (or send-receive) operations, whether they are posted before or after the completed operation.
+
+

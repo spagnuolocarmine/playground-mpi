@@ -1,4 +1,4 @@
-# Datatypes Questions
+# Collective Operation Questions
 
 ?[TODO]
 -[x] a
