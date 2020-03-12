@@ -10,7 +10,7 @@ To understand how collective operations apply to intercommunicators, is possible
 - All-To-All, such as executing one collective operation using all processors in a group as root.
 - Other
 
-![MPI_COLLECTIVE](/img/coll-fig1-22.gif
+![MPI_COLLECTIVE](/img/coll-fig1-22.gif)
 
 In the following, all the MPI collective communications will be described by example.
 
