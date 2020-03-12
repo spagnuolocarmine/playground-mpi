@@ -1,5 +1,5 @@
 #!/bin/bash
-NAME="barrier"
+NAME="bcast"
 echo -e "Compiling"
 cd /project/target/4
 rm -rf out $NAME
@@ -18,7 +18,7 @@ mkdir out
 rc=0
 
 echo -e "Execution ... "
-mpirun --allow-run-as-root  -mca btl sm,tcp,self -np 14 -output-filename out/out ./$NAME
+mpirun --allow-run-as-root  -mca btl sm,tcp,self -np 8 -output-filename out/out ./$NAME
 cat out/*
 rm -rf out
 echo -e "Done."

@@ -17,6 +17,9 @@ In the following, all the MPI collective communications will be described by exa
 A fundamental collective operation is the explicit synchronization between processors in a group.
 
 **MPI_BARRIER(comm)** If comm is an intracommunicator, MPI_BARRIER blocks the caller until all group members have called it. The call returns at any process only after all group members have entered the call.
+
+![MPI_BARRIER](/img/barrier.png)
+
 ```c
 int MPI_Barrier(MPI_Comm comm)
 ```
@@ -25,3 +28,26 @@ int MPI_Barrier(MPI_Comm comm)
 
 @[MPI BARRIER]({"stubs": ["4/barrier.c"], "command": "/bin/bash /project/target/4/barrier.sh"})
 
+
+**MPI_BCAST(buffer, count, datatype, root, comm)** If comm is an intracommunicator, MPI_BCAST broadcasts a message from the process with rank root to all processes of the group, itself included. It is called by all members of the group using the same arguments for comm and root. On return, the content of root's buffer is copied to all other processes.
+
+![MPI_BCAST](/img/MPI_BCAST.png)
+
+```c
+int MPI_Bcast(void* buffer, int count, MPI_Datatype datatype, int root,MPI_Comm comm)
+```
+- INOUT buffer, starting address of buffer (choice)
+- IN count, number of entries in buffer (non-negative integer)
+- IN datatype, data type of buffer (handle)
+- IN root, rank of broadcast root (integer)
+- IN comm, communicator (handle)
+
+@[MPI BCAST]({"stubs": ["4/bcast.c"], "command": "/bin/bash /project/target/4/bcast.sh"})
+
+### Why we should use collective operation for group communications?
+
+
+@[MPI BCAST COMPARE]({"stubs": ["4/compare_bcast.c"], "command": "/bin/bash /project/target/4/compare_bcast.sh"})
+
+
+![MPI_BCAST TREE](/img/broadcast_tree.png)

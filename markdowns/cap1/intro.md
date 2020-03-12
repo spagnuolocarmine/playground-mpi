@@ -78,6 +78,7 @@ docker run -it -t dockermpi:latest
 10. Beginning MPI (An Introduction in C)
 11. Virtual Workshop Cornell -- https://cvw.cac.cornell.edu/MPIP2P
 12. MPI by Blaise Barney, Lawrence Livermore National Laboratory -- https://computing.llnl.gov/tutorials/mpi/
+13. https://mpitutorial.com/tutorials/mpi-broadcast-and-collective-communication/
 
 # About the Author
 
