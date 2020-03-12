@@ -47,8 +47,9 @@ plan:
         statement: markdowns/cap4/communicators.md
       - title: Collective Communications Routines
         statement: markdowns/cap4/collective.md
-        - title: Broadcast
-          statement: markdowns/cap4/broadcast.md
+        paln:
+          - title: Broadcast
+            statement: markdowns/cap4/broadcast.md
       - title: Chapter Questions
         statement: markdowns/cap4/4_questions.md
   - title: Communication Topologies
