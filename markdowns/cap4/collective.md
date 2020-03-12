@@ -28,3 +28,53 @@ int MPI_Barrier(MPI_Comm comm)
 
 @[MPI BARRIER]({"stubs": ["4/barrier.c"], "command": "/bin/bash /project/target/4/barrier.sh"})
 
+## Broadcast
+
+**MPI_BCAST(buffer, count, datatype, root, comm)** If comm is an intracommunicator, MPI_BCAST broadcasts a message from the process with rank root to all processes of the group, itself included. It is called by all members of the group using the same arguments for comm and root. On return, the content of root's buffer is copied to all other processes.
+
+![MPI_BCAST](/img/MPI_BCAST.png)
+
+```c
+int MPI_Bcast(void* buffer, int count, MPI_Datatype datatype, int root,MPI_Comm comm)
+```
+- INOUT buffer, starting address of buffer (choice)
+- IN count, number of entries in buffer (non-negative integer)
+- IN datatype, data type of buffer (handle)
+- IN root, rank of broadcast root (integer)
+- IN comm, communicator (handle)
+
+@[MPI BCAST]({"stubs": ["4/bcast.c"], "command": "/bin/bash /project/target/4/bcast.sh"})
+
+### Why we should use collective operation for group communications?
+
+MPI collective operations exploit optimized solutions to realize communication between processors in a group. For instance, the broadcasting operation exploits a tree structure  (as depicted in the Figure), which allows parallelizing the communications. 
+
+
+![MPI_BCAST TREE](/img/broadcast_tree.png)
+
+
+Obviously the effect of this optimization scales according to the number of processors involved in the communications. The following example presents a comparison between the MPI_BCAST operation and its version developed using MPI_Send and MPI_Receive. If you can not see the advantage to use the broadcast operation please run this experiment on more processors.
+
+@[MPI BCAST COMPARE]({"stubs": ["4/compare_bcast.c"], "command": "/bin/bash /project/target/4/compare_bcast.sh"})
+
+## Gather
+
+**MPI_GATHER(sendbuf, sendcount, sendtype, recvbuf, recvcount, recvtype, root, comm)** If comm is an intracommunicator, each process (root process included) sends the contents of its send buffer to the root process. The root process receives the messages and stores them in rank order. General, derived datatypes are allowed for both sendtype and recvtype. The type signature of sendcount, sendtype on each process must be equal to the type signature of recvcount, recvtype at the root. This implies that the amount of data sent must be equal to the amount of data received, pairwise between each process and the root. Distinct type maps between sender and receiver are still allowed.
+
+All arguments to the function are significant on process root, while on other processes, only arguments sendbuf, sendcount, sendtype, root, and comm are significant. The arguments root and comm must have identical values on all processes. Note that the recvcount argument at the root indicates the number of items it receives from each process, not the total number of items it receives.
+
+![MPI_GATHER](/img/gather.png)
+
+```c
+int MPI_Gather(const void* sendbuf, int sendcount, MPI_Datatype sendtype,void* recvbuf, int recvcount, MPI_Datatype recvtype, int root,MPI_Comm comm)
+```
+N sendbuf	starting address of send buffer (choice)
+IN sendcount	number of elements in send buffer (non-negative integer)
+IN sendtype	data type of send buffer elements (handle)
+OUT recvbuf	address of receive buffer (choice, significant only at root)
+IN recvcount	number of elements for any single receive (non-negative integer, significant only at root)
+IN recvtype	data type of recv buffer elements (significant only at root) (handle)
+IN root	rank of receiving process (integer)
+IN comm	communicator (handle)
+
+@[MPI GATHER]({"stubs": ["4/gather.c"], "command": "/bin/bash /project/target/4/gather.sh"})
