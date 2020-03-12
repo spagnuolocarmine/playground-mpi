@@ -15,8 +15,7 @@ int main( int argc, char **argv )
     MPI_Gather(&isend, 1, MPI_INT, &irecv, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
     if(rank == 0)
-    printf("irecv = %d %d %d
-", irecv[0], irecv[1], irecv[2]);
+    printf("irecv = %d %d %d\n", irecv[0], irecv[1], irecv[2]);
 
     MPI_Finalize();
     return 0;
