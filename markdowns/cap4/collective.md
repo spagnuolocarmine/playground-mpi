@@ -28,7 +28,7 @@ int MPI_Barrier(MPI_Comm comm)
 
 @[MPI BARRIER]({"stubs": ["4/barrier.c"], "command": "/bin/bash /project/target/4/barrier.sh"})
 
-## Broadcast
+# Broadcast
 
 **MPI_BCAST(buffer, count, datatype, root, comm)** If comm is an intracommunicator, MPI_BCAST broadcasts a message from the process with rank root to all processes of the group, itself included. It is called by all members of the group using the same arguments for comm and root. On return, the content of root's buffer is copied to all other processes.
 
@@ -57,7 +57,7 @@ Obviously the effect of this optimization scales according to the number of proc
 
 @[MPI BCAST COMPARE]({"stubs": ["4/compare_bcast.c"], "command": "/bin/bash /project/target/4/compare_bcast.sh"})
 
-## Gather
+# Gather
 
 **MPI_GATHER(sendbuf, sendcount, sendtype, recvbuf, recvcount, recvtype, root, comm)** If comm is an intracommunicator, each process (root process included) sends the contents of its send buffer to the root process. The root process receives the messages and stores them in rank order. General, derived datatypes are allowed for both sendtype and recvtype. The type signature of sendcount, sendtype on each process must be equal to the type signature of recvcount, recvtype at the root. This implies that the amount of data sent must be equal to the amount of data received, pairwise between each process and the root. Distinct type maps between sender and receiver are still allowed.
 
@@ -68,32 +68,55 @@ All arguments to the function are significant on process root, while on other pr
 ```c
 int MPI_Gather(const void* sendbuf, int sendcount, MPI_Datatype sendtype,void* recvbuf, int recvcount, MPI_Datatype recvtype, int root,MPI_Comm comm)
 ```
-- N sendbuf	starting address of send buffer (choice)
-- IN sendcount	number of elements in send buffer (non-negative integer)
-- IN sendtype	data type of send buffer elements (handle)
-- OUT recvbuf	address of receive buffer (choice, significant only at root)
-- IN recvcount	number of elements for any single receive (non-negative integer, significant only at root)
-- IN recvtype	data type of recv buffer elements (significant only at root) (handle)
-- IN root	rank of receiving process (integer)
-- IN comm	communicator (handle)
+- IN sendbuf,	starting address of send buffer (choice)
+- IN sendcount,	number of elements in send buffer (non-negative integer)
+- IN sendtype,	data type of send buffer elements (handle)
+- OUT recvbuf,	address of receive buffer (choice, significant only at root)
+- IN recvcount,	number of elements for any single receive (non-negative integer, significant only at root)
+- IN recvtype,	data type of recv buffer elements (significant only at root) (handle)
+- IN root,	rank of receiving process (integer)
+- IN comm,	communicator (handle)
 
 @[MPI GATHER]({"stubs": ["4/gather.c"], "command": "/bin/bash /project/target/4/gather.sh"})
 
 
 **MPI_GATHERV(sendbuf, sendcount, sendtype, recvbuf, recvcounts, displs, recvtype, root, comm)** extends the functionality of MPI_GATHER by allowing a varying count of data from each process, since recvcounts is now an array. It also allows more flexibility as to where the data is placed on the root, by providing the new argument, displs. The data received from process j is placed into recvbuf of the root process beginning at offset displs[j] elements (in terms of the recvtype). The receive buffer is ignored for all non-root processes.
 
+![MPI_GATHER_V](/img/gatherv.gif)
 
 ```c
 int MPI_Gatherv(const void* sendbuf, int sendcount, MPI_Datatype sendtype, void* recvbuf, const int recvcounts[], const int displs[], MPI_Datatype recvtype, int root, MPI_Comm comm)
 ```
-- IN sendbuf	starting address of send buffer (choice)
-- IN sendcount	number of elements in send buffer (non-negative integer)
-- IN sendtype	data type of send buffer elements (handle)
-- OUT recvbuf	address of receive buffer (choice, significant only at root)
-- IN recvcounts	non-negative integer array (of length group size) containing the number of elements that are received from each process (significant only at root)
-- IN displs	integer array (of length group size). Entry i specifies the displacement relative to recvbuf at which to place the - incoming data from process i (significant only at root)
-- IN recvtype	data type of recv buffer elements (significant only at root) (handle)
-- IN root	rank of receiving process (integer)
-- IN comm	communicator (handle)
+- IN sendbuf,	starting address of send buffer (choice)
+- IN sendcount,	number of elements in send buffer (non-negative integer)
+- IN sendtype,	data type of send buffer elements (handle)
+- OUT recvbuf,	address of receive buffer (choice, significant only at root)
+- IN recvcounts,	non-negative integer array (of length group size) containing the number of elements that are received from each process (significant only at root)
+- IN displs,	integer array (of length group size). Entry i specifies the displacement relative to recvbuf at which to place the - incoming data from process i (significant only at root)
+- IN recvtype,	data type of recv buffer elements (significant only at root) (handle)
+- IN root,	rank of receiving process (integer)
+- IN comm,	communicator (handle)
 
 @[MPI GATHER]({"stubs": ["4/gather_v.c"], "command": "/bin/bash /project/target/4/gather_v.sh"})
+
+
+
+# Scatter
+
+**MPI_SCATTER(sendbuf, sendcount, sendtype, recvbuf, recvcount, recvtype, root, comm)** takes an array of elements and distributes the elements in the order of process rank. An alternative description is that the root sends a message with MPI_Send(sendbuf, sendcount x n, sendtype, ...). This message is split into n equal segments, the i-th segment is sent to the i-th process in the group, and each process receives this message. The send buffer is ignored for all non-root processes.
+
+![MPI_SCATTER](/img/scatter.png)
+
+```c
+int MPI_Scatter(const void* sendbuf, int sendcount, MPI_Datatype sendtype, void* recvbuf, int recvcount, MPI_Datatype recvtype, int root, MPI_Comm comm)
+```
+- IN sendbuf,	address of send buffer (choice, significant only at root)
+- IN sendcount,	number of elements sent to each process (non-negative integer, significant only at root)
+- IN sendtype,	data type of send buffer elements (significant only at root) (handle)
+- OUT recvbuf,	address of receive buffer (choice)
+- IN recvcount,	number of elements in receive buffer (non-negative integer)
+- IN recvtype,	data type of receive buffer elements (handle)
+- IN root,	rank of sending process (integer)
+- IN comm,	communicator (handle)
+
+@[MPI SCATTER]({"stubs": ["4/scatter.c"], "command": "/bin/bash /project/target/4/scatter.sh"})
