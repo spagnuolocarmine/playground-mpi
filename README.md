@@ -20,6 +20,7 @@
 # Book outline
 
 1. Introduction. A brief introduction to distributed computing using distributed memory paradigm and MPI.
+    - Let's start to have fun with MPI
     - What is distributed computing?
     - Take the first steps, Hello world
     - The OpenMPI Architecture

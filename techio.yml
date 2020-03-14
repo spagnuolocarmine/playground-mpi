@@ -3,8 +3,8 @@ plan:
   - title: Introduction
     description: A brief introduction to distributed computing using distributed memory paradigm and MPI.
     plan:
-      - title: What is distributed computing?
-        statement: markdowns/cap1/intro.md
+      - title: Let's start to have fun with MPI
+        statement: markdowns/cap1/lets.md
       - title: Take the first steps, Hello world
         statement: markdowns/cap1/intro_hw.md
       - title: The OpenMPI Architecture
