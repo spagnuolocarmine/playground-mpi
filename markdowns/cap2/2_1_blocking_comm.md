@@ -99,4 +99,5 @@ int MPI_Get_count(const MPI_Status *status, MPI_Datatype datatype,int *count)
 
 ## Blocking send and receive with 4 processes using MPI_ANY_SOURCE and MPI_ANY_TAG  
 
+The following example uses 4 processes.
 @[Blocking send and receive]({"stubs": ["2/1.c"], "command": "/bin/bash /project/target/2/1.sh"})

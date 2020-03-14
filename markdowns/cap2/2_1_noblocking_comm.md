@@ -96,7 +96,7 @@ int MPI_Request_free(MPI_Request *request)
 ```
 
 ## Nonblockiing Send/Receive Example
-
+The following example uses 2 processes.
 @[MPI_ISEND and MPI_Irecv]({"stubs": ["2/5.c"], "command": "/bin/bash /project/target/2/5.sh"})
 
 

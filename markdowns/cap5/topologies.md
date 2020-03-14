@@ -87,7 +87,7 @@ int MPI_Cart_create(MPI_Comm comm_old, int ndims, const int dims[], const int pe
 - IN reorder,	ranking may be reordered ( true) or not ( false) (logical)
 - OUT comm_cart, communicator with new Cartesian topology (handle)
 
-
+The following example uses 12 processes.
 @[MPI_Cart_create]({"stubs": ["5/cart.c"], "command": "/bin/bash /project/target/5/cart.sh"})
 
 ### Graph Constructor
@@ -108,5 +108,5 @@ int MPI_Graph_create(MPI_Comm comm_old, int nnodes, const int index[], const int
 - IN reorder,	ranking may be reordered ( true) or not ( false) (logical)
 - OUT comm_graph,	communicator with graph topology added (handle)
 
-
+The following example uses 4 processes.
 @[MPI_Graph_create]({"stubs": ["5/graph.c"], "command": "/bin/bash /project/target/5/graph.sh"})

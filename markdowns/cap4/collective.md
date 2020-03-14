@@ -25,7 +25,7 @@ int MPI_Barrier(MPI_Comm comm)
 ```
 - IN comm, communicator (handle)
 
-
+The following example uses 8 processes.
 @[MPI BARRIER]({"stubs": ["4/barrier.c"], "command": "/bin/bash /project/target/4/barrier.sh"})
 
 # Broadcast
@@ -43,6 +43,7 @@ int MPI_Bcast(void* buffer, int count, MPI_Datatype datatype, int root,MPI_Comm 
 - IN root, rank of broadcast root (integer)
 - IN comm, communicator (handle)
 
+The following example uses 8 processes.
 @[MPI BCAST]({"stubs": ["4/bcast.c"], "command": "/bin/bash /project/target/4/bcast.sh"})
 
 ## Why we should use collective operation for group communications?
@@ -77,6 +78,7 @@ int MPI_Gather(const void* sendbuf, int sendcount, MPI_Datatype sendtype,void* r
 - IN root,	rank of receiving process (integer)
 - IN comm,	communicator (handle)
 
+The following example uses 3 processes.
 @[MPI GATHER]({"stubs": ["4/gather.c"], "command": "/bin/bash /project/target/4/gather.sh"})
 
 
@@ -96,6 +98,9 @@ int MPI_Gatherv(const void* sendbuf, int sendcount, MPI_Datatype sendtype, void*
 - IN recvtype,	data type of recv buffer elements (significant only at root) (handle)
 - IN root,	rank of receiving process (integer)
 - IN comm,	communicator (handle)
+
+
+The following example uses 4 processes.
 
 @[MPI GATHER]({"stubs": ["4/gather_v.c"], "command": "/bin/bash /project/target/4/gather_v.sh"})
 
@@ -119,6 +124,7 @@ int MPI_Scatter(const void* sendbuf, int sendcount, MPI_Datatype sendtype, void*
 - IN root,	rank of sending process (integer)
 - IN comm,	communicator (handle)
 
+The following example uses 3 processes.
 @[MPI SCATTER]({"stubs": ["4/scatter.c"], "command": "/bin/bash /project/target/4/scatter.sh"})
 
 **MPI_SCATTERV(sendbuf, sendcounts, displs, sendtype, recvbuf, recvcount, recvtype, root, comm)** is the inverse operation to MPI_GATHERV. MPI_SCATTERV extends the functionality of MPI_SCATTER by allowing a varying count of data to be sent to each process, since sendcounts is now an array. It also allows more flexibility as to where the data is taken from on the root, by providing an additional argument, displs.
@@ -137,6 +143,7 @@ int MPI_Scatterv(const void* sendbuf, const int sendcounts[], const int displs[]
 - IN root	rank of sending process (integer)
 - IN comm	communicator (handle)
 
+The following example uses 10 processes.
 @[MPI SCATTERV]({"stubs": ["4/scatter_v.c"], "command": "/bin/bash /project/target/4/scatter_v.sh"})
 
 # Other collective operations

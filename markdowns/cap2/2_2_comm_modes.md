@@ -31,7 +31,7 @@ MPI_BSEND (buf, count, datatype, dest, tag, comm)
 ```c
 int MPI_Bsend(const void* buf, int count, MPI_Datatype datatype, int dest,int tag, MPI_Comm comm)
 ```
-
+The following example uses 2 processes.
 @[MPI_BSEND]({"stubs": ["2/2.c"], "command": "/bin/bash /project/target/2/2.sh"})
 
 
@@ -55,7 +55,7 @@ MPI_SSEND (buf, count, datatype, dest, tag, comm)
 ```c
 int MPI_Ssend(const void* buf, int count, MPI_Datatype datatype, int dest,int tag, MPI_Comm comm)
 ```
-
+The following example uses 2 processes.
 @[MPI_Ssend]({"stubs": ["2/3.c"], "command": "/bin/bash /project/target/2/3.sh"})
 
 
@@ -83,4 +83,5 @@ int MPI_Rsend(const void* buf, int count, MPI_Datatype datatype, int dest,int ta
 
 Notice that the following example uses the _MPI\_Irecv_ and _MPI\_Wait_, which is a nonblocking receive and checking function, that will be described in the next chapter. Here you can consider that this kind of receive immediately returns.
 
+The following example uses 2 processes.
 @[MPI_Rsend]({"stubs": ["2/4.c"], "command": "/bin/bash /project/target/2/4.sh"})

@@ -104,7 +104,7 @@ MPI_TYPE_CONTIGUOUS(count, oldtype, newtype)
 ```c
 int MPI_Type_contiguous(int count, MPI_Datatype oldtype,MPI_Datatype *newtype)
 ```
-
+The following example uses 2 processes.
 @[MPI_Type_contiguous]({"stubs": ["3/mpi_contiguous.c"], "command": "/bin/bash /project/target/3/mpi_contiguous.sh"})
 
 ### Vector
@@ -129,6 +129,7 @@ int MPI_Type_vector(int count, int blocklength, int stride,MPI_Datatype oldtype,
 
 A call to MPI\_TYPE\_CONTIGUOUS(count, oldtype, newtype) is equivalent to a call to MPI\_TYPE\_VECTOR(count, 1, 1, oldtype, newtype), or to a call to MPI\_TYPE\_VECTOR(1,count, n, oldtype, newtype), _n_ arbitrary.
 
+The following example uses 4 processes.
 @[MPI_Type_vector]({"stubs": ["3/mpi_vector.c"], "command": "/bin/bash /project/target/3/mpi_vector.sh"})
 
 ### Indexed
@@ -151,6 +152,7 @@ MPI_TYPE_INDEXED(count, array_of_blocklengths, array_of_displacements, oldtype,n
 int MPI_Type_indexed(int count, const int array_of_blocklengths[],const int array_of_displacements[], MPI_Datatype oldtype,MPI_Datatype *newtype)
 ```
 
+The following example uses 4 processes.
 @[MPI_Type_indexed]({"stubs": ["3/mpi_indexed.c"], "command": "/bin/bash /project/target/3/mpi_indexed.sh"})
 
 
@@ -174,6 +176,7 @@ MPI_TYPE_CREATE_STRUCT(count, array_of_blocklengths, array_of_displacements, arr
 int MPI_Type_create_struct(int count, const int array_of_blocklengths[],const MPI_Aint array_of_displacements[],const MPI_Datatype array_of_types[], MPI_Datatype *newtype
 ```
 
+The following example uses 4 processes.
 @[MPI_Type_struct]({"stubs": ["3/mpi_struct.c"], "command": "/bin/bash /project/target/3/mpi_struct.sh"})
 
 

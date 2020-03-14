@@ -133,5 +133,6 @@ x# Example: Groups and communicators management
 
 The following example uses collective operations named MPI\_Allreduce, which will be described in the next Chapter. For what concerns this example you can consider that this function is able to sum all values inside an array held by each MPI process.
 
+The following example uses 8 processes.
 @[MPI_GROUP]({"stubs": ["4/groupsandcomm.c"], "command": "/bin/bash /project/target/4/groupsandcomm.sh"})
 
