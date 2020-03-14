@@ -54,6 +54,44 @@ MPI Evolution
 	- MPI-3.1 (Jun 2015)
 - Current: The MPI-4.0 standard is under development.
 
+# Book outline
+
+1. Introduction- A brief introduction to distributed computing using distributed memory paradigm and MPI.
+    - What is distributed computing?
+    - Take the first steps, Hello world
+    - The OpenMPI Architecture
+    - MPI Programming
+    - Chapter Questions
+2. Point-to-Point communication. This chapter introduces synchronous and asynchronous communications of the MPI standard.
+    - MPI Memory model
+    - Blocking Communication
+    - Communication Modes
+    - Non-Blocking Communication
+    - Chapter Questions
+3. Datatypes. This chapter introduces Datatypes of the MPI standard.
+    - Communicate noncontiguous data
+    - Derived Datatypes
+    - Chapter Questions
+4. Collective communications. This chapter introduces collective communications of the MPI standard.
+    - Collective communications Overview
+    - MPI Groups
+    - MPI Communicators
+    - Collective Communications Routines
+    - Chapter Questions
+5. Communication Topologies. A brief introduction to MPI topologies.
+    - MPI Process Topologies
+    - Chapter Questions
+6. HPC for all, an MPI cluster on Amazon AWS. This chapter introduces how to create an MPI cluster machine on Amazon AWS. 
+     - MPI Amazon AWS Cluster
+
+# Book features and recommendations
+
+- All arguments are discussed and experimented during the reading by using simple examples in C.
+- By using this book you are able to learn in a more dynamic way.
+- You can change the example and integrate it with your code to directly experiment with the topic that you have studied.
+- Each example run with a fixed number of processors takes in mind this if you change the code.
+- Do (and re-do) the chapter questions.
+
 # Book Execution Environment
 
 In this book is used a Docker container that enables to execute in browser MPI program. 

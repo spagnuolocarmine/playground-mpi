@@ -47,7 +47,13 @@
 6. HPC for all, an MPI cluster on Amazon AWS. This chapter introduces how to create an MPI cluster machine on Amazon AWS. 
      - MPI Amazon AWS Cluster
 
-# Book features
+# Book features and recommendations
+
+- All arguments are discussed and experimented during the reading by using simple examples in C.
+- By using this book you are able to learn in a more dynamic way.
+- You can change the example and integrate it with your code to directly experiment with the topic that you have studied.
+- Each example run with a fixed number of processors takes in mind this if you change the code.
+- Do (and re-do) the chapter questions.
 
 
 # Book Execution Environment
