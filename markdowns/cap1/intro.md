@@ -1,5 +1,5 @@
 # Have fun with MPI in C
-![cover](cover.png)
+![cover](/img/cover.png)
 
 # Distributed-Memory Programming with MPI
 
