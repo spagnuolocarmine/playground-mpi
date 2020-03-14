@@ -15,7 +15,7 @@
 [![Donate](https://img.shields.io/badge/PayPal-Donate%20to%20Author-blue.svg)](https://www.paypal.me/CarmineSpagnuolo) [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://github.com/spagnuolocarmine/playground-mpi/issues)
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Have%20fun%20with%20MPI%20in%20C%20&url=http://bit.ly/have-fun-with-mpi&hashtags=c,mpi,programming,tutorial,parallel-computing,distributed-computing,distributed-memory) 
 
-
+<!--#Preface-->
 
 # Book Execution Environment
 
@@ -46,3 +46,12 @@ docker run -it -t dockermpi:latest
 12. MPI by Blaise Barney, Lawrence Livermore National Laboratory -- https://computing.llnl.gov/tutorials/mpi/
 13. https://mpitutorial.com/tutorials/mpi-broadcast-and-collective-communication/
 14. https://mpi.deino.net
+
+# Suggested readings
+
+- Peter Pacheco. 2011. An Introduction to Parallel Programming (1st ed.). Morgan Kaufmann Publishers Inc., San Francisco, CA, USA.
+- Czech, Z. (2017). Introduction to Parallel Computing. Cambridge: Cambridge University Press.
+- Maurice Herlihy and Nir Shavit. 2008. The Art of Multiprocessor Programming. Morgan Kaufmann Publishers Inc., San Francisco, CA, USA.
+- Andy Oram, Greg Wilson, 2008, Beautiful Code, Leading Programmers Explain How They Think,  O'Reilly Media.
+- [Idiomatic Expressions in C By Adam Petersen](https://www.adamtornhill.com/Idiomatic_expressions_in_C.pdf). 
+- Mandel Cooper, Advanced Bash Scripting, 2010.

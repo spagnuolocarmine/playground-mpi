@@ -81,6 +81,15 @@ docker run -it -t dockermpi:latest
 13. https://mpitutorial.com/tutorials/mpi-broadcast-and-collective-communication/
 14. https://mpi.deino.net
 
+# Suggested readings
+
+- Peter Pacheco. 2011. An Introduction to Parallel Programming (1st ed.). Morgan Kaufmann Publishers Inc., San Francisco, CA, USA.
+- Czech, Z. (2017). Introduction to Parallel Computing. Cambridge: Cambridge University Press.
+- Maurice Herlihy and Nir Shavit. 2008. The Art of Multiprocessor Programming. Morgan Kaufmann Publishers Inc., San Francisco, CA, USA.
+- Andy Oram, Greg Wilson, 2008, Beautiful Code, Leading Programmers Explain How They Think,  O'Reilly Media.
+- [Idiomatic Expressions in C By Adam Petersen](https://www.adamtornhill.com/Idiomatic_expressions_in_C.pdf). 
+- Mandel Cooper, Advanced Bash Scripting, 2010.
+
 # About the Author
 
 Carmine Spagnuolo got his Master Degree cum laude in Computer Science at the Università degli Studi di Salerno in 2013. In January 2014, he started the Ph.D. program in Computer Science under the supervision of Professor Vittorio Scarano and has completed it in 2017.
