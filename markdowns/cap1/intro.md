@@ -56,7 +56,7 @@ MPI Evolution
 
 # Book outline
 
-1. Introduction- A brief introduction to distributed computing using distributed memory paradigm and MPI.
+1. Introduction. A brief introduction to distributed computing using distributed memory paradigm and MPI.
     - What is distributed computing?
     - Take the first steps, Hello world
     - The OpenMPI Architecture
