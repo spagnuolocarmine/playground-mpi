@@ -1,6 +1,5 @@
-<img src="cover.png" alt="logo" height="120" align="right" href="http://bit.ly/have-fun-with-mpi"/>
-
 # Have fun with MPI in C
+![cover](cover.png)
 
 # Distributed-Memory Programming with MPI
 
