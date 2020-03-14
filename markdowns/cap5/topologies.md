@@ -25,6 +25,50 @@ Process coordinates in a Cartesian structure begin their numbering at 0. Row-maj
 
 ## Topologies Constructor
 
+In the following several MPI topologies are described. The available MPI topologies are: **MPI_GRAPH** the graph topology, **MPI_CART** the cartesian topology, and **MPI_DIST_GRAPH** distributed graph topology. When is not defined a topology for a communicator the value **MPI_UNDEFINED** is used.
+
+Moreover, MPI provides usefull function to inquiry topology, here the most important:
+- **MPI_TOPO_TEST** returns the  type  of  topology  that  is  assigned  to  a communicator.
+    ```c
+    int MPI_Topo_test(MPI_Comm comm, int *status)
+    ```
+    - IN comm, communicator (handle)
+    - OUT status, topology type of communicator comm (state)
+- **MPI_GRAPH_GET** retrieve the graph-topologyinformation that was associated with a communicator.
+    ```c
+    int MPI_Graph_get(MPI_Comm comm, int maxindex, int maxedges, int index[],int edges[])
+    ```
+    - IN comm, communicator with graph structure (handle)
+    - IN maxindex, length of vector index in the calling program (integer)
+    - IN maxedges, length of vector edges in the calling program (integer)
+    - OUT index, array of integers containing the graph structure (for details see the definition of MPI_GRAPH_CREATE)
+    - OUT edges, array of integers containing the graph structure
+- **MPI_CART_GET** return the Cartesian topology information that was associated with a communicator.
+    ```c
+    int MPI_Cart_get(MPI_Comm comm, int maxdims, int dims[], int periods[], int coords[])
+    ```
+    - IN comm, communicator with Cartesian structure (handle)
+    - IN maxdims, length of vectors dims, periods, and coords in the calling program (integer)
+    - OUT dims, number of processes for each Cartesian dimension (array of integer)
+    - OUT periods, periodicity ( true/ false) for each Cartesian dimension (array of logical)
+    - OUT coords, coordinates of calling process in Cartesian structure (array of integer)
+- **MPI_CART_RANK** translates the logical process coordinates to process ranks as they are used by the point-to-point routines.
+    ```c
+    int MPI_Cart_rank(MPI_Comm comm, const int coords[], int *rank)
+    ```
+    - IN comm, communicator with Cartesian structure (handle)
+    - IN coords, integer array (of size ndims) specifying the Cartesian coordinates of a process
+    - OUT rank, rank of specified process (integer)
+- **MPI_CART_COORDS** provides rank-to-coordinates translation (inverse mapping),
+    ```c
+    int MPI_Cart_coords(MPI_Comm comm, int rank, int maxdims, int coords[])
+    ```
+    - IN comm, communicator with Cartesian structure (handle)
+    - IN rank, rank of a process within group of comm (integer)
+    - IN maxdims, length of vector coords in the calling program (integer)
+    - OUT coords, integer array (of size ndims) containing the Cartesian coordinates of specified process (array of integers)
+
+
 ### Cartesian Constructor
 
 
