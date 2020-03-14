@@ -44,5 +44,5 @@ int MPI_Cart_create(MPI_Comm comm_old, int ndims, const int dims[], const int pe
 - OUT comm_cart, communicator with new Cartesian topology (handle)
 
 
-@[MPI_GROUP]({"stubs": ["4/groupsandcomm.c"], "command": "/bin/bash /project/target/4/groupsandcomm.sh"})
+@[MPI_Cart_create]({"stubs": ["5/cart.c"], "command": "/bin/bash /project/target/5/cart.sh"})
 
