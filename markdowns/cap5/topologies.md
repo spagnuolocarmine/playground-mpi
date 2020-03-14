@@ -90,3 +90,23 @@ int MPI_Cart_create(MPI_Comm comm_old, int ndims, const int dims[], const int pe
 
 @[MPI_Cart_create]({"stubs": ["5/cart.c"], "command": "/bin/bash /project/target/5/cart.sh"})
 
+### Graph Constructor
+
+MPI_GRAPH_CREATE returns a handle to a new communicator to which the graph topology information is attached. If reorder = false then the rank of each process in the new group is identical to its rank in the old group. Otherwise, the function may reorder the processes. If the size, nnodes, of the graph is smaller than the size of the group of comm_old, then some processes are returned MPI_COMM_NULL, in analogy to MPI_CART_CREATE and MPI_COMM_SPLIT. If the graph is empty, i.e., nnodes == 0, then MPI_COMM_NULL is returned in all processes. The call is erroneous if it specifies a graph that is larger than the group size of the input communicator.
+
+The three parameters nnodes, index and edges define the graph structure. nnodes is the number of nodes of the graph. The nodes are numbered from 0 to nnodes-1. The i-th entry of array index stores the total number of neighbors of the first i graph nodes. The lists of neighbors of nodes 0, 1, ..., nnodes-1 are stored in consecutive locations in array edges. The array edges is a flattened representation of the edge lists. The total number of entries in index is nnodes and the total number of entries in edges is equal to the number of graph edges.
+
+![Graph](/img/graph.png)
+
+```c
+int MPI_Graph_create(MPI_Comm comm_old, int nnodes, const int index[], const int edges[], int reorder, MPI_Comm *comm_graph)
+```
+- IN comm_old,	input communicator (handle)
+- IN nnodes,	number of nodes in graph (integer)
+- IN index,	array of integers describing node degrees (see below)
+- IN edges,	array of integers describing graph edges (see below)
+- IN reorder,	ranking may be reordered ( true) or not ( false) (logical)
+- OUT comm_graph,	communicator with graph topology added (handle)
+
+
+@[MPI_Graph_create]({"stubs": ["5/graph.c"], "command": "/bin/bash /project/target/5/graph.sh"})
