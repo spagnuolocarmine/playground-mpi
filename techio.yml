@@ -50,15 +50,15 @@ plan:
       - title: Chapter Questions
         statement: markdowns/cap4/4_questions.md
   - title: Communication Topologies
-    description: This chapters will introduce communication topologies of the MPI standard.
+    description: A brief introduction to MPI topologies.
     plan:
-      - title: TODO
-        statement: markdowns/cap1/intro.md
+      - title: MPI Process Topologies
+        statement: markdowns/cap5/topologies.md
   - title: HPC for all, an MPI cluster on Amazon AWS
-    description: TODO
+    description: This chapter introduces how to create an MPI cluster machine on Amazon AWS. 
     plan:
-       - title: TODO
-         statement: markdowns/cap1/intro.md
+       - title: MPI Amazon AWS Cluster
+         statement: markdowns/cap6/cluster.md
 projects:
   main:
     root: exercises/
