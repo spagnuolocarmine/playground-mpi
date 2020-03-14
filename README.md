@@ -1,4 +1,4 @@
-<img src="cover.png" alt="logo" height="120" align="right" />
+<img src="cover.png" alt="logo" height="120" align="right" href="http://bit.ly/have-fun-with-mpi"/>
 
 # Have fun with MPI in C
 
