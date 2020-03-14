@@ -1,137 +1,48 @@
-# Communicator Management
+# Topologies
 
-As described in the Introduction, at the start of an MPI program all its processes belong to the communicator MPI\_COMM\_WORLD. Processes in the communicator have unique numbers (identifiers) in the interval between 0 and p-1, where p is the number of processes executed. In many application we want to partition processes into n subgroups forming separate communicators. Each communicator should include the processes belonging a particular task.
+MPI topology mechanism is an extra, optional attribute that one can give to an intra-communicator; topologies cannot be added to inter-communicators. A topology can provide a convenient naming mechanism for the processes of a group (within a communicator), and additionally, _may assist the runtime system in mapping the processes onto hardware_.
 
-The standard type of communicator is known as an intra-communicator, but a second, more exotic type known as an inter-communicator, whcih provide communication between two different communicators. The two types differ in two ways:
-1. An intra-communicator refers to a single group, an inter-communicator refers to a pair of groups. The group of an intra-communicator is simply the set of all processes which share that communicator. A communicator is a opaque object of type **MPI\_Comm**.
-2. Collective communications (see next Chapter) can be performed with an intra-communicator. They cannot be performed on an inter-communicator. The group of processes involved in a collective communication is simply the group of the intra-communicator involved.
+As stated for Groups, Communicators, a process group in MPI is a collection of n processes. Each process in the group is assigned a rank between 0 and n-1. In many parallel applications a linear ranking of processes does not adequately reflect the logical communication pattern of the processes (which is usually determined by the underlying problem geometry and the numerical algorithm used). 
 
-Inter-communicators are more likely to be used by parallel library designers than application developers. The routines MPI\_COMM\_SIZE and MPI\_COMM\_RANK can be used with inter-communicators, but the interpretation of the results returned is slightly different. An  intra-communicator  involves  a  single  group  while  an  inter-communicator  involvestwo  groups. However, in this book, we will focus only on intra-communicator communication functionalities.
+Often the processes are arranged in topological patterns such as two- or three-dimensional grids. More generally, the logical process arrangement is described by a graph. In this chapter we will refer to this logical process arrangement as the **virtual topology**.
 
-**MPI\_COMM\_SIZE** compute the number of processes in a communicator.
-```c
-MPI_COMM_SIZE(comm, size)
-```
-- IN comm, communicator (handle)
-- OUT size, number of processes in the group of comm (integer)
+A clear distinction must be made between the virtual process topology and the topology of the underlying, physical hardware. The virtual topology can be exploited by the system in the assignment of processes to physical processors, if this helps to improve the communication performance on a given machine. How this mapping is done, however, is outside the scope of MPI. The description of the virtual topology, on the other hand, depends only on the application, and is machine-independent. The functions that are described in this chapter deal with machine-independent mapping and communication on virtual process topologies.
 
-**C version**
-```c
-int MPI_Comm_size(MPI_Comm comm, int *size)
-```
+## What are a virtual topologies?
 
-**MPI\_COMM\_RANK** compute the associated rank of process in a communicator.
-```c
-MPI_COMM_SIZE(comm, size)
-```
-- IN comm, communicator (handle)
-- OUT rank, ank of the calling process in group of comm (integer)
+The communication pattern of a set of processes can be represented by a graph. The nodes represent processes, and the edges connect processes that communicate with each other. MPI provides message-passing between any pair of processes in a group. There is no requirement for opening a channel explicitly. Therefore, a _missing link_ in the user-defined process graph does not prevent the corresponding processes from exchanging messages. It means rather that this connection is neglected in the virtual topology. This strategy implies that the topology gives no convenient way of naming this pathway of communication. Another possible consequence is that an automatic mapping tool (if one exists for the runtime environment) will not take account of this edge when mapping.
 
-**C version**
-```c
-int MPI_Comm_rank(MPI_Comm comm, int *rank)
-```
+Specifying the virtual topology in terms of a graph is sufficient for all applications. However, in many applications the graph structure is regular, and the detailed set-up of the graph would be inconvenient for the user and might be less efficient at run time. A large fraction of all parallel applications use process topologies like _rings, two- or higher-dimensional grids, or tori_. These structures are completely defined by the number of dimensions and the numbers of processes in each coordinate direction. Also, the mapping of grids and tori is generally an easier problem than that of general graphs. Thus, it is desirable to address these cases explicitly.
 
-**MPI\_COMM\_COMPARE** compares two communicators.
-```c
-MPI_COMM_COMPARE(comm1, comm2, result)
-```
-- IN comm1, first communicator (handle)
-- IN comm2, second communicator (handle)
-- OUT result, result (integer)
+### Example Cartesian Topology
 
-**C version**
-```c
-int MPI_Comm_compare(MPI_Comm comm1, MPI_Comm comm2, int *result)
-```
+Process coordinates in a Cartesian structure begin their numbering at 0. Row-major numbering is always used for the processes in a Cartesian structure. This means that, for example, the relation between group rank and coordinates for four processes in a (2 × 2) grid is as follows.
 
-MPI\_IDENT results if and only if comm1 and comm2 are handles for the same object (identical groups and same contexts). MPI\_CONGRUENT results if the underlying groups are identical in constituents and rank order; these communicators differ only by context. MPI\_SIMILAR results if the group members of both communicators are the same but the rank order differs. MPI\_UNEQUAL results otherwise.
+- coord (0,0):	rank 0
+- coord (0,1):	rank 1
+- coord (1,0):	rank 2
+- coord (1,1):	rank 3
 
-## Communicator Constructors
+## Topologies Constructor
 
-The  following  are  collective  functions  that  are  invoked  by  all  processes  in  the  group  or groups associated with comm, with the exception of MPI\_COMM\_CREATE\_GROUP, which is invoked only by the processes in the group of the new communicator being constructed.
+### Cartesian Constructor
 
-**MPI_COMM_DUP(comm, newcomm)** duplicates  the  existing  communicator comm with  associated  keyvalues, topology information, and info hints. For each key value, the respective copy callback function determines the attribute value associated with this key in the new communicator; one particular action that a copy callback may take is to delete the attribute from the newcommunicator.
+
+**MPI_CART_CREATE**  returns a handle to a new communicator to which the Cartesian topology information is attached. If reorder is false then the rank of each process in the new group is identical to its rank in the old group. Otherwise, the function may reorder the processes (possibly so as to choose a good embedding of the virtual topology onto the physical machine). If the total size of the Cartesian grid is smaller than the size of the group of comm_old, then some processes are returned MPI_COMM_NULL, in analogy to MPI_COMM_SPLIT. If ndims is zero then a zero-dimensional Cartesian topology is created. The call is erroneous if it specifies a grid that is larger than the group size or if ndims is negative.
+
+
+![Cartesian](/img/cartesian.png)
 
 ```c
-MPI_COMM_DUP(comm, newcomm)
+int MPI_Cart_create(MPI_Comm comm_old, int ndims, const int dims[], const int periods[], int reorder, MPI_Comm *comm_cart)
 ```
-- IN comm,  communicator (handle)
-- IN newcomm, copy communicator (handle)
+- IN comm_old,	input communicator (handle)
+- IN ndims,	number of dimensions of Cartesian grid (integer)
+- IN dims,	integer array of size ndims specifying the number of processes in each dimension
+- IN periods,	logical array of size ndims specifying whether the grid is periodic ( true) or not ( false) in each dimension
+- IN reorder,	ranking may be reordered ( true) or not ( false) (logical)
+- OUT comm_cart, communicator with new Cartesian topology (handle)
 
-
-**C version**
-```c
-int MPI_Comm_dup(MPI_Comm comm, MPI_Comm *newcomm)
-```
-
-
-**MPI_COMM_CREATE(comm, group, newcomm)** creates a new communicator.
-
-```c
-MPI_COMM_CREATE(comm, group, newcomm)
-```
-- IN comm, communicator (handle)
-- IN group, group, which is a subset of the group of comm (handle)
-- OUT newcomm, new communicator (handle)
-
-**C version**
-```c
-int MPI_Comm_create(MPI_Comm comm, MPI_Group group, MPI_Comm *newcomm)
-```
-If comm is  an  intra-communicator,  this  function  returns  a  new  communicator newcomm with communication group defined by the group argument. No cached information propagates from comm to newcomm.  Each process must call MPI\_COMM\_CREATE with a group argument  that  is  a  subgroup  of  the group associated  with comm;  this  could  be MPI\_GROUP\_EMPTY.  The  processes  may  specify  different  values  for  the group argument. If  a  process  calls  with  a  non-empty group then  all  processes  in  that group must  call  the function with the same grou pas argument, that is the same processes in the same order. Otherwise,  the call is erroneous.  _This implies that the set of groups specified across the processes must be disjoint._  If the calling process is a member of the group given as group argument, then newcomm is a communicator with groupas its associated group.  In the case that  a  process  calls  with  a group to  which  it  does  not  belong,  e.g.,MPI\_GROUP\_EMPTY, then MPI\_COMM\_NULL is  returned  as newcomm.   _The  function  is  collective  and  must  be called by all processes in the group of comm._
-
-**This function must be called by all processes in the communicator**
-
-**MPI_COMM_CREATE(comm, group, newcomm)** creates a new communicator.
-
-```c
-MPI_COMM_CREATE_GROUP(comm, group, tag, newcomm)
-```
-- IN comm, communicator (handle)
-- IN group, gorup, which is a subset of the group of comm (handle)
-- IN tag, tag (integer)
-- OUT newcomm, new communicator (handle)
-
-**C version**
-```c
-int MPI_Comm_create_group(MPI_Comm comm, MPI_Group group, int tag,MPI_Comm *newcomm)
-```
-It is similar to MPI_COMM_CREATE but can be called by all processes in the group.  In  addition, MPI\_COMM\_CREATE\_GROUP requires that comm is an intra-communicator. MPI\_COMM\_CREATE\_GROUP returns a new intra-communicator, newcomm,  for  which  the group argument  defines  the  communication group.   No  cached  information  propagates  from comm to newcomm.   Each  process  must provide  a  group  argument  that  is  a  subgroup  of  the  group  associated  withcomm;  this could be MPI\_GROUP\_EMPTY. The tag argument does not conflict with tags used in point-to-point communication andis not permitted to be a wildcard. 
-
-**MPI_COMM_SPLIT(comm, color, key, newcomm)** partitions the group associated with comm into disjoint subgroups, one foreach value of color.
-
-```c
-MPI_COMM_SPLIT(comm, color, key, newcomm)
-```
-- IN comm, communicator (handle)
-- IN color, control of subset assignment (integer)
-- IN key, control of rank assigment (integer)
-- OUT newcomm, new communicator (handle)
-
-**C version**
-```c
-int MPI_Comm_split(MPI_Comm comm, int color, int key, MPI_Comm *newcomm)
-```
-Each subgroup contains all processes of the same color.  Within each subgroup,  the  processes  are  ranked  in  the  order  defined  by  the  value  of  the  argument key,  with  ties  broken  according  to  their  rank  in  the  old  group.   A  new  communicator  iscreated for each subgroup and returned in newcomm.  A process may supply the color value MPI\_UNDEFINED, in which case newcomm returns MPI\_COMM\_NULL. This is a collective call, but each process is permitted to provide different values for color and key. 
-
-## Communicator Destructors
-
-**MPI_COMM_FREE** marks the communication object for deallocation.
-
-```c
-MPI_COMM_FREE(comm)
-```
-- INOUT comm, communicator to destroyed (handle)
-**C version**
-```c
-int MPI_Comm_free(MPI_Comm *comm)
-```
-Any pending operations that use this communicator will complete normally; the object is actually deallocated only if there are no other active references to it. 
-
-x# Example: Groups and communicators management
-
-The following example uses collective operations named MPI\_Allreduce, which will be described in the next Chapter. For what concerns this example you can consider that this function is able to sum all values inside an array held by each MPI process.
 
 @[MPI_GROUP]({"stubs": ["4/groupsandcomm.c"], "command": "/bin/bash /project/target/4/groupsandcomm.sh"})
 
