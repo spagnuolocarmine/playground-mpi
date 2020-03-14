@@ -1,4 +1,3 @@
-# A Message Passing Interface playground in C
 <img src="cover.png" alt="logo" height="120" align="right" />
 
 # Have fun with MPI in C
