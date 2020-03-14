@@ -1,7 +1,7 @@
 #!/bin/bash
 NAME="cart"
 echo -e "Compiling"
-cd /project/target/4
+cd /project/target/5
 rm -rf out $NAME
 mpicc -o $NAME $NAME.c 2> err_log
 rc=$?
