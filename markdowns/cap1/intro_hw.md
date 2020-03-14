@@ -79,6 +79,7 @@ and to run the program with four processes, we’d type
 $ mpirun −n 4 ./mpi hello
 ```
 
+The following example uses 4 processes.
 @[Hello World]({"stubs": ["intro_hello_world/hello_world.c"], "command": "/bin/bash /project/target/intro_hello_world/hello_world.sh"})
 
 How do we get from invoking mpirun to one or more lines of greetings? The mpirun command tells the system to start <number of processes> instances of our <mpi hello> program. It may also tell the system which core should run each instance of the program. After the processes are running, the MPI implementation takes care of making sure that the processes can communicate with each other.
