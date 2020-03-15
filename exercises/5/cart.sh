@@ -22,3 +22,4 @@ mpirun --allow-run-as-root  -mca btl sm,tcp,self -np 12 -output-filename out/out
 cat out/*
 rm -rf out
 echo -e "Done."
+echo "TECHIO> success true"

@@ -21,3 +21,4 @@ echo -e "Execution ... "
 mpirun --allow-run-as-root  -mca btl sm,tcp,self -np 2 -output-filename out/out ./hw
 cat out/*
 rm -rf out
+echo "TECHIO> success true"
