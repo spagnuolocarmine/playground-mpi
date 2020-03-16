@@ -6,6 +6,10 @@
 -[ ] allows the programmers to exploit SIMD computers.
 -[ ] allows the programmers to exploit MIMD computers.
 
+?What is Symmetric multiprocessing?
+-[x] involves a multiprocessor computer hardware and software architecture where two or more identical processors are connected to a single, shared main memory.
+-[x] involves a multiprocessor computer hardware and software architecture where two or more identical processors are connected to a multiple, shared main memory.
+
 ?[MPI is]
 -[ ] a library for writing distributed memory programs.
 -[ ] a library for writing shared memory programs.
