@@ -1,4 +1,6 @@
+<a href="http://bit.ly/have-fun-with-mpi" ><img src="/img/cover.png" alt="logo" height="120" align="right"/></a>
 # Have fun with MPI in C
+
 ![cover](/img/cover.png)
 
 ## Preface
