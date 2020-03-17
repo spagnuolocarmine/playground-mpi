@@ -12,11 +12,11 @@ This playground is focused on Programming with MPI. Starting from what is (M)ess
 All we need to do now, it is just taking off. Seat back, relax, and code.
 
 _Alessia Antelmi_, PhD Student in Computer Science
-Deptartment of Computer Science, Università degli Studi di Salerno
+Department of Computer Science, Università degli Studi di Salerno
 
 ## Note
 
-This book is currently under development. Anyway yeah, you can start and I will finish in a few weeks.
+This book is currently under development. Anyway yeah, you can start and I will finish in a few weeks (and we will provide a proofread).
 17/03/2020
 
 # What is distributed computing? - Distributed-Memory Programming with MPI
