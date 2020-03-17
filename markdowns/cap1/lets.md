@@ -1,8 +1,6 @@
 ![cover](/img/cover.png)
 
-_Carmine Spagnuolo, Ph.D._
-
-Department of Computer Science, Università degli Studi di Salerno
+> __Carmine Spagnuolo, Ph.D.__, Department of Computer Science, Università degli Studi di Salerno
 
 
 # Preface
@@ -15,9 +13,7 @@ This playground is focused on Programming with MPI. Starting from what is (M)ess
 
 All we need to do now, it is just taking off. Seat back, relax, and code.
 
-_Alessia Antelmi_, PhD Student
-
-Department of Computer Science, Università degli Studi di Salerno
+> __Alessia Antelmi__, PhD Student. Department of Computer Science, Università degli Studi di Salerno
 
 
 
