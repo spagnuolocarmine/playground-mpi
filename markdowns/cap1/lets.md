@@ -1,7 +1,25 @@
 # Have fun with MPI in C
 ![cover](/img/cover.png)
 
-# What is distributed computing? -- Distributed-Memory Programming with MPI
+## Preface
+
+Hi guys! Either you are a Computer Science, or just a brave programmer who wants to start learning the basic of parallel programming in shared and/or distributed memory systems, this (play)book will light your way on (hopefully!).
+
+First, why a playground on Tech.io? Generally, among others, a playground is a useful tool to explain both general concepts or more specific topics. What is amazing, however, it is the possibility to add runnable code samples that every reader can hack. Basically, you can play with snippets of code: just type a few lines and see what will change the next time you run that piece.
+
+This playground is focused on Programming with MPI. Starting from what is (M)essage (P)assing (I)nterface, we will then approach and work with OpenMPI, an open-source MPI implementation. You will find a bunch of runnable snippets for each newly introduced concept, along with end-chapter questions. Nothing is mandatory, but you are strongly encouraged to try things out. The examples are in the C language, so knowing the Ritchie’ language is mandatory (we hope that you already know, if you have reached this book).
+
+All we need to do now, it is just taking off. Seat back, relax, and code.
+
+_Alessia Antelmi_, PhD Student in Computer Science
+Deptartment of Computer Science, Università degli Studi di Salerno
+
+## Note
+
+This book is currently under development. Anyway yeah, you can start and I will finish in a few weeks.
+17/03/2020
+
+# What is distributed computing? - Distributed-Memory Programming with MPI
 
 Recall that the world of parallel multiple instruction, multiple data, or MIMD, computers is, for the most part, divided into distributed-memory and shared-memory systems. From a programmer’s point of view, a distributed-memory system consists of a collection of core-memory pairs connected by a network, and the memory associated with a core is directly accessible only to that core. On the other hand, from a programmer’s point of view, a shared-memory system consists of a collection of cores connected to a globally accessible memory, in which each core can have access to any memory location. 
 
