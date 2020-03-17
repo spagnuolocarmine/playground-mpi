@@ -63,8 +63,6 @@ Recall that the world of parallel multiple instruction, multiple data, or MIMD, 
 ![mpimodel](/img/mpimodel.png) 
 
 
-
-
 Recall that in message-passing programs, a program running on one core-memory pair is usually called a process, and two processes can communicate by calling functions: one process calls a send function and the other calls a receive function. The implementation of message-passing that we’ll be using is called MPI, which is an abbreviation of Message-Passing Interface. MPI is not a new programming language. It defines a library of functions that can be called from C, C++, and Fortran programs. We’ll learn about some of MPI’s different send and receive functions. We’ll also learn about some “global” communication functions that can involve more than two processes. These functions are called collective communications. In the process of learning about all of these MPI functions, we’ll also learn about some of the fundamental issues involved in writing message-passing programs–issues such as data partitioning and I/O in distributed-memory systems. We’ll also revisit the issue of parallel program performance.
 
 ## What is MPI?
