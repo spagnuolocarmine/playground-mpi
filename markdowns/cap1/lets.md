@@ -1,12 +1,10 @@
 ![cover](/img/cover.png)
 
 **Author** 
-
 Carmine Spagnuolo, Ph.D.
-
 Department of Computer Science, Università degli Studi di Salerno
 
-## Preface
+# Preface
 
 Hi guys! Either you are a Computer Science, or just a brave programmer who wants to start learning the basic of parallel programming in shared and/or distributed memory systems, this (play)book will light your way on (hopefully!).
 
@@ -19,9 +17,6 @@ All we need to do now, it is just taking off. Seat back, relax, and code.
 _Alessia Antelmi_, PhD Student in Computer Science
 Department of Computer Science, Università degli Studi di Salerno
 
-## Changelogs
-
-- 17/03/2020. This book is currently under development. Anyway yeah, you can start and I will finish in a few weeks (and we will provide a proofread).
 
 # Book outline
 
@@ -53,6 +48,9 @@ Department of Computer Science, Università degli Studi di Salerno
 6. HPC for all, an MPI cluster on Amazon AWS. This chapter introduces how to create an MPI cluster machine on Amazon AWS. 
      - MPI Amazon AWS Cluster
 
+## Changelogs
+
+- 17/03/2020. This book is currently under development. Anyway yeah, you can start and I will finish in a few weeks (and we will provide a proofread).
 
 # Introduction
 
