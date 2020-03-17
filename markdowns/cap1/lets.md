@@ -5,7 +5,7 @@
 
 # Preface
 
-Hi guys! Either you are a Computer Science, or just a brave programmer who wants to start learning the basic of parallel programming in shared and/or distributed memory systems, this (play)book will light your way on (hopefully!).
+Hi guys! Either you are a Computer Science student, or just a brave programmer who wants to start learning the basic of parallel programming in shared and/or distributed memory systems, this (play)book will light your way on (hopefully!).
 
 First, why a playground on Tech.io? Generally, among others, a playground is a useful tool to explain both general concepts or more specific topics. What is amazing, however, it is the possibility to add runnable code samples that every reader can hack. Basically, you can play with snippets of code: just type a few lines and see what will change the next time you run that piece.
 
