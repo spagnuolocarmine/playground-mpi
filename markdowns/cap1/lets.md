@@ -1,6 +1,6 @@
 ![cover](/img/cover.png)
 
-<p style='text-align: right;'>
+<p style='text-align: center;'>
 _Carmine Spagnuolo, Ph.D._
 
 Department of Computer Science, Università degli Studi di Salerno
