@@ -11,16 +11,16 @@
 -[x] involves a multiprocessor computer hardware and software architecture where two or more identical processors are connected to a multiple, shared main memory.
 
 ?[MPI is]
--[ ] a library for writing distributed memory programs.
--[ ] a library for writing shared memory programs.
+-[ ] a library for writing distributed-memory programs.
+-[ ] a library for writing shared-memory programs.
 -[x] a specification for a message-passing parallel programming model.
 -[ ] a library for a message-passing parallel programming model.
 
 ?[OpenMPI is]
--[ ] a specification for an implementation of MPI.
--[x] an open source software implementation of MPI.
+-[ ] a specification for the implementation of MPI.
+-[x] an open-source software implementation of MPI.
 -[ ] a specification for a message-passing parallel programming model.
--[ ] a open source software for a generic message-passing parallel programming model.
+-[ ] an open source software for a generic message-passing parallel programming model.
 
 ?[The OpenMPI Open, Portable Access Layer is responsible for]
 -[x] the abstractions of OpenMPI on individual processes (versus parallel jobs).
@@ -31,15 +31,15 @@
 -[x] the abstractions of OpenMPI to launch, monitor, and kill parallel jobs.
 
 ?[The MPI_Init function tells the MPI system to]
--[x] do all of the necessary setup.
+-[x] do all of the necessary setups.
 -[ ] copy your program in the cluster.
 
 ?[The MPI_Finalize function tells the MPI system]
 -[x] that we’re done using MPI.
 -[ ] to delete your program in the cluster.
 
-?[The rank of a MPI process in the MPI_COMM_WORLD communicator is a]
--[ ] floating point number starting from 1.0.
+?[The rank of an MPI process in the MPI_COMM_WORLD communicator is a]
+-[ ] floating-point number starting from 1.0.
 -[ ] integer number starting from 1.
 -[x] integer number starting from 0.
 -[ ] integer number starting from 0.0.

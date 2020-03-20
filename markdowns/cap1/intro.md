@@ -4,7 +4,7 @@
 
 # Distributed-Memory Programming with MPI
 
-Recall that the world of parallel multiple instruction, multiple data, or MIMD, computers is, for the most part, divided into distributed-memory and shared-memory systems. From a programmer’s point of view, a distributed-memory system consists of a collection of core-memory pairs connected by a network, and the memory associated with a core is directly accessible only to that core. On the other hand, from a programmer’s point of view, a shared-memory system consists of a collection of cores connected to a globally accessible memory, in which each core can have access to any memory location. 
+Recall that the world of parallel multiple instruction, multiple data, or MIMD, computers is, for the most part, divided into distributed-memory and shared-memory systems. From a programmer’s point of view, a distributed-memory system consists of a collection of core-memory pairs connected by a network, and the memory associated with a core is directly accessible only to that core. On the other hand, from a programmer’s point of view, a shared-memory system consists of a collection of cores connected to globally accessible memory, in which each core can have access to any memory location. 
 
 ![mpimodel](/img/mpimodel.png) 
 

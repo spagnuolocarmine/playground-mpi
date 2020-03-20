@@ -48,17 +48,16 @@ int main(int argc, char** argv) {
 
 ## Compilation and execution
 
-The details of compiling and running the program depend on your system, so you may need to check with a local expert. However, recall that when we need to be explicit, we’ll assume that we’re using a text editor to write the program source, and the command line to compile and run. Many systems use a command called _mpicc_ for compilation:
-
+The details of compiling and running the program depend on your system, so you may need to check with a local expert. However, recall that when we need to be explicit, we’ll assume that we’re using a text editor to write the program source and the command line to compile and run. Many systems use a command called _mpicc_ for compilation:
 
 
 ```bash
 $ mpicc −o mpi hello.c
 ```
 
-Typically, mpicc is a script that’s a wrapper for the C compiler. A wrapper script is a script whose main purpose is to run some program. In this case, the program is the C compiler. However, the wrapper simplifies the running of the compiler by telling it where to find the necessary header files and which libraries to link with the object file.
+Typically, ```mpicc``` is a script that’s a wrapper for the C compiler. A wrapper script is a script whose main purpose is to run some program. In this case, the program is the C compiler. However, the wrapper simplifies the running of the compiler by telling it where to find the necessary header files and which libraries to link with the object file.
 
-Many systems also support program startup with mpiexec or mpirun:
+Many systems also support program startup with ```mpiexec``` or ```mpirun```:
 
 ```bash
 $ mpirun −np <number of processes> mpi
@@ -82,7 +81,7 @@ $ mpirun −np 4 mpi
 The following example uses 4 processes.
 @[Hello World]({"stubs": ["intro_hello_world/hello_world.c"], "command": "/bin/bash /project/target/intro_hello_world/hello_world.sh"})
 
-How do we get from invoking mpirun to one or more lines of greetings? The mpirun command tells the system to start <number of processes> instances of our <mpi hello> program. It may also tell the system which core should run each instance of the program. After the processes are running, the MPI implementation takes care of making sure that the processes can communicate with each other.
+How do we get from invoking ```mpirun``` to one or more lines of greetings? The ```mpirun``` command tells the system to start <number of processes> instances of our <mpi hello> program. It may also tell the system which core should run each instance of the program. After the processes are running, the MPI implementation takes care of making sure that the processes can communicate with each other.
 
 
 ### How to use more MPI processes than your physical cores

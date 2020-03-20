@@ -1,6 +1,6 @@
 # MPI programs
 
-Let’s take a closer look at the program. The first thing to observe is that this is a C program. For example, it includes the standard C header files stdio.h and string.h. It also has a main function just like any other C program. 
+Let’s take a closer look at the program. The first thing to observe is that this is a C program. For example, it includes the standard C header files stdio.h and string.h. It also has the main function just like any other C program. 
 
 ```c
 #include <stdio.h>
@@ -33,9 +33,9 @@ int MPI Init(
 	char∗∗∗ argv p /∗ in/out ∗/);
 ```
 
-The arguments, argc p and argv p, are pointers to the arguments to main, argc, and argv. However, when our program doesn’t use these arguments, we can just pass NULL for both. Like most MPI functions, MPI Init returns an int error code, and in most cases we’ll ignore these error codes.
+The arguments, argc p and argv p, are pointers to the arguments to main, argc, and argv. However, when our program doesn’t use these arguments, we can just pass NULL for both. Like most MPI functions, MPI Init returns an int error code, and in most cases, we’ll ignore these error codes.
 
-This means that MPI is responsable for spawn the arguments of the main function to each MPI processes.
+This means that MPI is responsible for spawn the arguments of the main function to each MPI process.
 
 The call to MPI Finalize tells the MPI system that we’re done using MPI, and that any resources allocated for MPI can be freed. The syntax is quite simple.
 
