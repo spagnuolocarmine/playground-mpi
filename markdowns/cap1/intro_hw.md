@@ -85,7 +85,7 @@ The following example uses 4 processes.
 How do we get from invoking mpirun to one or more lines of greetings? The mpirun command tells the system to start <number of processes> instances of our <mpi hello> program. It may also tell the system which core should run each instance of the program. After the processes are running, the MPI implementation takes care of making sure that the processes can communicate with each other.
 
 
-### Execute example on your local machine
+### How to use more MPI processes than your physical cores
 
 
 If you are running MPI program on your local machine, with a particular number of cores, the latest version of OpenMPI will check the number of cores available, and does not allow you to run MPI program by using a number of core greater than the available physical cores.
