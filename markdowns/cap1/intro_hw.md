@@ -1,7 +1,7 @@
-# GETTING STARTED
+# Let's Start to REALLY have fun MPI
 
 Perhaps the first program that many of us saw was some variant of the “hello, world”
-program in Kernighan and Ritchie’s classic text.
+program in **Kernighan and Ritchie’s** classic text.
 
 ```c
 #include <stdio.h> 
@@ -53,7 +53,7 @@ The details of compiling and running the program depend on your system, so you m
 
 
 ```bash
-$ mpicc −g −Wall −o mpi hello mpi hello.c
+$ mpicc −o mpi hello.c
 ```
 
 Typically, mpicc is a script that’s a wrapper for the C compiler. A wrapper script is a script whose main purpose is to run some program. In this case, the program is the C compiler. However, the wrapper simplifies the running of the compiler by telling it where to find the necessary header files and which libraries to link with the object file.
@@ -61,14 +61,14 @@ Typically, mpicc is a script that’s a wrapper for the C compiler. A wrapper sc
 Many systems also support program startup with mpiexec or mpirun:
 
 ```bash
-$ mpirun −n <number of processes> ./mpi hello
+$ mpirun −np <number of processes> mpi
 ```
 
 So to run the program with one process, we’d type
 
 
 ```bash
-$ mpirun −n 1 ./mpi hello
+$ mpirun −np 1 mpi
 ```
 
 @[Hello World]({"stubs": ["intro_hello_world/hello_world.c"], "command": "/bin/bash /project/target/intro_hello_world/hello_world_one.sh"})
@@ -76,7 +76,7 @@ $ mpirun −n 1 ./mpi hello
 and to run the program with four processes, we’d type
 
 ```bash
-$ mpirun −n 4 ./mpi hello
+$ mpirun −np 4 mpi
 ```
 
 The following example uses 4 processes.
@@ -85,3 +85,13 @@ The following example uses 4 processes.
 How do we get from invoking mpirun to one or more lines of greetings? The mpirun command tells the system to start <number of processes> instances of our <mpi hello> program. It may also tell the system which core should run each instance of the program. After the processes are running, the MPI implementation takes care of making sure that the processes can communicate with each other.
 
 
+### Execute example on your local machine
+
+
+If you are running MPI program on your local machine, with a particular number of cores, the latest version of OpenMPI will check the number of cores available, and does not allow you to run MPI program by using a number of core greater than the available physical cores.
+
+In order to avoid that, and test your program using more MPI processes than your available cores, you can run the ```mpirun``` command using the option ```--oversubscribe```.
+
+```bash
+$ mpirun −np 10 mpi --oversubscribe
+```
