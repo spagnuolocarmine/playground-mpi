@@ -62,7 +62,7 @@ plan:
        - title: MPI Amazon AWS Cluster
          statement: markdowns/cap6/cluster.md
        - title: Docker MPI Environment
-         statement: markdowns/cap6/dcoker.md
+         statement: markdowns/cap6/docker.md
 projects:
   main:
     root: exercises/
