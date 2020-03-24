@@ -9,7 +9,7 @@
 
 For running our experiment based on MPI and C language we use a Linux machine running the MPI implementation [OpenMPI](https://www.open-mpi.org/). The OpenMPI installation requires that all machines in the cluster have configured the same user and exchanged the SSH keys.
 
-For this reason, the [repository](https://github.com/spagnuolocarmine/ubuntu-openmpi-openmp) provides several installation scripts to build our computing environment on a Ubuntu Linux machine.
+For this reason, the [repository](https://github.com/spagnuolocarmine/ubuntu-openmpi-openmp) provides installation scripts to build our computing environment on a Ubuntu Linux machine.
 
 ### Cluster Scenario
 
@@ -40,4 +40,8 @@ For this reason, the [repository](https://github.com/spagnuolocarmine/ubuntu-ope
 
 Moreover, during the environment installation the script also exchanges the ssh key for the user pcpc.
 
+# Running on a local Docker environment
 
+If you are looking for a simple environment to execute your MPI examples. The Docker platform is the best solution suits you.
+
+> Docker is a set of platform as a service (PaaS) products that uses OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels. All containers are run by a single operating-system kernel and are thus more lightweight than virtual machines. [Wikipedia](https://en.wikipedia.org/wiki/Docker_(software))
