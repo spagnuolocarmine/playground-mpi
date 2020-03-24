@@ -26,6 +26,11 @@
 -[x] the abstractions of OpenMPI on individual processes (versus parallel jobs).
 -[ ] the abstractions of OpenMPI on individual processes (versus parallel jobs).
 
+?[What is an MPI binding?]
+-[ ] is an MPI implementation.
+-[x] is the programming language support given by the standard.
+-[ ] is the set of MPI API.
+
 ?[The OpenMPI Open MPI Run-Time Environment (ORTE)  is responsible for]
 -[ ] the abstractions of OpenMPI on individual processes (versus parallel jobs).
 -[x] the abstractions of OpenMPI to launch, monitor, and kill parallel jobs.
