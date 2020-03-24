@@ -56,11 +56,13 @@ plan:
         statement: markdowns/cap5/topologies.md
       - title: Chapter Questions
         statement: markdowns/cap5/5_questions.md
-  - title: HPC for all, an MPI cluster on Amazon AWS
+  - title: HPC Environment for all
     description: This chapter introduces how to create an MPI cluster machine on Amazon AWS. 
     plan:
        - title: MPI Amazon AWS Cluster
          statement: markdowns/cap6/cluster.md
+       - title: Docker MPI Environment
+         statement: markdowns/cap6/dcoker.md
 projects:
   main:
     root: exercises/
