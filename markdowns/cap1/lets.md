@@ -9,9 +9,6 @@
 Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a>
 
 
-@[Have fun with MPI in C]({"stubs": ["hello_world_have_fun_with_mpi.c"], "command": "/bin/bash /project/target/hello_world_have_fun_with_mpi.sh"})
-
-
 # Preface
 
 Hi guys! Either you are a Computer Science student, or just a brave programmer who wants to start learning the basic of parallel programming in shared and/or distributed memory systems, this (play)book will light your way on (hopefully!).
