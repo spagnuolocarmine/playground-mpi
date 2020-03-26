@@ -49,8 +49,9 @@ All we need to do now, it is just taking off. Seat back, relax, and code.
 5. Communication Topologies. A brief introduction to MPI topologies.
     - MPI Process Topologies
     - Chapter Questions
-6. HPC for all, an MPI cluster on Amazon AWS. This chapter introduces how to create an MPI cluster machine on Amazon AWS. 
+6. HPC Environment for all. This chapter introduces how to create an MPI cluster machine on Amazon AWS.  
      - MPI Amazon AWS Cluster
+     - Docker MPI Environment
 
 
 ## Changelogs
@@ -171,3 +172,7 @@ In 2012 he got a grant from the Office of Naval Research (ONR) for visiting Geor
 Currently, he is a Postdoc Researcher at the ISISLab laboratory of the Università degli Studi di Salerno. He is co-author of more than 20 papers in international refereed journals and conferences.
 
 [spagnuolocarmine At gmail.com](mailto:spagnuolocarmine@gmail.com)
+
+# Acknowledgement
+
+I wish to show my gratitude to Alessia Antelmi for reviewing this manuscript and helping to improve the quality by providing ideas and active support during the drawing up.

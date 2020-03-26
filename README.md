@@ -57,8 +57,10 @@ __Alessia Antelmi__, PhD Student. Department of Computer Science, Università de
 5. Communication Topologies. A brief introduction to MPI topologies.
     - MPI Process Topologies
     - Chapter Questions
-6. HPC for all, an MPI cluster on Amazon AWS. This chapter introduces how to create an MPI cluster machine on Amazon AWS. 
+6. HPC Environment for all. This chapter introduces how to create an MPI cluster machine on Amazon AWS.  
      - MPI Amazon AWS Cluster
+     - Docker MPI Environment
+
 
 # Book features and recommendations
 
@@ -107,3 +109,7 @@ docker run -it -t dockermpi:latest
 - Andy Oram, Greg Wilson, 2008, Beautiful Code, Leading Programmers Explain How They Think,  O'Reilly Media.
 - [Idiomatic Expressions in C By Adam Petersen](https://www.adamtornhill.com/Idiomatic_expressions_in_C.pdf). 
 - Mandel Cooper, Advanced Bash Scripting, 2010.
+
+# Acknowledgement
+
+I wish to show my gratitude to Alessia Antelmi for reviewing this manuscript and helping to improve the quality by providing ideas and active support during the drawing up.
