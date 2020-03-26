@@ -123,7 +123,7 @@ MPI Evolution
 - Each example run with a fixed number of processors takes in mind this if you change the code.
 - Do (and re-do) the chapter questions.
 
-## Exercises Execution Environment
+## Exercises execution environment
 
 This book uses a Docker container that enables execution in the browser MPI program. 
 The Docker container is available on a public repository on [GitHub](https://github.com/spagnuolocarmine/docker-mpi). The execution environment provides an Ubuntu 18.04 Linux machine and software. The execution environments provide the last version of [OpenMPI](https://www.open-mpi.org/), the MPI implementation used in this book. 
@@ -136,6 +136,10 @@ cd docker-mpi
 docker build --no-cache -t dockermpi .
 docker run -it -t dockermpi:latest
 ```
+
+🆘 Usage of book Docker environment (see Chapter 6): 
+    - ```docker run -it --mount src="$(pwd)",target=/home,type=bind spagnuolocarmine/docker-mpi:latest```, executes the docker container, which mounts the current path in the ```/home``` folder of the container. 
+    - However, in order to run the container (using the user root), you need to allow the execution of the ```mpirun``` command using the root user by adding the ```--allow-run-as-root``` option, for instance ```mpirun --allow-run-as-root -np 3 myprogram.out```.
 
 # References
 
