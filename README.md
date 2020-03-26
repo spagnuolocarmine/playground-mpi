@@ -1,11 +1,11 @@
-<a href="http://bit.ly/have-fun-with-mpi" ><img src="cover.png" alt="logo" height="120" align="right"/></a>
+<a href="http://bit.ly/have-fun-with-mpi-in-c" ><img src="cover.png" alt="logo" height="120" align="right"/></a>
 
 # Have fun with MPI in C
 
-*An interactive tutorial playground available on [Tech.io](http://bit.ly/have-fun-with-mpi).*
+*An interactive tutorial playground available on [Tech.io](http://bit.ly/have-fun-with-mpi-in-c).*
 
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/) 
-[![Open Source Love svg3](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](http://bit.ly/have-fun-with-mpi)
+[![Open Source Love svg3](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](http://bit.ly/have-fun-with-mpi-in-c)
 
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/spagnuolocarmine/playground-mpi) 
@@ -13,7 +13,7 @@
 
 
 [![Donate](https://img.shields.io/badge/PayPal-Donate%20to%20Author-blue.svg)](https://www.paypal.me/CarmineSpagnuolo) [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://github.com/spagnuolocarmine/playground-mpi/issues)
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Have%20fun%20with%20MPI%20in%20C%20&url=http://bit.ly/have-fun-with-mpi&hashtags=c,mpi,programming,tutorial,parallel-computing,distributed-computing,distributed-memory) 
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Have%20fun%20with%20MPI%20in%20C%20&url=http://bit.ly/have-fun-with-mpi-in-c&hashtags=c,mpi,programming,tutorial,parallel-computing,distributed-computing,distributed-memory) 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
 <img alt="Licenza Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
