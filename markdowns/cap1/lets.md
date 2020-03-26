@@ -57,25 +57,29 @@ All we need to do now, it is just taking off. Seat back, relax, and code.
 
 ## Changelogs
 
-- 17/03/2020. This book is currently under development. Anyway yeah, you can start and I will finish in a few weeks (and we will provide a proofread).
+- 17/03/2020. This book is currently under development. Anyway yeah, you can start reading it, and I will finish it in a few weeks (and we will provide a proofread).
 
 # Introduction
 
 ## What is distributed computing? - Distributed-Memory Programming with MPI
 
-Recall that the world of parallel multiple instruction, multiple data, or MIMD, computers are, for the most part, divided into distributed-memory and shared-memory systems. From a programmer’s point of view, a distributed-memory system consists of a collection of core-memory pairs connected by a network, and the memory associated with a core is directly accessible only to that core. On the other hand, from a programmer’s point of view, a shared-memory system consists of a collection of cores connected to globally accessible memory, in which each core can have access to any memory location. 
+In the world of parallel multiple instructions multiple data (or MIMD), computers are typically divided into distributed-memory and shared-memory systems. From a programmer’s point of view, a distributed-memory system consists of a collection of core-memory pairs connected by a network, where the memory associated with a core is directly accessible only to that core. On the other hand, a shared-memory system consists of a collection of cores connected to globally accessible memory, in which each core can have access to any memory location. 
 
 ![mpimodel](/img/mpimodel.png) 
 
+In message-passing programs, a process is a program running on one core-memory pair. Two processes can communicate by calling functions: one process calls a send function and the other calls a receive function.
+We'll be using MPI, abbreviation of Message-Passing Interface, as an implementation of the message-passing model. MPI is not a new programming language. It defines a library of functions that can be called from C, C++, and Fortran programs. We’ll learn about some of the MPI’s different send and receive functions. We’ll also learn about some “global” communication functions that can involve more than two processes. These functions are defined as collective communications. In the process of learning about all of these MPI functions, we’ll also talk about about some of the fundamental issues involved in writing message-passing programs, such as data partitioning and I/O in distributed-memory systems. We’ll also revisit the issue of parallel program performance.
+<!---
+Recalling that in message-passing programs, a program running on one core-memory pair is usually called process, and two processes can communicate by calling functions: one process calls a send function and the other calls a receive function. The implementation of message-passing that we’ll be using is called MPI, which is an abbreviation of Message-Passing Interface.
+-->
 
-Recall that in message-passing programs, a program running on one core-memory pair is usually called a process, and two processes can communicate by calling functions: one process calls a send function and the other calls a receive function. The implementation of message-passing that we’ll be using is called MPI, which is an abbreviation of Message-Passing Interface. MPI is not a new programming language. It defines a library of functions that can be called from C, C++, and Fortran programs. We’ll learn about some of the MPI’s different send and receive functions. We’ll also learn about some “global” communication functions that can involve more than two processes. These functions are called collective communications. In the process of learning about all of these MPI functions, we’ll also learn about some of the fundamental issues involved in writing message-passing programs–issues such as data partitioning and I/O in distributed-memory systems. We’ll also revisit the issue of parallel program performance.
 
 ## What is MPI?
 
 - M P I = Message Passing Interface
-- MPI is a specification for the developers and users of message passing libraries. By itself, it is NOT a library - but rather the specification of what such a library should be.
+- MPI is a specification for developers and users of message passing libraries. By itself, it is NOT a library - but rather the specification of what such a library should be.
 - MPI primarily addresses the message-passing parallel programming model: data is moved from the address space of one process to that of another process through cooperative operations on each process.
-- Simply stated, the goal of the Message Passing Interface is to provide a widely used standard for writing message-passing programs. The interface attempts to be:
+- In few words, the goal of the Message Passing Interface is to provide a widely used standard for writing message-passing programs. The interface attempts to be:
 	- _Practical_
 	- _Portable_
 	- _Efficient_
@@ -84,23 +88,23 @@ Recall that in message-passing programs, a program running on one core-memory pa
 - Interface specifications have been defined for C and Fortran90 language bindings:
 	- C++ bindings from MPI-1 are removed in MPI-3
 	- MPI-3 also provides support for Fortran 2003 and 2008 features
-- Actual MPI library implementations differ in which version and features of the MPI standard they support. Developers/users will need to be aware of this.
+- Actual MPI library implementations differ in which version and features of the MPI standard they support. Developers and users have to be aware of this.
 
 ### Reasons for Using MPI:
 
-- **Standardization** - MPI is the only message passing library that can be considered a standard. It is supported on virtually all HPC platforms. 
+- **Standardization** - MPI is the only message passing library that can be considered a standard. It is virtually supported on all HPC platforms. 
 - **Practically**, it has replaced all previous message passing libraries.
 - **Portability** - There is little or no need to modify your source code when you port your application to a different platform that supports (and is compliant with) the MPI standard.
 - **Performance Opportunities** - Vendor implementations should be able to exploit native hardware features to optimize performance. Any implementation is free to develop optimized algorithms.
 - **Functionality** - There are over 430 routines defined in MPI-3, which includes the majority of those in MPI-2 and MPI-1. 
-- **Availability** - A variety of implementations are available, both vendor and public 
+- **Availability** - A variety of implementations are available, both vendor and public. 
 
 ### History and Evolution of MPI:
 
-- MPI has resulted from the efforts of numerous individuals and groups that began in 1992. Some history:
-- The 1980s - early 1990s: Distributed memory, parallel computing develops, as do a number of incompatible software tools for writing such programs - usually with tradeoffs between portability, performance, functionality, and price. Recognition of the need for a standard arose.
+- MPI is the result of the efforts of numerous individuals and groups that began in 1992. Here's some keypoints in history.
+- 1980s - early 1990s: Development of distributed memory and parallel computing, along with a number of incompatible software tools for writing such programs - usually with tradeoffs between portability, performance, functionality, and price. Recognition of the need for a standard arose.
 MPI Evolution
-- Apr 1992: Workshop on Standards for Message Passing in a Distributed Memory Environment, sponsored by the Center for Research on Parallel Computing, Williamsburg, Virginia. The basic features essential to a standard message passing interface were discussed, and a working group established to continue the standardization process. A preliminary draft proposal developed subsequently.
+- Apr 1992: Workshop on Standards for Message Passing in a Distributed Memory Environment, sponsored by the Center for Research on Parallel Computing, Williamsburg, Virginia. The basic features essential to a standard message passing interface were discussed, and a working group was established to continue the standardization process. A preliminary draft proposal developed subsequently.
 - Nov 1992: Working group meets in Minneapolis. MPI draft proposal (MPI1) from ORNL presented. The group adopts procedures and organization to form the MPI Forum. It eventually comprised about 175 individuals from 40 organizations including parallel computer vendors, software writers, academia and application scientists.
 - Nov 1993: Supercomputing 93 conference - draft MPI standard presented.
 - May 1994: Final version of MPI-1.0 released
@@ -120,15 +124,15 @@ MPI Evolution
 - All arguments are discussed and experimented during the reading by using simple examples in C.
 - By using this book you are able to learn in a more dynamic way.
 - You can change the example and integrate it with your code to directly experiment with the topic that you have studied.
-- Each example run with a fixed number of processors takes in mind this if you change the code.
+- Each example runs with a fixed number of processors. Take it in mind if you change the code.
 - Do (and re-do) the chapter questions.
 
 ## Exercises execution environment
 
 This book uses a Docker container that enables execution in the browser MPI program. 
-The Docker container is available on a public repository on [GitHub](https://github.com/spagnuolocarmine/docker-mpi). The execution environment provides an Ubuntu 18.04 Linux machine and software. The execution environments provide the last version of [OpenMPI](https://www.open-mpi.org/), the MPI implementation used in this book. 
+The Docker container is available on a public repository on [GitHub](https://github.com/spagnuolocarmine/docker-mpi). The execution environment provides an Ubuntu 18.04 Linux machine and the software. The execution environment provides the last version of [OpenMPI](https://www.open-mpi.org/), the MPI implementation used in this book. 
 
-You can build your local docker to experiment on your local machine varying the number of MPI processes, by a pull from the official Docker registry the image:  docker pull ```spagnuolocarmine/docker-mpi:latest```. Or you can build the docker image by yourself:
+You can build your local docker to experiment on your local machine, varying the number of MPI processes, by pulling from the official Docker registry the image:  docker pull ```spagnuolocarmine/docker-mpi:latest```. You can also build the docker image by yourself:
 
 ```
 git clone https://github.com/spagnuolocarmine/docker-mpi.git
@@ -140,7 +144,7 @@ docker run -it -t dockermpi:latest
 🆘 Usage of book Docker environment (see Chapter 6): 
 
 - ```docker run -it --mount src="$(pwd)",target=/home,type=bind spagnuolocarmine/docker-mpi:latest```, executes the docker container, which mounts the current path in the ```/home``` folder of the container. 
-- However, in order to run the container (using the user root), you need to allow the execution of the ```mpirun``` command using the root user by adding the ```--allow-run-as-root``` option, for instance ```mpirun --allow-run-as-root -np 3 myprogram.out```.
+- To run the container (using the user root), you need to allow the execution of the ```mpirun``` command using the root user by adding the ```--allow-run-as-root``` option, for instance ```mpirun --allow-run-as-root -np 3 myprogram.out```.
 
 # References
 
@@ -169,11 +173,11 @@ docker run -it -t dockermpi:latest
 
 # About the Author
 
-Carmine Spagnuolo got his Master's Degree cum laude in Computer Science at the Università degli Studi di Salerno in 2013. In January 2014, he started the Ph.D. program in Computer Science under the supervision of Professor Vittorio Scarano and has completed it in 2017.
+Carmine Spagnuolo got his Master's Degree cum laude in Computer Science at the Università degli Studi di Salerno in 2013. In January 2014, he started the Ph.D. program in Computer Science under the supervision of Professor Vittorio Scarano and he completed it in 2017.
 
-He is interested in Parallel Algorithms, Distributed Systems, Graph Theory, Social Networks, and Agent-Based Simulations. Since 2010, he is involved in the D-MASON research project, which is a distributed version of the MASON toolkit for Agent-Based simulations. He has worked on architecture, visualization and communication strategies. 
+He is interested in Parallel Algorithms, Distributed Systems, Graph Theory, Social Networks, and Agent-Based Simulations. Since 2010, he is involved in the D-MASON research project, which is a distributed version of the MASON toolkit for Agent-Based simulations. He has worked on the architecture, visualization and communication strategies. 
 
-In 2012 he got a grant from the Office of Naval Research (ONR) for visiting George Mason University (GMU). In May 2017 and from October to December 2017, he visited the University of Chicago and Argonne National Laboratory, under the supervision of Dott. Jonathan Ozik and exploiting a grant from ANL. In November 2019 he was a visiting researcher at  George Mason University (GMU) under supervising Prof. Sean Luke. Since 2018 he is involved in the Hypergraph research group formed by researches of Università degli Studi di Salerno, Università degli Studi della Campania "Luigi Vanvitelli", Warsaw School of Economics, and Ryerson University.
+In 2012 he got a grant from the Office of Naval Research (ONR) for visiting the George Mason University (GMU). In May 2017 and from October to December 2017, he visited the University of Chicago and the Argonne National Laboratory, under the supervision of Dott. Jonathan Ozik and exploiting a grant from ANL. In November 2019 he was a visiting researcher at  George Mason University (GMU) under the supervison of Prof. Sean Luke. Since 2018 he is involved in the Hypergraph research group formed by researches of Università degli Studi di Salerno, Università degli Studi della Campania "Luigi Vanvitelli", Warsaw School of Economics, and Ryerson University.
 
 Currently, he is a Postdoc Researcher at the ISISLab laboratory of the Università degli Studi di Salerno. He is co-author of more than 20 papers in international refereed journals and conferences.
 
@@ -181,4 +185,4 @@ Currently, he is a Postdoc Researcher at the ISISLab laboratory of the Universit
 
 # Acknowledgement
 
-I wish to show my gratitude to Alessia Antelmi for reviewing this manuscript and helping to improve the quality by providing ideas and active support during the drawing up.
+I wish to show my gratitude to Alessia Antelmi for reviewing this manuscript and helping to improve its quality by providing ideas and active support during the drawing up.
