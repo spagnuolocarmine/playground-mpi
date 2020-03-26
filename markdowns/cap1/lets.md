@@ -1,5 +1,8 @@
 ![cover](/img/cover.png)
 
+@[Have fun with MPI in C]({"stubs": ["hello_world_have_fun_with_mpi.c"], "command": "/bin/bash /project/target/hello_world_have_fun_with_mpi.sh"})
+
+
 > __Carmine Spagnuolo, Ph.D.__, Department of Computer Science, Università degli Studi di Salerno
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
