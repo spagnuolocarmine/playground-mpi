@@ -12,7 +12,7 @@ Primary purposes of group and communicator objects:
 
 ![MPI_GROUP](/img/groups.gif)
 
-## Group Management
+<!-- ## Group Management
 
 **MPI_GROUP_SIZE** returns  the size of a group.
 ```c
@@ -262,3 +262,4 @@ The following example uses collective operations named MPI\_Allreduce, which wil
 The following example uses 8 processes.
 @[MPI_GROUP]({"stubs": ["4/groupsandcomm.c"], "command": "/bin/bash /project/target/4/groupsandcomm.sh"})
 
+ -->
