@@ -2,7 +2,7 @@
 
 As described in the Introduction, at the start of an MPI program all its processes belong to the communicator MPI\_COMM\_WORLD. Processes in the communicator have unique numbers (identifiers) in the interval between 0 and p-1, where p is the number of processes executed. In many application we want to partition processes into n subgroups forming separate communicators. Each communicator should include the processes belonging a particular task.
 
-The standard type of communicator is known as an intra-communicator, but a second, more exotic type known as an inter-communicator, whcih provide communication between two different communicators. The two types differ in two ways:
+The standard type of communicator is known as an intra-communicator, but a second, more exotic type known as an inter-communicator, which provide communication between two different communicators. The two types differ in two ways:
 1. An intra-communicator refers to a single group, an inter-communicator refers to a pair of groups. The group of an intra-communicator is simply the set of all processes which share that communicator. A communicator is a opaque object of type **MPI\_Comm**.
 2. Collective communications (see next Chapter) can be performed with an intra-communicator. They cannot be performed on an inter-communicator. The group of processes involved in a collective communication is simply the group of the intra-communicator involved.
 
