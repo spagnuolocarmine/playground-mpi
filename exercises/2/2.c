@@ -7,11 +7,11 @@ int main(argc,argv) int argc; char *argv[];
 {
     int numtasks, rank, dest, source, rc, count;  
     char *inmsg;
-    char *outmsg = "Testing";
+    char *outmsg = "Test";
     MPI_Status Stat;
     int bufsize = strlen(outmsg) * sizeof(char);
     char *buf = malloc(bufsize); 
-    inmsg = (char *) malloc(10 * sizeof(char));
+    inmsg = (char *) malloc(4 * sizeof(char));
 
     MPI_Init(&argc,&argv);
     MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
